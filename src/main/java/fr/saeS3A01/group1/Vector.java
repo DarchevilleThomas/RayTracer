@@ -9,9 +9,9 @@ public class Vector {
 
     /**
      * Constructor of a vector with three points x,y,z.
-     * @param x
-     * @param y
-     * @param z
+     * @param x a double
+     * @param y a double
+     * @param z a double
      */
     public Vector(double x,double y,double z){
         this.triplet = new Triplet(x,y,z);
@@ -19,7 +19,7 @@ public class Vector {
 
     /**
      * Constructor of a vector with a Triplet t.
-     * @param t
+     * @param t a Triplet
      */
     public Vector(Triplet t){
         this.triplet = t;
@@ -27,7 +27,7 @@ public class Vector {
 
     /**
      * We add two vectors.
-     * @param t
+     * @param t a Triplet
      * @return a vector.
      */
     public Vector add(Triplet t){
@@ -35,8 +35,17 @@ public class Vector {
     }
 
     /**
+     * Adding a vector to a point gives a point.
+     * @param p a Point
+     * @return a point.
+     */
+    public Point add(Point p){
+        return new Point(this.triplet.add(p));
+    }
+
+    /**
      * We substract two vectors.
-     * @param t
+     * @param t a Triplet
      * @return a vector.
      */
     public Vector sub(Triplet t){
@@ -45,7 +54,7 @@ public class Vector {
 
     /**
      * We multiply by a scalar.
-     * @param d
+     * @param d a double.
      * @return a vector.
      */
     public Vector mul(double d){
@@ -54,7 +63,7 @@ public class Vector {
 
     /**
      * We calculate the scalar product by another triplet.
-     * @param t
+     * @param t a Triplet.
      * @return a double.
      */
     public double dot(Triplet t){
@@ -63,7 +72,7 @@ public class Vector {
 
     /**
      * We calculate the vector product by another triplet.
-     * @param t
+     * @param t a Triplet.
      * @return a vector.
      */
     public Vector cross(Triplet t){
