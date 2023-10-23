@@ -66,7 +66,7 @@ public class Color {
      * @return Color
      */
     public Color schur(double red, double green, double blue){
-        return new Color(triplet.schur(red,green,blue));
+        return new Color(triplet.schur(new Triplet(red,green,blue)));
     }
 
 }
