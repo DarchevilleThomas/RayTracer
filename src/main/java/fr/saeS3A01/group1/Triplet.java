@@ -25,4 +25,9 @@ class Triplet {
     public Triplet sub(Triplet t) {
         return new Triplet(this.x - t.x, this.y - t.y, this.z - t.z);
     }
+
+    // Méthode pour calculer le produit par un scalaire
+    public Triplet mul(double d) {
+        return new Triplet(this.x * d, this.y * d, this.z * d);
+    }
 }
