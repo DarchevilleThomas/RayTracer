@@ -27,11 +27,11 @@ public class Vector {
 
     /**
      * We add two vectors.
-     * @param t a Triplet
+     * @param v a Vector
      * @return a vector.
      */
-    public Vector add(Triplet t){
-        return new Vector(this.triplet.add(t));
+    public Vector add(Vector v){
+        return new Vector(this.triplet.add(v.getTriplet()));
     }
 
     /**
@@ -40,16 +40,16 @@ public class Vector {
      * @return a point.
      */
     public Point add(Point p){
-        return new Point(this.triplet.add(p));
+        return new Point(this.triplet.add(p.getTriplet()));
     }
 
     /**
      * We substract two vectors.
-     * @param t a Triplet
+     * @param v a Vector
      * @return a vector.
      */
-    public Vector sub(Triplet t){
-        return new Vector(this.triplet.sub(t));
+    public Vector sub(Vector v){
+        return new Vector(this.triplet.sub(v.getTriplet()));
     }
 
     /**
@@ -62,21 +62,21 @@ public class Vector {
     }
 
     /**
-     * We calculate the scalar product by another triplet.
-     * @param t a Triplet.
+     * We calculate the scalar product by another vector.
+     * @param v a Vector.
      * @return a double.
      */
-    public double dot(Triplet t){
-        return this.triplet.dot(t);
+    public double dot(Vector v){
+        return this.triplet.dot(v.getTriplet());
     }
 
     /**
-     * We calculate the vector product by another triplet.
-     * @param t a Triplet.
+     * We calculate the vector product by another vector.
+     * @param v a Vector.
      * @return a vector.
      */
-    public Vector cross(Triplet t){
-        return new Vector(this.triplet.cross(t));
+    public Vector cross(Vector v){
+        return new Vector(this.triplet.cross(v.getTriplet()));
     }
 
     /**
@@ -95,5 +95,22 @@ public class Vector {
         return new Vector(this.triplet.normalize());
     }
 
+    /**
+     * Method for recovering the triple.
+     * @return a Triplet
+     */
+    public Triplet getTriplet() {
+
+        return triplet;
+    }
+
+    /**
+     * Method for set the triple.
+     * @param triplet a Triplet
+     */
+    private void setTriplet(Triplet triplet) {
+
+        this.triplet = triplet;
+    }
 
 }
