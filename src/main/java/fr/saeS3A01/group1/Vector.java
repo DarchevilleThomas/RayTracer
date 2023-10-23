@@ -35,7 +35,9 @@ public class Vector {
         return new Vector(this.triplet.cross(t));
     }
 
-
+    public double length(){
+        return this.triplet.length();
+    }
 
 
 
