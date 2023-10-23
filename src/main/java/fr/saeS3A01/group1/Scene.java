@@ -50,4 +50,68 @@ class Scene {
         // Renvoyer l'image générée
         return image;
     }
+
+    // Une méthode pour calculer la couleur d'un pixel en fonction d'un rayon
+    private Color getColor(Ray ray) {
+        // Initialiser la couleur à noir
+        Color color = Color.BLACK;
+
+        // Initialiser la distance minimale à l'infini
+        double minDistance = Double.POSITIVE_INFINITY;
+
+        // Initialiser la forme 3D la plus proche à null
+        Shape3D closestShape = null;
+
+        // Parcourir toutes les formes 3D de la scène
+        for (Shape3D shape : shapes) {
+            // Calculer l'intersection entre le rayon et la forme 3D
+            Intersection intersection = shape.intersect(ray);
+
+            // Si il y a une intersection et que sa distance est inférieure à la distance minimale
+            if (intersection != null && intersection.getDistance() < minDistance) {
+                // Mettre à jour la distance minimale et la forme 3D la plus proche
+                minDistance = intersection.getDistance();
+                closestShape = shape;
+            }
+        }
+
+        // Si il y a une forme 3D la plus proche
+        if (closestShape != null) {
+            // Calculer le point d'intersection entre le rayon et la forme 3D la plus proche
+            Point point = ray.getPoint(minDistance);
+
+            // Calculer la normale à la surface de la forme 3D au point d'intersection
+            Vector normal = closestShape.getNormal(point);
+
+            // Calculer la couleur diffuse de la forme 3D au point d'intersection
+            Color diffuseColor = closestShape.getDiffuseColor(point);
+
+            // Initialiser la couleur du pixel à la couleur diffuse de la forme 3D
+            color = diffuseColor;
+
+            // Parcourir toutes les lumières de la scène
+            for (Light light : lights) {
+                // Calculer le vecteur qui va du point d'intersection vers la lumière
+                Vector lightVector = light.getPosition().subtract(point).normalize();
+
+                // Calculer le produit scalaire entre le vecteur normal et le vecteur lumière
+                double dotProduct = normal.dot(lightVector);
+
+                // Si le produit scalaire est positif, c'est-à-dire que le point est éclairé par la lumière
+                if (dotProduct > 0) {
+                    // Calculer le facteur d'éclairage en fonction du produit scalaire et de l'intensité de la lumière
+                    double factor = dotProduct * light.getIntensity();
+
+                    // Calculer la couleur de la lumière en fonction de sa couleur et du facteur d'éclairage
+                    Color lightColor = light.getColor().multiply(factor);
+
+                    // Ajouter la couleur de la lumière à la couleur du pixel
+                    color = color.add(lightColor);
+                }
+            }
+        }
+
+        // Renvoyer la couleur du pixel
+        return color;
+    }
 }
