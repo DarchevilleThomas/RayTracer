@@ -1,6 +1,6 @@
 package fr.saeS3A01.group1;
 
-public abstract class Figure {
+public abstract class Shape {
 
     private Color diffuse;
     private Color specular;
@@ -12,7 +12,7 @@ public abstract class Figure {
      * @param specular a Color
      * @param shininess a int
      */
-    public Figure( Color diffuse,Color specular, int shininess){
+    public Shape(Color diffuse, Color specular, int shininess){
         this.diffuse=diffuse;
         this.specular=specular;
         this.shininess=shininess;
