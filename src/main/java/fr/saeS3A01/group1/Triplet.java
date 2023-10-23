@@ -35,4 +35,11 @@ class Triplet {
     public double dot(Triplet t) {
         return this.x * t.x + this.y * t.y + this.z * t.z;
     }
+
+    // Méthode pour calculer le produit vectoriel avec un autre triplet
+    public Triplet cross(Triplet t) {
+        return new Triplet(this.y * t.z - this.z * t.y,
+                this.z * t.x - this.x * t.z,
+                this.x * t.y - this.y * t.x);
+    }
 }
