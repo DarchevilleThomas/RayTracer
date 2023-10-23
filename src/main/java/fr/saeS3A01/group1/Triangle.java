@@ -20,4 +20,58 @@ public class Triangle extends Shape{
         this.point3=point3;
     }
 
+    /**
+     * Getter of the first point of the triangle
+     *
+     * @return first point of the triangle
+     */
+    public Point getPoint1() {
+        return point1;
+    }
+
+
+    /**
+     * Setter of the first point of the triangle
+     *
+     * @param point1 first point of the triangle
+     */
+    public void setPoint1(Point point1) {
+        this.point1 = point1;
+    }
+
+    /**
+     * Getter of the second point of the triangle
+     *
+     * @return second point of the triangle
+     */
+    public Point getPoint2() {
+        return point2;
+    }
+
+    /**
+     * Setter of the second point of the triangle
+     *
+     * @param point2 second point of the triangle
+     */
+    public void setPoint2(Point point2) {
+        this.point2 = point2;
+    }
+
+    /**
+     * Getter of the third point of the triangle
+     *
+     * @return third point of the triangle
+     */
+    public Point getPoint3() {
+        return point3;
+    }
+
+    /**
+     * Setter of the third point of the triangle
+     *
+     * @param point3 third point of the triangle
+     */
+    public void setPoint3(Point point3) {
+        this.point3 = point3;
+    }
 }
