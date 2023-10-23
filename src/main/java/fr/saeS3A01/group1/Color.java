@@ -4,7 +4,6 @@ public class Color {
 
     private Triplet triplet;
 
-
     /**
      * Constructor of the triple corresponding to a color from the colors red, green and blue
      * @param red a double
@@ -21,6 +20,22 @@ public class Color {
      */
     public Color(Triplet triplet){
         this(triplet.x, triplet.y, triplet.z);
+    }
+
+    /**
+     * Getter for triplet
+     * @return Triplet
+     */
+    public Triplet getTriplet() {
+        return triplet;
+    }
+
+    /**
+     * Setter for triplet
+     * @param triplet a Triplet
+     */
+    private void setTriplet(Triplet triplet) {
+        this.triplet = triplet;
     }
 
     /**
