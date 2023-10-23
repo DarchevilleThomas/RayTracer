@@ -15,12 +15,15 @@ public class Color {
 
 
     public Color add(double red, double green, double blue){
-        return new Color(triplet.add(new Triplet(red,green,blue));
+        return new Color(triplet.add(new Triplet(red,green,blue)));
     }
 
     public Color mul(double d){
         return new Color(triplet.mul(d));
     }
 
+    public Color schur(double red, double green, double blue){
+        return new Color(triplet.schur(red,green,blue));
+    }
 
 }
