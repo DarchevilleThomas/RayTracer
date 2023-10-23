@@ -16,6 +16,18 @@ public class Point {
         return new Vector(this.triplet.sub(p.getTriplet()));
     }
 
+    public Point mul(double d) throws Exception {
+        if (this.triplet==null) throw new Exception("Impossible de multiplié un triplet null par un produit scalaire");
+        return new Point(this.triplet.mul(d));
+    }
+
+    public Triplet getTriplet() {
+        return triplet;
+    }
+
+    public void setTriplet(Triplet triplet) {
+        this.triplet = triplet;
+    }
 
 
 }
