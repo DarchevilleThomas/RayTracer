@@ -5,22 +5,22 @@ public class Color {
     private Triplet triplet;
 
     private double red, green, blue;
-    public Color(double red, double green, double blue,double x, double y, double z){
-        triplet = new Triplet(x,y,z);
-        this.red=red;
-        this.green=green;
-        this.blue=blue;
+    public Color(double red, double green, double blue){
+        triplet = new Triplet(red,green,blue);
     }
 
-    public Color(double x, double y, double z){
-        this(x,y,z,0.0,0.0,0.0);
+    public Color(Triplet triplet){
+        this(triplet.x, triplet.y, triplet.z);
     }
 
-    public Triplet add(double red, double green, double blue){
-        return triplet.add(new Triplet(red,green,blue));
+
+    public Color add(double red, double green, double blue){
+        return new Color(triplet.add(new Triplet(red,green,blue));
     }
 
-    public Triplet mul(double d){
-        return triplet.mul(d);
+    public Color mul(double d){
+        return new Color(triplet.mul(d));
     }
+
+
 }
