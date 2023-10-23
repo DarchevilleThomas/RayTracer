@@ -39,7 +39,9 @@ public class Vector {
         return this.triplet.length();
     }
 
-
+    public Vector normalize(){
+        return new Vector(this.triplet.normalize());
+    }
 
 
 }
