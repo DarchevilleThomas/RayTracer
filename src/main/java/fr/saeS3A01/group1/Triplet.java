@@ -20,4 +20,9 @@ class Triplet {
     public Triplet add(Triplet t) {
         return new Triplet(this.x + t.x, this.y + t.y, this.z + t.z);
     }
+
+    // Méthode pour calculer la différence de deux triplets
+    public Triplet sub(Triplet t) {
+        return new Triplet(this.x - t.x, this.y - t.y, this.z - t.z);
+    }
 }
