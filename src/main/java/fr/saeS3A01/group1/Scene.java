@@ -9,4 +9,12 @@ class Scene {
     private ArrayList<Light> lights; // La liste des lumières dans la scène
     private ArrayList<Shape3D> shapes; // La liste des formes 3D dans la scène
 
+    // Le constructeur de la scène
+    Scene(Camera camera, int width, int height) {
+        this.camera = camera;
+        this.width = width;
+        this.height = height;
+        this.lights = new ArrayList<Light>();
+        this.shapes = new ArrayList<Shape3D>();
+    }
 }
