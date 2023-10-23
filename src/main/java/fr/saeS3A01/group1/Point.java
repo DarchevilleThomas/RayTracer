@@ -30,7 +30,7 @@ public class Point {
      * @return Vector
      * @throws Exception If the parameter p is null or the triplet is null, the method throws an exception
      */
-    public Vector substract(Point p) throws Exception {
+    public Vector sub(Point p) throws Exception {
         if (p==null || this.triplet==null) throw new Exception("Cannot subtract an empty triple");
         return new Vector(this.triplet.sub(p.getTriplet()));
     }
