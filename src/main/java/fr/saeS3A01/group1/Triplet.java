@@ -13,4 +13,11 @@ class Triplet {
         this.y = y;
         this.z = z;
     }
+
+    // Les méthodes suivantes sont communes à tous les triplets
+    // Elles doivent être redéfinies dans les classes filles si nécessaire
+    // Méthode pour calculer la somme de deux triplets
+    public Triplet add(Triplet t) {
+        return new Triplet(this.x + t.x, this.y + t.y, this.z + t.z);
+    }
 }
