@@ -47,4 +47,14 @@ class Triplet {
     public double length() {
         return Math.sqrt(this.dot(this));
     }
+
+    // Méthode pour normaliser le triplet (le rendre unitaire)
+    public Triplet normalize() {
+        double l = this.length();
+        if (l == 0) {
+            return this; // On ne peut pas normaliser un triplet nul
+        } else {
+            return this.mul(1 / l); // On divise par la longueur
+        }
+    }
 }
