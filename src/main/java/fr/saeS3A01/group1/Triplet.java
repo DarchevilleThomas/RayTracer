@@ -36,7 +36,8 @@ class Triplet {
      * Computes the difference of this triplet and another triplet.
      *
      * @param t The other triplet.
-     * @return A new triplet that is the difference of this triplet and the other triplet.
+     * @return A new triplet that is the difference of this triplet and the other
+     *         triplet.
      */
     public Triplet sub(Triplet t) {
         return new Triplet(this.x - t.x, this.y - t.y, this.z - t.z);
@@ -66,7 +67,8 @@ class Triplet {
      * Computes the cross product of this triplet with another triplet.
      *
      * @param t The other triplet.
-     * @return A new triplet that is the cross product of this triplet and the other triplet.
+     * @return A new triplet that is the cross product of this triplet and the other
+     *         triplet.
      */
     public Triplet cross(Triplet t) {
         return new Triplet(this.y * t.z - this.z * t.y,
@@ -86,7 +88,8 @@ class Triplet {
     /**
      * Normalizes this triplet (makes it unitary).
      *
-     * @return A new normalized version of this triplet if it's not null; otherwise returns itself.
+     * @return A new normalized version of this triplet if it's not null; otherwise
+     *         returns itself.
      */
     public Triplet normalize() {
         double l = this.length();
