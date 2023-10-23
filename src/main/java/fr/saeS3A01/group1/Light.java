@@ -11,4 +11,21 @@ class Light {
         this.position = position;
         this.intensity = intensity;
     }
+
+    // Getter and Setter methods for position and intensity
+    public Point getPosition() {
+        return this.position;
+    }
+
+    public void setPosition(Point position) {
+        this.position = position;
+    }
+
+    public Color getIntensity() {
+        return this.intensity;
+    }
+
+    public void setIntensity(Color intensity) {
+        this.intensity = intensity;
+    }
 }
