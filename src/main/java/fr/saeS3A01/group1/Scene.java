@@ -17,4 +17,15 @@ class Scene {
         this.lights = new ArrayList<Light>();
         this.shapes = new ArrayList<Shape3D>();
     }
+
+    // Une méthode pour ajouter une lumière à la scène
+    public void addLight(Light light) {
+        this.lights.add(light);
+    }
+
+    // Une méthode pour ajouter une forme 3D à la scène
+    public void addShape(Shape3D shape) {
+        this.shapes.add(shape);
+    }
+
 }
