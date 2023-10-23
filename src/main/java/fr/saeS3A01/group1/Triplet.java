@@ -4,7 +4,7 @@ package fr.saeS3A01.group1;
  * This class represents a 3-dimensional tuple (point, vector, color).
  * The attributes x, y and z are protected to be accessible by subclasses.
  */
-class Triplet {
+public class Triplet {
     protected double x;
     protected double y;
     protected double z;
