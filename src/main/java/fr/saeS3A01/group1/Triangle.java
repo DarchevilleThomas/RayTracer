@@ -2,9 +2,9 @@ package fr.saeS3A01.group1;
 
 public class Triangle extends Shape{
 
-    private Point point1;
-    private Point point2;
-    private Point point3;
+    protected Point point1;
+    protected Point point2;
+    protected Point point3;
 
     /**
      * Constructor of the Triangle class
