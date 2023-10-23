@@ -20,5 +20,7 @@ public class Color {
         return triplet.add(new Triplet(red,green,blue));
     }
 
-
+    public Triplet mul(double d){
+        return triplet.mul(d);
+    }
 }
