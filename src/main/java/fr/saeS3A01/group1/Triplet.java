@@ -64,6 +64,16 @@ public class Triplet {
     }
 
     /**
+     * Computes the dot Schur product of this triplet with another triplet.
+     *
+     * @param t The other triplet.
+     * @return The Schur product of this triplet and the other triplet.
+     */
+    public Triplet schur(Triplet t) {
+        return new Triplet(this.x*t.x, this.y*t.y, this.z*t.z);
+    }
+
+    /**
      * Computes the cross product of this triplet with another triplet.
      *
      * @param t The other triplet.
