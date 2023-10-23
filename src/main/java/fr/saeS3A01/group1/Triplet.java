@@ -42,4 +42,9 @@ class Triplet {
                 this.z * t.x - this.x * t.z,
                 this.x * t.y - this.y * t.x);
     }
+
+    // Méthode pour calculer la longueur du triplet
+    public double length() {
+        return Math.sqrt(this.dot(this));
+    }
 }
