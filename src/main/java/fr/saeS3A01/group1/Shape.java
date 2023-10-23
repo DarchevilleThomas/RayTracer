@@ -12,7 +12,7 @@ public abstract class Shape {
      * @param specular a Color
      * @param shininess a int
      */
-    public Shape( Color diffuse,Color specular, int shininess){
+    public Shape(Color diffuse, Color specular, int shininess){
         this.diffuse=diffuse;
         this.specular=specular;
         this.shininess=shininess;
