@@ -30,4 +30,9 @@ class Triplet {
     public Triplet mul(double d) {
         return new Triplet(this.x * d, this.y * d, this.z * d);
     }
+
+    // Méthode pour calculer le produit scalaire avec un autre triplet
+    public double dot(Triplet t) {
+        return this.x * t.x + this.y * t.y + this.z * t.z;
+    }
 }
