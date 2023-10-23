@@ -69,7 +69,7 @@ public class Triplet {
      * @param t The other triplet.
      * @return The Schur product of this triplet and the other triplet.
      */
-    public Triplet Schur(Triplet t) {
+    public Triplet schur(Triplet t) {
         return new Triplet(this.x*t.x, this.y*t.y, this.z*t.z);
     }
 
