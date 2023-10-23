@@ -28,4 +28,26 @@ class Scene {
         this.shapes.add(shape);
     }
 
+    // Une méthode pour rendre la scène et renvoyer une image
+    public Image render() {
+        // Créer une image vide de la taille spécifiée
+        Image image = new Image(width, height);
+
+        // Parcourir tous les pixels de l'image
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                // Calculer le rayon qui part de la caméra vers le pixel
+                Ray ray = camera.getRay(x, y);
+
+                // Calculer la couleur du pixel en fonction des intersections avec les formes 3D et les lumières
+                Color color = getColor(ray);
+
+                // Affecter la couleur au pixel de l'image
+                image.setPixel(x, y, color);
+            }
+        }
+
+        // Renvoyer l'image générée
+        return image;
+    }
 }
