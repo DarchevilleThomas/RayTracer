@@ -18,5 +18,35 @@ public class Plane extends Shape {
         this.vector = vector;
     }
 
+    /**
+     *  Getter for point
+     * @return Point
+     */
+    public Point getPoint() {
+        return point;
+    }
 
+    /**
+     *  Setter for point
+     * @param point a Point
+     */
+    public void setPoint(Point point) {
+        this.point = point;
+    }
+
+    /**
+     *  Getter for vector
+     * @return Vector
+     */
+    public Vector getVector() {
+        return vector;
+    }
+
+    /**
+     * Setter for vector
+     * @param vector a Vector
+     */
+    public void setVector(Vector vector) {
+        this.vector = vector;
+    }
 }
