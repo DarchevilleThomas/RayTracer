@@ -22,7 +22,24 @@ public class Sphere extends Shape {
         this.radius = radius;
     }
 
+    public double getRadius() {
 
+        return radius;
+    }
 
+    public void setRadius(double radius) {
+
+        this.radius = radius;
+    }
+
+    public Point getP() {
+
+        return p;
+    }
+
+    public void setP(Point p) {
+
+        this.p = p;
+    }
 
 }
