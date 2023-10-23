@@ -3,9 +3,6 @@ package fr.saeS3A01.group1;
 public class Vector {
 
     private Triplet triplet; //We declare a private Triplet attribute triplet.
-    private double x;  //We declare a private double attribute x.
-    private double y;  //We declare a private double attribute y.
-    private double z;  //We declare a private double attribute z.
 
     /**
      * Constructor of a vector with three points x,y,z.
