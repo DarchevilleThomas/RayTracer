@@ -3,16 +3,16 @@ package fr.saeS3A01.group1;
 /**
  * Light class that represents a light source.
  */
-class Light {
+abstract class Light {
     protected Point position;
-    protected Color intensity;
+    protected Color color;
 
-    public Light(Point position, Color intensity) {
+    public Light(Point position, Color color) {
         this.position = position;
-        this.intensity = intensity;
+        this.color = color;
     }
 
-    // Getter and Setter methods for position and intensity
+    // Getter and Setter methods for position and color
     public Point getPosition() {
         return this.position;
     }
@@ -21,11 +21,11 @@ class Light {
         this.position = position;
     }
 
-    public Color getIntensity() {
-        return this.intensity;
+    public Color getColor() {
+        return this.color;
     }
 
-    public void setIntensity(Color intensity) {
-        this.intensity = intensity;
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
