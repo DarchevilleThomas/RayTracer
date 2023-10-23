@@ -16,5 +16,9 @@ public class Color {
         this(x,y,z,0.0,0.0,0.0);
     }
 
+    public Triplet add(double red, double green, double blue){
+        return triplet.add(new Triplet(red,green,blue));
+    }
+
 
 }
