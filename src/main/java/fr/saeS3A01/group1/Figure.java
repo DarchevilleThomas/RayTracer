@@ -1,0 +1,68 @@
+package fr.saeS3A01.group1;
+
+public abstract class Figure {
+
+    private Color diffuse;
+    private Color specular;
+    private int shininess;
+
+    /**
+     *  Constructor of the Figure class
+     * @param diffuse a Color
+     * @param specular a Color
+     * @param shininess a int
+     */
+    public Figure( Color diffuse,Color specular, int shininess){
+        this.diffuse=diffuse;
+        this.specular=specular;
+        this.shininess=shininess;
+    }
+
+    /**
+     *  getter for diffuse
+     * @return Color
+     */
+    public Color getDiffuse() {
+        return diffuse;
+    }
+
+    /**
+     *  getter for specular
+     * @return Color
+     */
+    public Color getSpecular() {
+        return specular;
+    }
+
+    /**
+     *  getter for shininess
+     * @return int
+     */
+    public int getShininess() {
+        return shininess;
+    }
+
+    /**
+     *  setter for diffuse
+     * @param diffuse a Color
+     */
+    public void setDiffuse(Color diffuse) {
+        this.diffuse = diffuse;
+    }
+
+    /**
+     *  setter for shininess
+     * @param shininess a int
+     */
+    public void setShininess(int shininess) {
+        this.shininess = shininess;
+    }
+
+    /**
+     *  Setter for specular
+     * @param specular a Color
+     */
+    public void setSpecular(Color specular) {
+        this.specular = specular;
+    }
+}
