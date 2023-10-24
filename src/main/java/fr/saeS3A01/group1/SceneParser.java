@@ -14,7 +14,7 @@ public class SceneParser {
     }
 
     // Le constructeur du parser prend en paramètre le nom du fichier à lire
-    public Scene parserScene(String fileName) {
+    public Scene parseScene(String fileName) {
         // Initialisation des attributs de la scene par défaut
         SceneBuilder scene_builder = new SceneBuilder();
         Color last_specular = new Color(255,255,255);
@@ -41,7 +41,7 @@ public class SceneParser {
                              cameras.add(new Camera(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Vector(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])), Double.parseDouble(words[10])));
                             break;
                         case "ambient":
-                            scene_builder.setAmbiant(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
+                            scene_builder.setAmbiant(new Color(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3])));
                             break;
                         case "diffuse":
                             last_diffuse.setTriplet(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
@@ -84,10 +84,10 @@ public class SceneParser {
         }
         // on ajoute le(s) camera(s)
         if (cameras.isEmpty()) {
-            scene_builder.addCamera(new Camera(new Point(10,0,0), new Point(0,0,0) , new Vector(1,0,1), 45));
+            scene_builder.setCamera(new Camera(new Point(10,0,0), new Point(0,0,0) , new Vector(1,0,1), 45));
         }
         for (Camera camera : cameras) {
-            scene_builder.addCamera(camera);
+            scene_builder.setCamera(camera);
         }
         // On construit et retourne la scène
         return scene_builder.build();

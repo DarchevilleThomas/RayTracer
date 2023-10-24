@@ -8,6 +8,7 @@ public class Scene {
     private int height;
     private ArrayList<Light> lights;
     private ArrayList<Shape> shapes;
+    private Color ambiant;
 
     /**
      * Constructor for Scene class
@@ -21,6 +22,7 @@ public class Scene {
         this.height = height;
         this.lights = new ArrayList<Light>();
         this.shapes = new ArrayList<Shape>();
+        this.ambiant = new Color(255,255,255);
     }
 
     /**
@@ -37,8 +39,42 @@ public class Scene {
         this.height = height;
         this.lights = lights;
         this.shapes = shapes;
+        this.ambiant = new Color(255,255,255);
     }
 
+    /**
+     * Constructor for a scene with lights, shapes and ambiant color.
+     * @param camera
+     * @param width
+     * @param height
+     * @param lights
+     * @param shapes
+     * @param ambiant
+     */
+    public Scene(Camera camera, int width, int height, ArrayList<Light> lights, ArrayList<Shape> shapes, Color ambiant) {
+        this.camera = camera;
+        this.width = width;
+        this.height = height;
+        this.lights = lights;
+        this.shapes = shapes;
+        this.ambiant = ambiant;
+    }
+
+    /**
+     *  Getter for ambiant color
+     *
+     */
+    public Color getAmbiant() {
+        return this.ambiant;
+    }
+
+    /**
+     *  Setter for ambiant color
+     * @param ambiant
+     */
+    public void setAmbiant(Color ambiant) {
+        this.ambiant = ambiant;
+    }
 
     /**
      *  Getter for camera
