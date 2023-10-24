@@ -7,8 +7,8 @@ public class SceneBuilder implements Builder{
     private Camera camera;
     private int width;
     private int height;
-    private ArrayList<Light> lights;
-    private ArrayList<Shape> shapes;
+    private ArrayList<Light> lights = new ArrayList<>();
+    private ArrayList<Shape> shapes = new ArrayList<>();
     private Color ambiant;
 
     /**
