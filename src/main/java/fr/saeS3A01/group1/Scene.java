@@ -24,6 +24,23 @@ public class Scene {
     }
 
     /**
+     * Constructor for a scene with lights and shapes.
+     * @param camera
+     * @param width
+     * @param height
+     * @param lights
+     * @param shapes
+     */
+    public Scene(Camera camera, int width, int height,ArrayList<Light> lights,ArrayList<Shape> shapes) {
+        this.camera = camera;
+        this.width = width;
+        this.height = height;
+        this.lights = lights;
+        this.shapes = shapes;
+    }
+
+
+    /**
      *  Getter for camera
      * @return Camera
      */
