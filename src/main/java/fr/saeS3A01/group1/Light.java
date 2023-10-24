@@ -4,7 +4,7 @@ package fr.saeS3A01.group1;
  * This abstract class represents a light source.
  * It is meant to be subclassed by specific types of lights.
  */
-abstract class Light {
+public abstract class Light {
     /**
      * The position of the light source.
      */

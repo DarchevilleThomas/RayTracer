@@ -56,6 +56,15 @@ public class Scene {
     public void setShapes(ArrayList<Shape> shapes) {
         this.shapes = shapes;
     }
+
+    public void addLight(Light light){
+        this.lights.add(light);
+    }
+
+    public void addShape(Shape shape){
+        this.shapes.add(shape);
+    }
+
 }
 
 
