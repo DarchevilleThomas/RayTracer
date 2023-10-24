@@ -14,7 +14,7 @@ public class SceneParser {
     }
 
     // Le constructeur du parser prend en paramètre le nom du fichier à lire
-    public Scene parserScene(String fileName) {
+    public Scene parseScene(String fileName) {
         // Initialisation des attributs de la scene par défaut
         SceneBuilder scene_builder = new SceneBuilder();
         Color last_specular = new Color(255,255,255);
