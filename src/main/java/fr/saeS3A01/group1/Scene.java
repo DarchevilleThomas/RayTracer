@@ -17,8 +17,45 @@ public class Scene {
         this.shapes = new ArrayList<Shape>();
     }
 
+    public Camera getCamera() {
+        return camera;
+    }
 
+    public void setCamera(Camera camera) {
+        this.camera = camera;
+    }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public ArrayList<Light> getLights() {
+        return lights;
+    }
+
+    public void setLights(ArrayList<Light> lights) {
+        this.lights = lights;
+    }
+
+    public ArrayList<Shape> getShapes() {
+        return shapes;
+    }
+
+    public void setShapes(ArrayList<Shape> shapes) {
+        this.shapes = shapes;
+    }
 }
 
 
