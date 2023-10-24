@@ -50,6 +50,15 @@ public class Color {
     }
 
     /**
+     * Method for adding color
+     * @param color a Triplet
+     * @return Color
+     */
+    public Color add(Color color){
+        return new Color(triplet.add(color.getTriplet()));
+    }
+
+    /**
      * Method for multiplication by a scalar
      * @param d a double
      * @return Color
