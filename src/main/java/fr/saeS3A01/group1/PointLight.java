@@ -16,7 +16,7 @@ class PointLight extends Light {
      * @param position The position of the light.
      * @param intensity The intensity of the light.
      */
-    PointLight(Color color, Point position) {
+    PointLight(Point position, Color color) {
         super(color);
         this.position = position;
     }

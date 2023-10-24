@@ -17,7 +17,6 @@ public class SceneParser {
     public Scene parserScene(String fileName) {
         // Initialisation des attributs de la scene par défaut
         SceneBuilder scene_builder = new SceneBuilder();
-        Color last_ambient = new Color(255,255,255);
         Color last_specular = new Color(255,255,255);
         Color last_diffuse = new Color(255,255,255);
         int last_shininess = 1;
@@ -42,7 +41,7 @@ public class SceneParser {
                              cameras.add(new Camera(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Vector(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])), Double.parseDouble(words[10])));
                             break;
                         case "ambient":
-                            last_ambient.setTriplet(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
+                            scene_builder.setAmbiant(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
                             break;
                         case "diffuse":
                             last_diffuse.setTriplet(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
@@ -61,6 +60,12 @@ public class SceneParser {
                             break;
                         case "plane":
                             scene_builder.addShape(new Plane(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Vector(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                            break;
+                        case "directional":
+                            scene_builder.addLight(new DirectionalLight(new Vector(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                            break;
+                        case "point":
+                            scene_builder.addLight(new PointLight(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
                             break;
                         default:
                             throw new IllegalArgumentException("Invalid line: " + line);
