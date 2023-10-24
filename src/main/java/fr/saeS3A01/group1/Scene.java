@@ -62,9 +62,8 @@ public class Scene {
 
     /**
      *  Getter for ambiant color
-     * @param ambiant
+     *
      */
-    @Override
     public Color getAmbiant() {
         return this.ambiant;
     }
@@ -73,7 +72,6 @@ public class Scene {
      *  Setter for ambiant color
      * @param ambiant
      */
-    @Override
     public void setAmbiant(Color ambiant) {
         this.ambiant = ambiant;
     }
