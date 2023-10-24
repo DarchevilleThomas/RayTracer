@@ -39,7 +39,6 @@ public class Ray {
                 if (p) {
                     color = new Color(255, 255, 255);
                 } else {
-                    //sinon utiliser du noir
                     color = new Color(0, 0, 0);
                 }
 
