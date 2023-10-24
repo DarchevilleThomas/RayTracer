@@ -9,6 +9,8 @@ public class Main {
             String filename = args[0];
         }
 
-
+        SceneParser sceneParser = new SceneParser();
+        Scene scene = sceneParser.parseScene(filename);
+        String output = sceneParser.getOutput();
     }
 }
