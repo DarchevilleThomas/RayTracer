@@ -1,7 +1,7 @@
 package fr.saeS3A01.group1;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         if (args.length<1){
             System.err.println("Enter at list one parameter (the file name)");
         }
@@ -10,6 +10,8 @@ public class Main {
             SceneParser sceneParser = new SceneParser();
             Scene scene = sceneParser.parseScene(filename);
             String output = sceneParser.getOutput();
+            Ray ray = new Ray();
+            ray.ray(scene,output);
         }
 
     }
