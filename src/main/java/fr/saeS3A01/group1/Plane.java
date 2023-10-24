@@ -49,4 +49,11 @@ public class Plane extends Shape {
     public void setVector(Vector vector) {
         this.vector = vector;
     }
+
+    @Override
+    public double distance(Point lookFrom, Vector d) throws UnsupportedOperationException {
+        //TODO Create distance method for the plane
+        return -1;
+    }
+
 }

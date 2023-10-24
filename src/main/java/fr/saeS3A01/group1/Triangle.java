@@ -77,4 +77,11 @@ public class Triangle extends Shape{
     public void setPoint3(Point point3) {
         this.point3 = point3;
     }
+
+    @Override
+    public double distance(Point lookFrom, Vector d) throws UnsupportedOperationException {
+        //TODO Create distance method for the triangle
+        return -1;
+    }
+
 }
