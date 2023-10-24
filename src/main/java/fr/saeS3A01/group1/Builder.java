@@ -26,14 +26,14 @@ public interface Builder {
     void setHeight(int height);
 
     /**
-     * Method to set a new list of lights
-     * @param lights
+     * Method to add a new light in the list of lights.
+     * @param light
      */
-    void setLights(ArrayList<Light> lights);
+    void addLight(Light light);
 
     /**
-     * Method to set a new list of shapes
-     * @param shapes
+     * Method to add a new shape in the list of shapes.
+     * @param shape
      */
-    void setShapes(ArrayList<Shape> shapes);
+    void addShape(Shape shape);
 }
