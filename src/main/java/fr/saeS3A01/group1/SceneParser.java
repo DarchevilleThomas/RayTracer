@@ -84,10 +84,10 @@ public class SceneParser {
         }
         // on ajoute le(s) camera(s)
         if (cameras.isEmpty()) {
-            scene_builder.addCamera(new Camera(new Point(10,0,0), new Point(0,0,0) , new Vector(1,0,1), 45));
+            scene_builder.setCamera(new Camera(new Point(10,0,0), new Point(0,0,0) , new Vector(1,0,1), 45));
         }
         for (Camera camera : cameras) {
-            scene_builder.addCamera(camera);
+            scene_builder.setCamera(camera);
         }
         // On construit et retourne la scène
         return scene_builder.build();
