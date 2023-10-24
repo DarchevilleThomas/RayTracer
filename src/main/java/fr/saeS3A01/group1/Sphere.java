@@ -42,4 +42,15 @@ public class Sphere extends Shape {
         this.p = p;
     }
 
+
+
+    @Override
+    public double distance(Point lookFrom,Vector d) throws Exception {
+        double a = 1;
+        double b = ((lookFrom.sub(p)).mul(2)).dot(d);
+        double c = ((lookFrom.sub(p)).dot(lookFrom.sub(p))) - radius*radius;
+
+        return 0;
+    }
+
 }
