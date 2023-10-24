@@ -41,7 +41,7 @@ public class SceneParser {
                              cameras.add(new Camera(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Vector(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])), Double.parseDouble(words[10])));
                             break;
                         case "ambient":
-                            scene_builder.setAmbiant(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
+                            scene_builder.setAmbiant(new Color(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3])));
                             break;
                         case "diffuse":
                             last_diffuse.setTriplet(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
