@@ -11,14 +11,14 @@ class DirectionalLight extends Light {
     protected Vector direction;
 
     /**
-     * Constructs a new DirectionalLight with the given position, intensity, and direction.
+     * Constructs a new DirectionalLight with the given position, color, and direction.
      *
      * @param position The position of the light source.
-     * @param intensity The intensity of the light source.
+     * @param color The color of the light source.
      * @param direction The direction of the light source.
      */
-    public DirectionalLight(Point position, Color intensity, Vector direction) {
-        super(position, intensity);
+    public DirectionalLight(Vector direction, Color color) {
+        super(color);
         this.direction = direction;
     }
 
