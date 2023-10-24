@@ -9,6 +9,7 @@ public class SceneBuilder implements Builder{
     private int height;
     private ArrayList<Light> lights;
     private ArrayList<Shape> shapes;
+    private Color ambiant;
 
     /**
      * Method to set a new camera
@@ -17,6 +18,15 @@ public class SceneBuilder implements Builder{
     @Override
     public void setCamera(Camera camera) {
         this.camera=camera;
+    }
+
+    /**
+     * Method to set a new ambient color
+     * @param ambiant
+     */
+    @Override
+    public void setAmbiant(Color ambiant) {
+        this.ambiant=ambiant;
     }
 
     /**
@@ -61,7 +71,7 @@ public class SceneBuilder implements Builder{
      * @return a scene
      */
     public Scene build(){
-        return new Scene(camera,width,height,lights,shapes);
+        return new Scene(camera,width,height,lights,shapes,ambiant);
     }
 
 }
