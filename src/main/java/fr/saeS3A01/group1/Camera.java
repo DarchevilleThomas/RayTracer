@@ -46,4 +46,6 @@ public class Camera {
     public double getFov() {
         return this.fov;
     }
+
+
 }
