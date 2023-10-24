@@ -38,21 +38,22 @@ public class SceneBuilder implements Builder{
     }
 
     /**
-     * Method to set a new list of lights
-     * @param lights
+     * Method to add a light in the list
+     * @param light
      */
     @Override
-    public void setLights(ArrayList<Light> lights) {
-        this.lights=lights;
+    public void addLight(Light light) {
+
+        this.lights.add(light);
     }
 
     /**
-     * Method to set a new list of shapes
-     * @param shapes
+     * Method to add a new shape in the list of shapes
+     * @param shape
      */
     @Override
-    public void setShapes(ArrayList<Shape> shapes) {
-        this.shapes=shapes;
+    public void addShape(Shape shape) {
+        this.shapes.add(shape);
     }
 
     /**
