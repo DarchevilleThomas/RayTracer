@@ -73,10 +73,10 @@ public class SceneParser {
                             break;
                         case "tri":
                             switch (words.length) {
-                                case 4:
+                                case 9:
                                     scene_builder.addShape(new Triangle(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Point(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9]))));
                                     break;
-                                case 9:
+                                case 4:
                                     for (int i = 0; i < words.length; i++) {
                                         if (Integer.parseInt(words[i])*Integer.parseInt(words[i]) >= verts.size()*verts.size()) {
                                             StringBuilder sb = new StringBuilder();
@@ -89,47 +89,23 @@ public class SceneParser {
                                     scene_builder.addShape(new Triangle(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1])), verts.get(Integer.parseInt(words[2])), verts.get(Integer.parseInt(words[3]))));
                                     break;
                                 default:
-                                    StringBuilder sb = new StringBuilder();
-                                    if (words.length > 9) {
-                                        for (int j = 0; j <= 3 + 2*9; j++) {sb.append(' ');}
-                                        for (int j = 3 + 2*9 + 1; j < line.length(); j++) {sb.append(' ');}
-                                        System.err.println("Error : too many arguments for tri at line " + num_line + " : \n" + line + "\n" + sb.toString());
-                                    } else {
-                                        for (int j = 0; j <= 3; j++) {sb.append(' ');}
-                                        for (int j = 3 + 1; j < line.length(); j++) {sb.append('^');}
-                                        System.err.println("Error : not enough arguments to tri at line " + num_line + " : \n" + line + "\n" + sb.toString());
-                                    }
+                                    defaultError("tri",9,num_line,line);
                                 }
                             break;
                         case "sphere":
                             switch (words.length) {
-                                case 3:
+                                case 5:
                                     scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), Double.parseDouble(words[4])));
                                     break;
-                                case 5:
-                                    for (int i = 0; i < words.length; i++) {
-                                        if (Integer.parseInt(words[i])*Integer.parseInt(words[i]) >= verts.size()*verts.size()) {
-                                            StringBuilder sb = new StringBuilder();
-                                            for (int j = 0; j <= 5 + 2*i; j++) {sb.append(' ');}
-                                            for (int j = 5 + 2*i + 1; j < line.length(); j++) {sb.append('^');}
-                                            System.err.println("Error : no vertex define at index " + words[i] + "\n line " + num_line + " : \n" + line + "\n" + sb.toString());
-                                            break;
-                                        }
+                                case 3:
+                                    if (declaredVertex("sphere",num_line,line,verts)) {
+                                        scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1])), Double.parseDouble(words[2])));
                                     }
-                                    scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1]) - 1), Double.parseDouble(words[2])));
                                     break;
                                 default:
-                                    StringBuilder sb = new StringBuilder();
-                                    if (words.length > 5) {
-                                        for (int j = 0; j <= 5 + 2*5; j++) {sb.append(' ');}
-                                        for (int j = 5 + 2*5 + 1; j < line.length(); j++) {sb.append('^');}
-                                        System.err.println("Error : too many arguments for sphere at line " + num_line + " : \n" + line + "\n" + sb.toString());
-                                    } else {
-                                        for (int j = 0; j <= 5; j++) {sb.append(' ');}
-                                        for (int j = 5 + 1; j < line.length(); j++) {sb.append('^');}
-                                        System.err.println("Error : not enough arguments to sphere at line " + num_line + " : \n" + line + "\n" + sb.toString());
-                                    }
-                                }
+                                    System.err.println("case default");
+                                    defaultError("sphere",5,num_line,line);
+                            }
                             break;
                         case "plane":
                             if (words.length > 5) {
@@ -172,6 +148,36 @@ public class SceneParser {
         }
         // Build and return the scene
         return scene_builder.build();
+    }
+
+    private boolean declaredVertex(String func_name, int num_line, String line, List<Point> verts) {
+        String[] words = line.split("\\s+");
+        int name_size = func_name.length();
+        for (int i = 0; i < words.length; i++) {
+            if (Integer.parseInt(words[i])*Integer.parseInt(words[i]) >= verts.size()*verts.size()) {
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j <= name_size + 2*i; j++) {sb.append(' ');}
+                for (int j = name_size + 2*i + 1; j < line.length(); j++) {sb.append('^');}
+                System.err.println("Error : no vertex define at index " + words[i] + "\n line " + num_line + " : \n" + line + "\n" + sb.toString());
+                return false;
+            }
+            System.err.println("case 3");
+        }
+        return true;
+    }
+
+    private void defaultError(String func_name, int max, int num_line, String line) {
+        StringBuilder sb = new StringBuilder();
+        int name_size = func_name.length();
+        if (line.split("\\s+").length > max) {
+            for (int j = 0; j <= name_size + 2*max; j++) {sb.append(' ');}
+            for (int j = name_size + 2*max + 1; j < line.length(); j++) {sb.append('^');}
+            System.err.println("Error : too many arguments for " + func_name + " at line " + num_line + " : \n" + line + "\n" + sb.toString());
+        } else {
+            for (int j = 0; j <= name_size; j++) {sb.append(' ');}
+            for (int j = name_size + 1; j < line.length(); j++) {sb.append('^');}
+            System.err.println("Error : not enough arguments to " + func_name + " at line " + num_line + " : \n" + line + "\n" + sb.toString());
+        }
     }
 
     /**
