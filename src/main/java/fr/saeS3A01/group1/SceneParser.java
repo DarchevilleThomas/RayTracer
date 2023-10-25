@@ -30,6 +30,7 @@ public class SceneParser {
         Color last_specular = new Color(255,255,255);
         Color last_diffuse = new Color(255,255,255);
         int last_shininess = 1;
+        List<Point> verts = new ArrayList<>();
         List<Camera> cameras = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
@@ -40,6 +41,12 @@ public class SceneParser {
                     // Split the line into words by spaces
                     String[] words = line.split("\\s+");
                     switch (words[0]) {
+                        case "maxverts":
+                            // No use
+                            break;
+                        case "vertex":
+                            verts.add(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])));
+                            break;
                         case "size":
                             scene_builder.setWidth(Integer.parseInt(words[1]));
                             scene_builder.setHeight(Integer.parseInt(words[2]));
@@ -63,13 +70,41 @@ public class SceneParser {
                             last_shininess = Integer.parseInt(words[1]);
                             break;
                         case "tri":
-                            scene_builder.addShape(new Triangle(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Point(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9]))));
+                            Triangle tri = null;
+                            if (words.length > 4) {
+                                tri = new Triangle(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Point(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])));
+                            } else {
+                                for (int i = 1; i < 3; i++) {
+                                    if (Integer.parseInt(words[i]) > verts.size()) {
+                                        System.err.println("Error : no vertex define at index " + words[i]);
+                                        break;
+                                    }
+                                }
+                                tri = new Triangle(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1]) - 1), verts.get(Integer.parseInt(words[2]) - 1), verts.get(Integer.parseInt(words[3]) - 1));
+                            }
+                            scene_builder.addShape(tri);
                             break;
                         case "sphere":
-                            scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), Double.parseDouble(words[4])));
+                            if (words.length > 3) {
+                                scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), Double.parseDouble(words[4])));
+                            } else {
+                                if (Integer.parseInt(words[1]) < verts.size()) {
+                                    scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1]) - 1), Double.parseDouble(words[2])));
+                                } else {
+                                    System.err.println("Error : no vertex define at index " + words[1]);
+                                }
+                            }
                             break;
                         case "plane":
-                            scene_builder.addShape(new Plane(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Vector(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                            if (words.length > 5) {
+                                scene_builder.addShape(new Plane(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Vector(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                            } else {
+                                if (Integer.parseInt(words[1]) < verts.size()) {
+                                    scene_builder.addShape(new Plane(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1]) - 1), new Vector(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                                } else {
+                                    System.err.println("Error : no vertex define at index " + words[1]);
+                                }
+                            }
                             break;
                         case "directional":
                             scene_builder.addLight(new DirectionalLight(new Vector(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
@@ -99,6 +134,10 @@ public class SceneParser {
         for (Camera camera : cameras) {
             scene_builder.setCamera(camera);
         }
+
+        // DEBUG
+        System.err.println(verts);
+
         // Build and return the scene
         return scene_builder.build();
     }
