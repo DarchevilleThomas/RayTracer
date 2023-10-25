@@ -110,4 +110,13 @@ public class Vector {
         this.triplet = triplet;
     }
 
+    /**
+     * Returns a string representation of this Vector.
+     * 
+     * @return A string representation of this Vector.
+     */
+    @Override
+    public String toString() {
+        return "Vector {x=" + triplet.x + ", y=" + triplet.y + ", z=" + triplet.z + "}";
+    }
 }

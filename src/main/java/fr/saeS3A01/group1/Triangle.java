@@ -83,5 +83,14 @@ public class Triangle extends Shape{
         //TODO Create distance method for the triangle
         return -1;
     }
-
+    
+    /**
+     * Returns a string representation of this Triangle.
+     * 
+     * @return A string representation of this Triangle.
+     */
+    @Override
+    public String toString() {
+        return "Plane {point1=" + point1 + ",point=2" + point2 + ",point3=" + point3 + "}";
+    }
 }

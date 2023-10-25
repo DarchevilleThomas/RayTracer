@@ -65,5 +65,13 @@ public class Point {
         this.triplet = triplet;
     }
 
-
+    /**
+     * Returns a string representation of this Point.
+     * 
+     * @return A string representation of this Point.
+     */
+    @Override
+    public String toString() {
+        return "Point {x=" + triplet.x + ", y=" + triplet.y + ", z=" + triplet.z + "}";
+    }
 }
