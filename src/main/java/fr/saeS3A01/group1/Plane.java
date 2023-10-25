@@ -55,5 +55,16 @@ public class Plane extends Shape {
         //TODO Create distance method for the plane
         return -1;
     }
-
+    
+    /**
+     * Returns a string representation of this Plane.
+     * The string representation is "Plane {point=POINT, vector=VECTOR}", where POINT
+     * and VECTOR are the point and vector of this Plane.
+     * 
+     * @return A string representation of this Plane.
+     */
+    @Override
+    public String toString() {
+        return "Plane {point=" + point + ", vector=" + vector + "}";
+    }
 }
