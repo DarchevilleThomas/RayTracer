@@ -41,7 +41,6 @@ public class Ray {
 
                 Point p = null;
 
-
                 int nbShape = scene.getShapes().size();
                 for(int k=0; k<nbShape; k++){
                     double t = scene.getShapes().get(k).distance(lookFrom,d);
