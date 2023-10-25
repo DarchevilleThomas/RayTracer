@@ -37,4 +37,8 @@ class PointLight extends Light {
     public void setPosition(Point position) {
         this.position = position;
     }
+
+    public Vector getPointLightVector(Point p) throws Exception {
+        return position.sub(p).normalize();
+    }
 }
