@@ -14,7 +14,6 @@ abstract class Light {
     /**
      * Constructs a new Light with the given position and color.
      *
-     * @param position The position of the light source.
      * @param color    The color of the light source.
      */
     public Light(Color color) {
