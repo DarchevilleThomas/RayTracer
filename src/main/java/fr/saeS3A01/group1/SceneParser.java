@@ -102,15 +102,34 @@ public class SceneParser {
                                 }
                             break;
                         case "sphere":
-                            if (words.length > 3) {
-                                scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), Double.parseDouble(words[4])));
-                            } else {
-                                if (Integer.parseInt(words[1]) < verts.size()) {
+                            switch (words.length) {
+                                case 3:
+                                    scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), Double.parseDouble(words[4])));
+                                    break;
+                                case 5:
+                                    for (int i = 0; i < words.length; i++) {
+                                        if (Integer.parseInt(words[i])*Integer.parseInt(words[i]) >= verts.size()*verts.size()) {
+                                            StringBuilder sb = new StringBuilder();
+                                            for (int j = 0; j <= 5 + 2*i; j++) {sb.append(' ');}
+                                            for (int j = 5 + 2*i + 1; j < line.length(); j++) {sb.append('^');}
+                                            System.err.println("Error : no vertex define at index " + words[i] + "\n line " + num_line + " : \n" + line + "\n" + sb.toString());
+                                            break;
+                                        }
+                                    }
                                     scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1]) - 1), Double.parseDouble(words[2])));
-                                } else {
-                                    System.err.println("Error : no vertex define at index " + words[1]);
+                                    break;
+                                default:
+                                    StringBuilder sb = new StringBuilder();
+                                    if (words.length > 5) {
+                                        for (int j = 0; j <= 5 + 2*5; j++) {sb.append(' ');}
+                                        for (int j = 5 + 2*5 + 1; j < line.length(); j++) {sb.append('^');}
+                                        System.err.println("Error : too many arguments for sphere at line " + num_line + " : \n" + line + "\n" + sb.toString());
+                                    } else {
+                                        for (int j = 0; j <= 5; j++) {sb.append(' ');}
+                                        for (int j = 5 + 1; j < line.length(); j++) {sb.append('^');}
+                                        System.err.println("Error : not enough arguments to sphere at line " + num_line + " : \n" + line + "\n" + sb.toString());
+                                    }
                                 }
-                            }
                             break;
                         case "plane":
                             if (words.length > 5) {
