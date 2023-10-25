@@ -19,6 +19,7 @@ public class Sphere extends Shape {
     public Sphere(Color diffuse, Color specular, int shininess,Point p,double radius) {
         super(diffuse, specular, shininess);
         this.p = p;
+
         this.radius = radius;
     }
 
@@ -58,7 +59,7 @@ public class Sphere extends Shape {
         if(delta<0){
             return -1;
         }
-        if(delta==0){
+        if(delta<0.001){
             return -b/2*a;
         }
         else {
