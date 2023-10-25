@@ -51,7 +51,7 @@ public class Ray {
                 }
 
                 if (p != null) {
-                    color = scene.getAmbiant();
+                    color = scene.getAmbient();
                 } else {
                     color = black;
                 }
