@@ -9,7 +9,7 @@ import static java.lang.Math.*;
 public class Ray {
 
     /**
-     * Method for creating a black image without shapes
+     * Method for casting rays with intersection detection
      * @param scene a Scene
      * @param outputName a String
      * @throws Exception Exception for the saving image
@@ -40,15 +40,14 @@ public class Ray {
                 Vector d =  (u.mul(a).add(v.mul(b)).sub(w)).normalize();
 
                 Point p = null;
-                double mint= -1.0;
+
 
                 int nbShape = scene.getShapes().size();
                 for(int k=0; k<nbShape; k++){
-                    mint = scene.getShapes().get(k).distance(lookFrom,d);
                     double t = scene.getShapes().get(k).distance(lookFrom,d);
-                    if(t >= 0 && mint >= t) {
+                    if(t >= 0 ) {
                         p = (d.mul(t)).add(lookFrom);
-                        mint=t;
+
                     }
                 }
 
