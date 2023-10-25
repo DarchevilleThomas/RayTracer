@@ -3,8 +3,6 @@ package fr.saeS3A01.group1;
 
 import java.util.ArrayList;
 
-import static java.lang.Math.max;
-
 public class BasicStrategy implements ColorStrategy{
 
     /**
