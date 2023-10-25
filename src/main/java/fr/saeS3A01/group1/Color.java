@@ -112,4 +112,16 @@ public class Color {
     public Color schurProduct(Color other) {
         return new Color(this.triplet.schur(other.getTriplet()));
     }
+
+    /**
+     * Returns a string representation of this Color.
+     * The string representation is "Color {r=RED, g=GREEN, b=BLUE}", where RED,
+     * GREEN, and BLUE are the red, green, and blue components of this Color.
+     * 
+     * @return A string representation of this Color.
+     */
+    @Override
+    public String toString() {
+        return "Color {r=" + triplet.x + ", g=" + triplet.y + ", b=" + triplet.z + "}";
+    }
 }
