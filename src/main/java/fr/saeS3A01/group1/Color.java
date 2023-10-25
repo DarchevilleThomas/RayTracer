@@ -114,6 +114,15 @@ public class Color {
     }
 
     /**
+     * Returns the RGB value representing the color in the default sRGB ColorModel.
+     *
+     * @return The RGB value of the color in the default sRGB ColorModel.
+     */
+    public int getRGB() {
+        return new java.awt.Color((int) this.triplet.x, (int) this.triplet.y, (int) this.triplet.z).getRGB();
+    }
+
+    /**
      * Returns a string representation of this Color.
      * The string representation is "Color {r=RED, g=GREEN, b=BLUE}", where RED,
      * GREEN, and BLUE are the red, green, and blue components of this Color.

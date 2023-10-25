@@ -18,7 +18,7 @@ public class Ray {
      * @throws Exception Exception for the saving image
      */
     public void ray(Scene scene,String outputName) throws Exception {
-        Color color, colorShape = null;
+        Color color = null;
         Color black = new Color(0,0,0);
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
@@ -56,32 +56,17 @@ public class Ray {
                     }
                 }
 
-                int rgb;
-
-                Point p = null;
                 if (0 <= mint) {
-                    p = new Point((d.mul(mint)).add(lookFrom).getTriplet());
-
-                    if (lastShape.getDiffuse().getTriplet().x == black.getTriplet().x && lastShape.getDiffuse().getTriplet().y == black.getTriplet().y && lastShape.getDiffuse().getTriplet().z == black.getTriplet().z) {
-                        colorShape = colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene);
-                    } else {
-                        Color colorShape1 = colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene);
-                        Color colorShape2 = colorStrat.colorCalculation((Sphere) lastShape, p, lights, scene).schurProduct(lastShape.getDiffuse()).add(ambiantColor);
-                        colorShape = colorShape1.add(colorShape2);
+                    Point p = new Point((d.mul(mint)).add(lookFrom).getTriplet());
+                    color = colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene);
+                    if (!lastShape.getDiffuse().getTriplet().equals(black.getTriplet())) {
+                        color = color.add(colorStrat.colorCalculation((Sphere) lastShape, p, lights, scene).schurProduct(lastShape.getDiffuse()).add(ambiantColor));
                     }
-
-                }
-
-
-
-                if (p != null) {
-                    color = colorShape;
                 } else {
                     color = black;
                 }
 
-                rgb = new java.awt.Color((int) color.getTriplet().x, (int) color.getTriplet().y, (int) color.getTriplet().z).getRGB();
-                image.setRGB(i, j, rgb);
+                image.setRGB(i, j, color.getRGB());
             }
         }
 
@@ -93,7 +78,3 @@ public class Ray {
         }
     }
 }
-
-
-
-

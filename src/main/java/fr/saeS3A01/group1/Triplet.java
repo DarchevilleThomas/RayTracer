@@ -109,4 +109,18 @@ public class Triplet {
             return this.mul(1 / l); // Divide by the length
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Triplet triplet = (Triplet) obj;
+        return Double.compare(triplet.x, x) == 0 &&
+            Double.compare(triplet.y, y) == 0 &&
+            Double.compare(triplet.z, z) == 0;
+    }
 }
