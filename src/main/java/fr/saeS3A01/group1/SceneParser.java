@@ -47,79 +47,127 @@ public class SceneParser {
                             // No use
                             break;
                         case "vertex":
-                            verts.add(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])));
-                            break;
-                        case "size":
-                            scene_builder.setWidth(Integer.parseInt(words[1]));
-                            scene_builder.setHeight(Integer.parseInt(words[2]));
-                            break;
-                        case "output":
-                            this.output = words[1];
-                            break;
-                        case "camera":
-                             cameras.add(new Camera(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Vector(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])), Double.parseDouble(words[10])));
-                            break;
-                        case "ambient":
-                            scene_builder.setAmbient(new Color(Double.parseDouble(words[1])*255,Double.parseDouble(words[2])*255,Double.parseDouble(words[3])*255));
-                            break;
-                        case "diffuse":
-                            last_diffuse.setTriplet(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
-                            break;
-                        case "specular":
-                            last_specular.setTriplet(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
-                            break;
-                        case "shininess":
-                            last_shininess = Integer.parseInt(words[1]);
-                            break;
-                        case "tri":
-                            switch (words.length) {
-                                case 9:
-                                    scene_builder.addShape(new Triangle(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Point(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9]))));
-                                    break;
-                                case 4:
-                                    for (int i = 0; i < words.length; i++) {
-                                        if (Integer.parseInt(words[i])*Integer.parseInt(words[i]) >= verts.size()*verts.size()) {
-                                            StringBuilder sb = new StringBuilder();
-                                            for (int j = 0; j <= 3 + 2*i; j++) {sb.append(' ');}
-                                            for (int j = 3 + 2*i + 1; j < line.length(); j++) {sb.append('^');}
-                                            System.err.println("Error : no vertex define at index " + words[i] + "\n line " + num_line + " : \n" + line + "\n" + sb.toString());
-                                            break;
-                                        }
-                                    }
-                                    scene_builder.addShape(new Triangle(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1])), verts.get(Integer.parseInt(words[2])), verts.get(Integer.parseInt(words[3]))));
+                            switch (words.length - 1) {
+                                case 3:
+                                    verts.add(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])));
                                     break;
                                 default:
-                                    defaultError("tri",9,num_line,line);
+                                    argumentError("vertex",3,num_line,line);
+                            }
+                            break;
+                        case "size":
+                            switch (words.length - 1) {
+                                case 2:
+                                    scene_builder.setWidth(Integer.parseInt(words[1]));
+                                    scene_builder.setHeight(Integer.parseInt(words[2]));
+                                    break;
+                                default:
+                                    argumentError("size",2,num_line,line);
+                            }
+                            break;
+                        case "output":
+                            switch (words.length - 1) {
+                                case 1:
+                                    this.output = words[1];
+                                    break;
+                                default:
+                                    argumentError("output",1,num_line,line);
+                            }
+                            break;
+                        case "camera":
+                            switch (words.length - 1) {
+                                case 10:
+                                    cameras.add(new Camera(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Vector(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])), Double.parseDouble(words[10])));
+                                    break;
+                                default:
+                                    argumentError("camera",9,num_line,line);
+                            }
+                            break;
+                        case "ambient":
+                            switch (words.length - 1) {
+                                case 3:
+                                    scene_builder.setAmbient(new Color(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3])));
+                                    break;
+                                default:
+                                    argumentError("ambient",3,num_line,line);
+                            }
+                            break;
+                        case "diffuse":
+                            switch (words.length - 1) {
+                                case 3:
+                                    last_diffuse.setTriplet(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
+                                    break;
+                                default:
+                                    argumentError("diffuse",3,num_line,line);
+                            }
+                            break;
+                        case "specular":
+                            switch (words.length - 1) {
+                                case 3:
+                                    last_specular.setTriplet(Double.parseDouble(words[1]),Double.parseDouble(words[2]),Double.parseDouble(words[3]));
+                                    break;
+                                default:
+                                    argumentError("specular",3,num_line,line);
+                            }
+                            break;
+                        case "shininess":
+                            switch (words.length - 1) {
+                                case 1:
+                                    last_shininess = Integer.parseInt(words[1]);
+                                    break;
+                                default:
+                                    argumentError("shininess",1,num_line,line);
+                            }
+                            break;
+                        case "tri":
+                            switch (words.length - 1) {
+                                case 9:
+                                    scene_builder.addShape(new Triangle(new Color(last_diffuse), new Color(last_specular), last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Point(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9]))));
+                                    break;
+                                case 3:
+                                    if (declaredVertex("tri",num_line,line,new int[] {1,2,3},verts)) {
+                                        scene_builder.addShape(new Triangle(new Color(last_diffuse), new Color(last_specular), last_shininess, verts.get(Integer.parseInt(words[1])), verts.get(Integer.parseInt(words[2])), verts.get(Integer.parseInt(words[3]))));
+                                    }
+                                    break;
+                                default:
+                                    argumentError("tri",9,num_line,line);
                                 }
                             break;
                         case "sphere":
-                            switch (words.length) {
-                                case 5:
-                                    scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), Double.parseDouble(words[4])));
+                            switch (words.length - 1) {
+                                case 4:
+                                    scene_builder.addShape(new Sphere(new Color(last_diffuse), new Color(last_specular), last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), Double.parseDouble(words[4])));
                                     break;
-                                case 3:
-                                    if (declaredVertex("sphere",num_line,line,verts)) {
-                                        scene_builder.addShape(new Sphere(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1])), Double.parseDouble(words[2])));
+                                case 2:
+                                    if (declaredVertex("sphere",num_line,line,new int[] {1},verts)) {
+                                        scene_builder.addShape(new Sphere(new Color(last_diffuse), new Color(last_specular), last_shininess, verts.get(Integer.parseInt(words[1])), Double.parseDouble(words[2])));
                                     }
                                     break;
                                 default:
-                                    System.err.println("case default");
-                                    defaultError("sphere",5,num_line,line);
+                                    argumentError("sphere",4,num_line,line);
                             }
                             break;
                         case "plane":
-                            if (words.length > 5) {
-                                scene_builder.addShape(new Plane(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Vector(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
-                            } else {
-                                if (Integer.parseInt(words[1]) < verts.size()) {
-                                    scene_builder.addShape(new Plane(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1]) - 1), new Vector(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
-                                } else {
-                                    System.err.println("Error : no vertex define at index " + words[1]);
-                                }
+                            switch (words.length - 1) {
+                                case 6:
+                                    scene_builder.addShape(new Plane(new Color(last_diffuse), new Color(last_specular), last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Vector(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                                    break;
+                                case 4:
+                                    if (declaredVertex("sphere",num_line,line,new int[] {1},verts)) {
+                                        scene_builder.addShape(new Plane(new Color(last_diffuse), new Color(last_specular), last_shininess, verts.get(Integer.parseInt(words[1])), new Vector(Double.parseDouble(words[2]), Double.parseDouble(words[3]), Double.parseDouble(words[4]))));
+                                    }
+                                    break;
+                                default:
+                                    argumentError("sphere",6,num_line,line);
                             }
                             break;
                         case "directional":
-                            scene_builder.addLight(new DirectionalLight(new Vector(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                            switch (words.length - 1) {
+                                case 6:
+                                    scene_builder.addLight(new DirectionalLight(new Vector(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                                default:
+                                    argumentError("directionnal", 6, num_line, line);
+                            }
                             break;
                         case "point":
                             scene_builder.addLight(new PointLight(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
@@ -150,34 +198,43 @@ public class SceneParser {
         return scene_builder.build();
     }
 
-    private boolean declaredVertex(String func_name, int num_line, String line, List<Point> verts) {
+    private boolean declaredVertex(String func_name, int num_line, String line, int[] check, List<Point> verts) {
         String[] words = line.split("\\s+");
-        int name_size = func_name.length();
-        for (int i = 0; i < words.length; i++) {
-            if (Integer.parseInt(words[i])*Integer.parseInt(words[i]) >= verts.size()*verts.size()) {
+        for (int i : check) {
+            try {
+                verts.get(Integer.parseInt(words[i]));
+            } catch (Exception e) {
+                System.err.println("Line (" + num_line + ") : Vertex not declared, currently " + verts.size() + " vertices are declared but you have requested " + words[i] + ".\n" + line);
                 StringBuilder sb = new StringBuilder();
-                for (int j = 0; j <= name_size + 2*i; j++) {sb.append(' ');}
-                for (int j = name_size + 2*i + 1; j < line.length(); j++) {sb.append('^');}
-                System.err.println("Error : no vertex define at index " + words[i] + "\n line " + num_line + " : \n" + line + "\n" + sb.toString());
+                int good = func_name.length();
+                for (int j = 1; j <= i - 1; j++) {
+                    good = 1 + words[j].length();
+                }
+                for (int j = 0; j < good; j++) {sb.append(" ");}
+                for (int j = good; j < good + words[i].length(); j++) {sb.append("^");}
+                System.err.println(sb.toString());
                 return false;
             }
-            System.err.println("case 3");
         }
         return true;
     }
 
-    private void defaultError(String func_name, int max, int num_line, String line) {
+    private void argumentError(String func_name, int nb_args, int num_line, String line) {
+        String[] words = line.split("\\s+");
+        System.err.println("Line (" + num_line + ") : Invalid arguments number, " + nb_args + " arguments were expected for the declaration of " + func_name + " but " + (words.length - 1) + " are given.\n" + line);
         StringBuilder sb = new StringBuilder();
-        int name_size = func_name.length();
-        if (line.split("\\s+").length > max) {
-            for (int j = 0; j <= name_size + 2*max; j++) {sb.append(' ');}
-            for (int j = name_size + 2*max + 1; j < line.length(); j++) {sb.append('^');}
-            System.err.println("Error : too many arguments for " + func_name + " at line " + num_line + " : \n" + line + "\n" + sb.toString());
+        if (words.length < nb_args + 1) {
+            for (int i = 0; i < func_name.length(); i++) {sb.append(" ");}
+            for (int i = func_name.length(); i < line.length(); i++) {sb.append("^");}
         } else {
-            for (int j = 0; j <= name_size; j++) {sb.append(' ');}
-            for (int j = name_size + 1; j < line.length(); j++) {sb.append('^');}
-            System.err.println("Error : not enough arguments to " + func_name + " at line " + num_line + " : \n" + line + "\n" + sb.toString());
+            int good = func_name.length();
+            for (int i = 1; i <= nb_args; i++) {
+                good += 1 + words[i].length();
+            }
+            for (int i = 0; i < good; i++) {sb.append(" ");}
+            for (int i = good; i < line.length(); i++) {sb.append("^");}
         }
+        System.err.println(sb.toString());
     }
 
     /**
