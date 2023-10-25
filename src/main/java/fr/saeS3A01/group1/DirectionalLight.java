@@ -10,10 +10,11 @@ class DirectionalLight extends Light {
      */
     protected Vector direction;
 
+
     /**
      * Constructs a new DirectionalLight with the given position, color, and direction.
      *
-     * @param position The position of the light source.
+     *
      * @param color The color of the light source.
      * @param direction The direction of the light source.
      */
@@ -39,4 +40,7 @@ class DirectionalLight extends Light {
     public void setDirection(Vector direction) {
         this.direction = direction;
     }
+
+
+
 }
