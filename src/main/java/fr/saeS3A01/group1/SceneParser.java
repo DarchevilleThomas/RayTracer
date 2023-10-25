@@ -6,16 +6,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is used to parse a scene from a file.
+ */
 public class SceneParser {
     private String output;
 
+    /**
+     * Default constructor for the SceneParser class.
+     */
     public SceneParser() {
         this.output = "";
     }
 
-    // Le constructeur du parser prend en paramètre le nom du fichier à lire
+    /**
+     * This method parses a scene from a file.
+     * @param fileName The name of the file to read.
+     * @return The parsed scene.
+     */
     public Scene parseScene(String fileName) {
-        // Initialisation des attributs de la scene par défaut
+        // Default initialization of the scene attributes
         SceneBuilder scene_builder = new SceneBuilder();
         Color last_specular = new Color(255,255,255);
         Color last_diffuse = new Color(255,255,255);
@@ -25,9 +35,9 @@ public class SceneParser {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line = reader.readLine();
             while (line != null) {
-                // On ignore les lignes vides ou qui commencent par #
+                // Ignore blank lines or lines that start with #
                 if (!line.isBlank() && !line.startsWith("#")) {
-                    // On sépare la ligne en mots selon les espaces
+                    // Split the line into words by spaces
                     String[] words = line.split("\\s+");
                     switch (words[0]) {
                         case "size":
@@ -73,7 +83,7 @@ public class SceneParser {
                 }
                 line = reader.readLine();
             }
-            // On ferme le BufferedReader
+            // Close the BufferedReader
             reader.close();
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -82,17 +92,21 @@ public class SceneParser {
         } catch (IllegalArgumentException e) {
             System.err.println("Invalid argument: " + e.getMessage());
         }
-        // on ajoute le(s) camera(s)
+        // Add the camera(s)
         if (cameras.isEmpty()) {
             scene_builder.setCamera(new Camera(new Point(10,0,0), new Point(0,0,0) , new Vector(1,0,1), 45));
         }
         for (Camera camera : cameras) {
             scene_builder.setCamera(camera);
         }
-        // On construit et retourne la scène
+        // Build and return the scene
         return scene_builder.build();
     }
 
+    /**
+     * This method returns the output.
+     * @return The output.
+     */
     public String getOutput() {
         return this.output;
     }
