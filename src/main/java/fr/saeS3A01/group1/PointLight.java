@@ -37,4 +37,15 @@ class PointLight extends Light {
     public void setPosition(Point position) {
         this.position = position;
     }
+
+    /**
+     * Method returning the point light vector for a point p provided as a parameter.
+     *
+     * @param p a point
+     * @return the point light vector
+     * @throws Exception Cannot subtract a null point
+     */
+    public Vector getPointLightVector(Point p) throws Exception {
+        return position.sub(p).normalize();
+    }
 }
