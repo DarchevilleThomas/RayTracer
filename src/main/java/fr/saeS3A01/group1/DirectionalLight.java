@@ -41,6 +41,10 @@ class DirectionalLight extends Light {
         this.direction = direction;
     }
 
+    public Vector getDirectionalLightVector(){
+        return this.direction.normalize();
+    }
+
 
 
 }
