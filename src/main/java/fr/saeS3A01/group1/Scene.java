@@ -8,7 +8,7 @@ public class Scene {
     private int height;
     private ArrayList<Light> lights;
     private ArrayList<Shape> shapes;
-    private Color ambiant;
+    private Color ambient;
 
     /**
      * Constructor for Scene class
@@ -22,7 +22,7 @@ public class Scene {
         this.height = height;
         this.lights = new ArrayList<Light>();
         this.shapes = new ArrayList<Shape>();
-        this.ambiant = new Color(255,255,255);
+        this.ambient = new Color(255,255,255);
     }
 
     /**
@@ -39,41 +39,41 @@ public class Scene {
         this.height = height;
         this.lights = lights;
         this.shapes = shapes;
-        this.ambiant = new Color(255,255,255);
+        this.ambient = new Color(255,255,255);
     }
 
     /**
-     * Constructor for a scene with lights, shapes and ambiant color.
+     * Constructor for a scene with lights, shapes and ambient color.
      * @param camera
      * @param width
      * @param height
      * @param lights
      * @param shapes
-     * @param ambiant
+     * @param ambient
      */
-    public Scene(Camera camera, int width, int height, ArrayList<Light> lights, ArrayList<Shape> shapes, Color ambiant) {
+    public Scene(Camera camera, int width, int height, ArrayList<Light> lights, ArrayList<Shape> shapes, Color ambient) {
         this.camera = camera;
         this.width = width;
         this.height = height;
         this.lights = lights;
         this.shapes = shapes;
-        this.ambiant = ambiant;
+        this.ambient = ambient;
     }
 
     /**
-     *  Getter for ambiant color
+     *  Getter for ambient color
      *
      */
-    public Color getAmbiant() {
-        return this.ambiant;
+    public Color getAmbient() {
+        return this.ambient;
     }
 
     /**
-     *  Setter for ambiant color
-     * @param ambiant
+     *  Setter for ambient color
+     * @param ambient
      */
-    public void setAmbiant(Color ambiant) {
-        this.ambiant = ambiant;
+    public void setAmbient(Color ambient) {
+        this.ambient = ambient;
     }
 
     /**

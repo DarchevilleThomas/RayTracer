@@ -14,10 +14,10 @@ public interface Builder {
     void setCamera(Camera camera);
 
     /**
-     * Method to set a new ambiant color.
-     * @param ambiant
+     * Method to set a new ambient color.
+     * @param ambient
      */
-    void setAmbiant(Color ambiant);
+    void setAmbient(Color ambient);
 
     /**
      * Method to set a new width
