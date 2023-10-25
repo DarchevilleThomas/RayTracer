@@ -19,6 +19,7 @@ public class Sphere extends Shape {
     public Sphere(Color diffuse, Color specular, int shininess,Point p,double radius) {
         super(diffuse, specular, shininess);
         this.p = p;
+
         this.radius = radius;
     }
 
@@ -40,6 +41,39 @@ public class Sphere extends Shape {
     public void setP(Point p) {
 
         this.p = p;
+    }
+
+    /**
+     * A method to calculate the distance
+     * @param lookFrom
+     * @param d
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public double distance(Point lookFrom,Vector d) throws Exception {
+        double a = 1;
+        double b = ((lookFrom.sub(p)).mul(2)).dot(d);
+        double c = ((lookFrom.sub(p)).dot(lookFrom.sub(p))) - radius*radius;
+        double delta = (b*b)-4*a*c;
+        if(delta<0){
+            return -1;
+        }
+        if(delta<0.001){
+            return -b/2*a;
+        }
+        else {
+            double t1 = (-b+Math.sqrt(delta))/2*a;
+            double t2 = (-b-Math.sqrt(delta))/2*a;
+            if(t2>0){
+                return t2;
+            }
+            if(t1>0){
+                return t1;
+            }else{
+                return -1;
+            }
+        }
     }
 
 }

@@ -65,4 +65,14 @@ public abstract class Shape {
     public void setSpecular(Color specular) {
         this.specular = specular;
     }
+
+    /**
+     * Abstract method distance.
+     * @param lookFrom
+     * @param d
+     * @return
+     * @throws Exception
+     */
+    public abstract double distance(Point lookFrom, Vector d) throws Exception;
+
 }
