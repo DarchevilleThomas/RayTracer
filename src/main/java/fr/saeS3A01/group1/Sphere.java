@@ -74,5 +74,14 @@ public class Sphere extends Shape {
             }
         }
     }
-
+    
+    /**
+     * Returns a string representation of this Sphere.
+     * 
+     * @return A string representation of this Sphere.
+     */
+    @Override
+    public String toString() {
+        return "Sphere {point=" + p + ", radius=" + radius + "}";
+    }
 }
