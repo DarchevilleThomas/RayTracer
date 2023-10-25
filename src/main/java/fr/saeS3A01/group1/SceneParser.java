@@ -164,13 +164,20 @@ public class SceneParser {
                         case "directional":
                             switch (words.length - 1) {
                                 case 6:
-                                    scene_builder.addLight(new DirectionalLight(new Vector(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                                    scene_builder.addLight(new DirectionalLight(new Vector(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4])*255, Double.parseDouble(words[5])*255, Double.parseDouble(words[6])*255)));
+                                    break;
                                 default:
                                     argumentError("directionnal", 6, num_line, line);
                             }
                             break;
                         case "point":
-                            scene_builder.addLight(new PointLight(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
+                            switch (words.length - 1) {
+                                case 6:
+                                     scene_builder.addLight(new PointLight(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4])*255, Double.parseDouble(words[5])*255, Double.parseDouble(words[6])*255)));
+                                    break;
+                                default:
+                                    argumentError("point", 6, num_line, line);
+                            }
                             break;
                         default:
                             throw new IllegalArgumentException("Invalid line " + num_line + ": " + line);
