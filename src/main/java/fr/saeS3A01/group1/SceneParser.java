@@ -35,7 +35,9 @@ public class SceneParser {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line = reader.readLine();
+            int num_line = 0;
             while (line != null) {
+                num_line++;
                 // Ignore blank lines or lines that start with #
                 if (!line.isBlank() && !line.startsWith("#")) {
                     // Split the line into words by spaces
@@ -70,19 +72,34 @@ public class SceneParser {
                             last_shininess = Integer.parseInt(words[1]);
                             break;
                         case "tri":
-                            Triangle tri = null;
-                            if (words.length > 4) {
-                                tri = new Triangle(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Point(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])));
-                            } else {
-                                for (int i = 1; i < 3; i++) {
-                                    if (Integer.parseInt(words[i]) > verts.size()) {
-                                        System.err.println("Error : no vertex define at index " + words[i]);
-                                        break;
+                            switch (words.length) {
+                                case 4:
+                                    scene_builder.addShape(new Triangle(last_diffuse, last_specular, last_shininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Point(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9]))));
+                                    break;
+                                case 9:
+                                    for (int i = 0; i < words.length; i++) {
+                                        if (Integer.parseInt(words[i])*Integer.parseInt(words[i]) >= verts.size()*verts.size()) {
+                                            StringBuilder sb = new StringBuilder();
+                                            for (int j = 0; j <= 3 + 2*i; j++) {sb.append(' ');}
+                                            for (int j = 3 + 2*i + 1; j < line.length(); j++) {sb.append('^');}
+                                            System.err.println("Error : no vertex define at index " + words[i] + "\n line " + num_line + " : \n" + line + "\n" + sb.toString());
+                                            break;
+                                        }
+                                    }
+                                    scene_builder.addShape(new Triangle(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1])), verts.get(Integer.parseInt(words[2])), verts.get(Integer.parseInt(words[3]))));
+                                    break;
+                                default:
+                                    StringBuilder sb = new StringBuilder();
+                                    if (words.length > 9) {
+                                        for (int j = 0; j <= 3 + 2*9; j++) {sb.append(' ');}
+                                        for (int j = 3 + 2*9 + 1; j < line.length(); j++) {sb.append(' ');}
+                                        System.err.println("Error : too many arguments for tri at line " + num_line + " : \n" + line + "\n" + sb.toString());
+                                    } else {
+                                        for (int j = 0; j <= 3; j++) {sb.append(' ');}
+                                        for (int j = 3 + 1; j < line.length(); j++) {sb.append('^');}
+                                        System.err.println("Error : not enough arguments to tri at line " + num_line + " : \n" + line + "\n" + sb.toString());
                                     }
                                 }
-                                tri = new Triangle(last_diffuse, last_specular, last_shininess, verts.get(Integer.parseInt(words[1]) - 1), verts.get(Integer.parseInt(words[2]) - 1), verts.get(Integer.parseInt(words[3]) - 1));
-                            }
-                            scene_builder.addShape(tri);
                             break;
                         case "sphere":
                             if (words.length > 3) {
@@ -113,7 +130,7 @@ public class SceneParser {
                             scene_builder.addLight(new PointLight(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6]))));
                             break;
                         default:
-                            throw new IllegalArgumentException("Invalid line: " + line);
+                            throw new IllegalArgumentException("Invalid line " + num_line + ": " + line);
                     }
                 }
                 line = reader.readLine();
@@ -134,10 +151,6 @@ public class SceneParser {
         for (Camera camera : cameras) {
             scene_builder.setCamera(camera);
         }
-
-        // DEBUG
-        System.err.println(verts);
-
         // Build and return the scene
         return scene_builder.build();
     }
