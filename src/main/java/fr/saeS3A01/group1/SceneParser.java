@@ -27,8 +27,8 @@ public class SceneParser {
     public Scene parseScene(String fileName) {
         // Default initialization of the scene attributes
         SceneBuilder scene_builder = new SceneBuilder();
-        Color last_specular = new Color(255,255,255);
-        Color last_diffuse = new Color(255,255,255);
+        Color last_specular = new Color(0,0,0);
+        Color last_diffuse = new Color(0,0,0);
         int last_shininess = 1;
         List<Point> verts = new ArrayList<>();
         List<Camera> cameras = new ArrayList<>();
