@@ -11,10 +11,9 @@ public class LambertStrategy implements ColorStrategy{
      * @param scene a Scene
      * @param mint double
      * @return Color
-     * @throws Exception throw exception
      */
     @Override
-    public Color colorCalculation(Vector d, Shape shape, Scene scene,double mint) throws Exception {
+    public Color colorCalculation(Vector d, Shape shape, Scene scene,double mint) {
         Color res;
         Vector n;
         Point p = new Point((d.mul(mint).add(scene.getCamera().getPosition()).getTriplet()));
