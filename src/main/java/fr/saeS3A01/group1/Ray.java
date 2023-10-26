@@ -18,7 +18,6 @@ public class Ray {
      * @throws Exception Exception for the saving image
      */
     public void ray(Scene scene,String outputName) throws Exception {
-        Color color, colorShape = null;
         Color black = new Color(0,0,0);
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
@@ -27,6 +26,8 @@ public class Ray {
         double pixelheight = realheight/imgheight;
         double realwidth =imgwidth * pixelheight;
         double pixelwidth = realwidth/imgwidth;
+        double aStart = -realwidth / 2;
+        double bStart = realheight / 2;
         BufferedImage image = new BufferedImage(imgwidth,imgheight, 1);
         Point lookFrom = scene.getCamera().getPosition();
         Point lookAt = scene.getCamera().getTarget();
@@ -41,8 +42,8 @@ public class Ray {
         for (int i = 0; i < imgwidth; i++) {
             for (int j = 0; j < imgheight; j++) {
 
-                double a = (-realwidth / 2) + (i + 0.5) * pixelwidth;
-                double b = (realheight / 2) - (j + 0.5) * pixelheight;
+                double a = aStart + (i + 0.5) * pixelwidth;
+                double b = bStart - (j + 0.5) * pixelheight;
                 Vector d = (u.mul(a).add(v.mul(b)).sub(w)).normalize();
                 double mint = -1;
                 double t = -1;
@@ -56,32 +57,16 @@ public class Ray {
                     }
                 }
 
-                int rgb;
-
-                Point p = null;
                 if (0 <= mint) {
-                    p = new Point((d.mul(mint)).add(lookFrom).getTriplet());
-
-                    if (lastShape.getDiffuse().getTriplet().x == black.getTriplet().x && lastShape.getDiffuse().getTriplet().y == black.getTriplet().y && lastShape.getDiffuse().getTriplet().z == black.getTriplet().z) {
-                        colorShape = colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene);
+                    Point p = new Point((d.mul(mint)).add(lookFrom).getTriplet());
+                    if (lastShape.getDiffuse().getTriplet().equals(black.getTriplet())) {
+                        image.setRGB(i, j, colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene).getRGB());
                     } else {
-                        Color colorShape1 = colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene);
-                        Color colorShape2 = colorStrat.colorCalculation((Sphere) lastShape, p, lights, scene).schurProduct(lastShape.getDiffuse()).add(ambiantColor);
-                        colorShape = colorShape1.add(colorShape2);
+                        image.setRGB(i, j, colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene).add(colorStrat.colorCalculation((Sphere) lastShape, p, lights, scene).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB());
                     }
-
-                }
-
-
-
-                if (p != null) {
-                    color = colorShape;
                 } else {
-                    color = black;
+                    image.setRGB(i, j, 0);
                 }
-
-                rgb = new java.awt.Color((int) color.getTriplet().x, (int) color.getTriplet().y, (int) color.getTriplet().z).getRGB();
-                image.setRGB(i, j, rgb);
             }
         }
 
@@ -93,7 +78,3 @@ public class Ray {
         }
     }
 }
-
-
-
-
