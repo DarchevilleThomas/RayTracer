@@ -102,7 +102,19 @@ public class Triangle extends Shape{
             }else return -1;
         }else return -1;
     }
-    
+
+    /**
+     * Method to get the normale of a triangle
+     * @param p
+     * @return a vector
+     * @throws Exception
+     */
+    @Override
+    public Vector getN(Point p) throws Exception {
+
+        return ((point2.sub(point1)).cross((point3).sub(point1))).normalize();
+    }
+
     /**
      * Returns a string representation of this Triangle.
      * 
