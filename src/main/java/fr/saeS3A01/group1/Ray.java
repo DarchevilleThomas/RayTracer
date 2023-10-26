@@ -60,9 +60,9 @@ public class Ray {
                 if (0 <= mint) {
                     Point p = new Point((d.mul(mint)).add(lookFrom).getTriplet());
                     if (lastShape.getDiffuse().getTriplet().equals(black.getTriplet())) {
-                        image.setRGB(i, j, colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene).getRGB());
+                        image.setRGB(i, j, colorBasic.colorCalculation(lastShape, p, lights, scene,d).getRGB());
                     } else {
-                        image.setRGB(i, j, colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene).add(colorStrat.colorCalculation((Sphere) lastShape, p, lights, scene).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB());
+                        image.setRGB(i, j, colorBasic.colorCalculation(lastShape, p, lights, scene,d).add(colorStrat.colorCalculation(lastShape, p, lights, scene,d).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB());
                     }
                 } else {
                     image.setRGB(i, j, 0);
