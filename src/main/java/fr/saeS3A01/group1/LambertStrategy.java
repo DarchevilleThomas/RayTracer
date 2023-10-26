@@ -14,16 +14,14 @@ public class LambertStrategy implements ColorStrategy{
     public Color colorCalculation(Sphere sphere, Point p, ArrayList<Light> lights, Scene scene) throws Exception {
         Color res;
         Vector n = (p.sub(sphere.getP())).normalize();
-        if( scene.getAmbient()==null) res = new Color(0,0,0);
-        else res = scene.getAmbient();
-        for (Light value : lights) {
-            if (value instanceof PointLight) {
-                PointLight light = (PointLight) value;
-                res = res.add(sphere.getDiffuse().schurProduct(light.getColor().multiply(max(n.dot(light.getPointLightVector(p)), 0))));
-
+        if( scene.getAmbient()==null) res = new Color(0,0,0); else res = scene.getAmbient();
+        for (Light light : lights) {
+            if (light instanceof PointLight) {
+                PointLight plight = (PointLight) light;
+                res = res.add(sphere.getDiffuse().schurProduct(light.getColor().multiply(max(n.dot(plight.getPointLightVector(p)), 0))));
             } else {
-                DirectionalLight light = (DirectionalLight) value;
-                res = res.add((light.getColor().multiply(max(n.dot(light.getDirectionalLightVector()), 0))));
+                DirectionalLight dlight = (DirectionalLight) light;
+                res = res.add((dlight.getColor().multiply(max(n.dot(dlight.getDirectionalLightVector()), 0))));
             }
         }
         return res;

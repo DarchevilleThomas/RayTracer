@@ -18,7 +18,6 @@ public class Ray {
      * @throws Exception Exception for the saving image
      */
     public void ray(Scene scene,String outputName) throws Exception {
-        Color color = null;
         Color black = new Color(0,0,0);
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
@@ -27,6 +26,8 @@ public class Ray {
         double pixelheight = realheight/imgheight;
         double realwidth =imgwidth * pixelheight;
         double pixelwidth = realwidth/imgwidth;
+        double aStart = -realwidth / 2;
+        double bStart = realheight / 2;
         BufferedImage image = new BufferedImage(imgwidth,imgheight, 1);
         Point lookFrom = scene.getCamera().getPosition();
         Point lookAt = scene.getCamera().getTarget();
@@ -41,8 +42,8 @@ public class Ray {
         for (int i = 0; i < imgwidth; i++) {
             for (int j = 0; j < imgheight; j++) {
 
-                double a = (-realwidth / 2) + (i + 0.5) * pixelwidth;
-                double b = (realheight / 2) - (j + 0.5) * pixelheight;
+                double a = aStart + (i + 0.5) * pixelwidth;
+                double b = bStart - (j + 0.5) * pixelheight;
                 Vector d = (u.mul(a).add(v.mul(b)).sub(w)).normalize();
                 double mint = -1;
                 double t = -1;
@@ -58,15 +59,14 @@ public class Ray {
 
                 if (0 <= mint) {
                     Point p = new Point((d.mul(mint)).add(lookFrom).getTriplet());
-                    color = colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene);
-                    if (!lastShape.getDiffuse().getTriplet().equals(black.getTriplet())) {
-                        color = color.add(colorStrat.colorCalculation((Sphere) lastShape, p, lights, scene).schurProduct(lastShape.getDiffuse()).add(ambiantColor));
+                    if (lastShape.getDiffuse().getTriplet().equals(black.getTriplet())) {
+                        image.setRGB(i, j, colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene).getRGB());
+                    } else {
+                        image.setRGB(i, j, colorBasic.colorCalculation((Sphere) lastShape, p, lights, scene).add(colorStrat.colorCalculation((Sphere) lastShape, p, lights, scene).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB());
                     }
                 } else {
-                    color = black;
+                    image.setRGB(i, j, 0);
                 }
-
-                image.setRGB(i, j, color.getRGB());
             }
         }
 
