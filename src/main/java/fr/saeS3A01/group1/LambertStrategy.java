@@ -20,7 +20,7 @@ public class LambertStrategy implements ColorStrategy{
         }
 
         else if (shape instanceof Triangle) {
-            n = (((Triangle) shape).getPoint2().sub(((Triangle) shape).getPoint1()).cross((((Triangle) shape).getPoint3().sub(((Triangle) shape).getPoint1())))).normalize();
+            n = ((((Triangle) shape).getPoint2().sub(((Triangle) shape).getPoint3())).cross((((Triangle) shape).getPoint1().sub(((Triangle) shape).getPoint3())))).normalize();
             Plane plane = new Plane(shape.getDiffuse(),shape.getSpecular(),shape.getShininess(),((Triangle) shape).getPoint1(),n);
             double t = plane.distance(scene.getCamera().getPosition(),d);
             Point pPlane = d.mul(t).add(scene.getCamera().getPosition());
@@ -32,14 +32,15 @@ public class LambertStrategy implements ColorStrategy{
         }
 
         else if (shape instanceof Plane) {
-            n = (p.sub(((Plane) shape).getPoint())).normalize();
+            double t = shape.distance(scene.getCamera().getPosition(),d);
+            Point pPlane = d.mul(t).add(scene.getCamera().getPosition());
+            n = (pPlane.sub(((Plane) shape).getPoint())).normalize();
         }
 
         if (scene.getAmbient() == null) res = new Color(0, 0, 0);
         else res = scene.getAmbient();
         for (Light light : lights) {
-            if (light instanceof PointLight) {
-                PointLight plight = (PointLight) light;
+            if (light instanceof PointLight plight) {
                 res = res.add(shape.getDiffuse().schurProduct(light.getColor().multiply(max(n.dot(plight.getPointLightVector(p)), 0))));
             } else {
                 DirectionalLight dlight = (DirectionalLight) light;
