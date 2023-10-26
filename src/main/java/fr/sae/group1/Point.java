@@ -28,10 +28,9 @@ public class Point {
      *
      * @param p (Point)
      * @return Vector
-     * @throws Exception If the parameter p is null or the triplet is null, the method throws an exception
      */
-    public Vector sub(Point p) throws Exception {
-        if (p==null || this.triplet==null) throw new Exception("Cannot subtract an empty triple");
+    public Vector sub(Point p) {
+        if (p==null || this.triplet==null) throw new IllegalArgumentException("Cannot subtract an empty triple");
         return new Vector(this.triplet.sub(p.getTriplet()));
     }
 
@@ -40,10 +39,9 @@ public class Point {
      *
      * @param d a double
      * @return a point
-     * @throws Exception If the triplet is null, the method throws an exception
      */
-    public Point mul(double d) throws Exception {
-        if (this.triplet==null) throw new Exception("Cannot multiply a null triple by a scalar product");
+    public Point mul(double d) {
+        if (this.triplet==null) throw new IllegalArgumentException("Cannot multiply a null triple by a scalar product");
         return new Point(this.triplet.mul(d));
     }
 
