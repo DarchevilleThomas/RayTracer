@@ -50,10 +50,19 @@ public class Plane extends Shape {
         this.vector = vector;
     }
 
+    /**
+     * Method to calculate the distance for a plane
+     * @param lookFrom
+     * @param d
+     * @return a double
+     * @throws Exception
+     */
     @Override
-    public double distance(Point lookFrom, Vector d) throws UnsupportedOperationException {
-        //TODO Create distance method for the plane
-        return -1;
+    public double distance(Point lookFrom, Vector d) throws Exception {
+        if(d.dot(vector)<0.0001){
+            return -1;
+        }
+        return ((point.sub(lookFrom)).dot(vector))/d.dot(vector);
     }
     
     /**
