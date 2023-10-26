@@ -9,15 +9,13 @@ import java.util.ArrayList;
 import static java.lang.Math.*;
 
 public class Ray {
-    private ColorStrategy colorStrat = new LambertStrategy();
-    private ColorStrategy colorBasic = new BasicStrategy();
     /**
      * Method for casting rays with intersection detection
      * @param scene a Scene
      * @param outputName a String
      * @throws Exception Exception for the saving image
      */
-    public void ray(Scene scene,String outputName) throws Exception {
+    public void ray(Scene scene,String outputName,ColorStrategy strategy) throws Exception {
         Color black = new Color(0,0,0);
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
@@ -35,8 +33,6 @@ public class Ray {
         Vector w = (lookFrom.sub(lookAt)).normalize();
         Vector u = (up.cross(w)).normalize();
         Vector v = (w.cross(u)).normalize();
-
-        ArrayList<Light> lights =scene.getLights();
         Color ambiantColor = scene.getAmbient();
         if(ambiantColor==null) ambiantColor = black;
         for (int i = 0; i < imgwidth; i++) {
@@ -50,22 +46,29 @@ public class Ray {
                 Shape lastShape = null;
 
                 for (Shape shape : scene.getShapes()) {
+
+
                     t = shape.distance(lookFrom, d);
                     if (0 <= t && (mint < 0 || t < mint)) {
                         mint = t;
                         lastShape = shape;
                     }
                 }
-
                 if (0 <= mint) {
-                    Point p = new Point((d.mul(mint)).add(lookFrom).getTriplet());
                     if (lastShape.getDiffuse().getTriplet().equals(black.getTriplet())) {
-                        image.setRGB(i, j, colorBasic.colorCalculation(lastShape, p, lights, scene,d).getRGB());
+                        strategy = new BasicStrategy();
+                        image.setRGB(i, j,strategy.colorCalculation(d,lastShape,scene,mint).getRGB());
+
                     } else {
-                        image.setRGB(i, j, colorBasic.colorCalculation(lastShape, p, lights, scene,d).add(colorStrat.colorCalculation(lastShape, p, lights, scene,d).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB());
+                        strategy = new LambertStrategy();
+                        BasicStrategy strategy2 = new BasicStrategy();
+                        int rgb = strategy2.colorCalculation(d,lastShape,scene,mint).add(strategy.colorCalculation(d,lastShape,scene,mint).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB();
+                        image.setRGB(i, j,rgb) ;
+
                     }
                 } else {
                     image.setRGB(i, j, 0);
+
                 }
             }
         }
