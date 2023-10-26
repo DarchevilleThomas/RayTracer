@@ -1,4 +1,4 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1;
 
 public class BasicStrategy implements ColorStrategy{
 

@@ -1,10 +1,9 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static java.lang.Math.*;
 
