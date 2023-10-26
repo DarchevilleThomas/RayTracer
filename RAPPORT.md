@@ -17,6 +17,14 @@ Noah a finalement créé la classe Vector qui utilise un triplet en attribut pou
 
 Nous avons chacun ajouté les getters et setters dans nos classes respectives pour faciliter l'accès et la modifications aux attributs si besoin.
 
+Cette réaprtition des tâches nous a permis à chacun d'appliquer la compétence 1 : Réaliser un développement d’application. 
+
+
+### Lecture des fichiers textes représentant les scènes 3D :
+
+
+
+
 
 
 
