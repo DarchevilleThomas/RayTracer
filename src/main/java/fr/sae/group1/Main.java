@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class Main {
     private static Logger logger;
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         if (args.length<1){
             logger.log(Level.WARNING,"Enter at list one parameter (the file name)");
         }
