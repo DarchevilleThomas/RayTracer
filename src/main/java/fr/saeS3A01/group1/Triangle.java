@@ -78,10 +78,20 @@ public class Triangle extends Shape{
         this.point3 = point3;
     }
 
+    /**
+     * Method to calculate the distance for a triangle
+     * @param lookFrom
+     * @param d
+     * @return a double
+     * @throws Exception
+     */
     @Override
-    public double distance(Point lookFrom, Vector d) throws UnsupportedOperationException {
-        //TODO Create distance method for the triangle
-        return -1;
+    public double distance(Point lookFrom, Vector d) throws Exception {
+        Vector n = (point2.sub(point1)).cross((point3.sub(point1))).normalize();
+        if(n.dot(n)<0.0001){
+            return -1;
+        }
+        return ((point1.sub(lookFrom)).dot(n))/d.dot(n);
     }
     
     /**
