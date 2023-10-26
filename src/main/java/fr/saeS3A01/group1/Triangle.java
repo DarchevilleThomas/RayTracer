@@ -91,7 +91,16 @@ public class Triangle extends Shape{
         if(n.dot(n)<0.0001){
             return -1;
         }
-        return ((point1.sub(lookFrom)).dot(n))/d.dot(n);
+        Plane plane = new Plane(this.getDiffuse(),this.getSpecular(),this.getShininess(),this.point1,n);
+        double t = plane.distance(lookFrom,d);
+        Point p = (d.mul(t)).add(lookFrom);
+        if((n.dot((point2.sub(point1)).cross((p.sub(point1)))))>=0){
+            if((n.dot((point3.sub(point2)).cross((p.sub(point2)))))>=0){
+                if((n.dot((point1.sub(point3)).cross((p.sub(point3)))))>=0){
+                    return t;
+                }else return -1;
+            }else return -1;
+        }else return -1;
     }
     
     /**
