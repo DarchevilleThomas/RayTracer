@@ -75,7 +75,19 @@ public class Sphere extends Shape {
             }
         }
     }
-    
+
+    /**
+     * Method to get the normale of a sphere
+     * @param p
+     * @return a vector
+     * @throws Exception
+     */
+    @Override
+    public Vector getN(Point p) throws Exception {
+
+        return (p.sub(this.p)).normalize();
+    }
+
     /**
      * Returns a string representation of this Sphere.
      * 

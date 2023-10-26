@@ -75,4 +75,12 @@ public abstract class Shape {
      */
     public abstract double distance(Point lookFrom, Vector d) throws Exception;
 
+    /**
+     * Method to get the normal of a shape
+     * @param p
+     * @return a vector
+     * @throws Exception
+     */
+    public abstract Vector getN(Point p) throws Exception;
+
 }

@@ -8,26 +8,21 @@ import static java.lang.Math.max;
 
 public class LambertStrategy implements ColorStrategy{
 
-    /**Method for calculating the color of a point using Lambert's method
-     * @return Color
+    /**
+     * Method for calculating the color of a point using Lambert's method
+     * @param shape
+     * @param p
+     * @param lights
+     * @param scene
+     * @param d
+     * @return a color
+     * @throws Exception
      */
     @Override
     public Color colorCalculation(Shape shape, Point p, ArrayList<Light> lights, Scene scene, Vector d) throws Exception {
         Color res = null;
         Vector n = new Vector(0,0,0);
-        if (shape instanceof Sphere) {
-            n = (p.sub(((Sphere) shape).getP())).normalize();
-        }
-
-        else if (shape instanceof Triangle) {
-            n = (p.sub(((Triangle) shape).getPoint1())).normalize();
-
-        }
-
-        else if (shape instanceof Plane) {
-            n = (p.sub(((Plane) shape).getPoint())).normalize();
-        }
-
+        n = shape.getN(p);
         if (scene.getAmbient() == null) res = new Color(0, 0, 0);
         else res = scene.getAmbient();
         for (Light light : lights) {
