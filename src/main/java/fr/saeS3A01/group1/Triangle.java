@@ -79,28 +79,26 @@ public class Triangle extends Shape{
     }
 
     /**
-     * Method to calculate the distance for a triangle
+     * Method to calculate the distance of triangle
      * @param lookFrom
      * @param d
-     * @return a double
+     * @return
      * @throws Exception
      */
     @Override
     public double distance(Point lookFrom, Vector d) throws Exception {
         Vector n = (point2.sub(point1)).cross((point3.sub(point1))).normalize();
-        if(n.dot(n)<0.0001){
-            return -1;
-        }
         Plane plane = new Plane(this.getDiffuse(),this.getSpecular(),this.getShininess(),this.point1,n);
         double t = plane.distance(lookFrom,d);
         Point p = (d.mul(t)).add(lookFrom);
-        if((n.dot((point2.sub(point1)).cross((p.sub(point1)))))>=0){
-            if((n.dot((point3.sub(point2)).cross((p.sub(point2)))))>=0){
-                if((n.dot((point1.sub(point3)).cross((p.sub(point3)))))>=0){
+        if(point2.sub(point1).cross((p.sub(point1))).dot(n)>=0){
+            if(point3.sub(point2).cross((p.sub(point2))).dot(n)>=0){
+                if( point1.sub(point3).cross((p.sub(point3))).dot(n) >=0){
                     return t;
-                }else return -1;
-            }else return -1;
-        }else return -1;
+                }
+            }
+        }
+        return -1;
     }
 
     /**
@@ -122,6 +120,6 @@ public class Triangle extends Shape{
      */
     @Override
     public String toString() {
-        return "Plane {point1=" + point1 + ",point=2" + point2 + ",point3=" + point3 + "}";
+        return "Triangle {point1=" + point1 + ",point=2" + point2 + ",point3=" + point3 + "}";
     }
 }
