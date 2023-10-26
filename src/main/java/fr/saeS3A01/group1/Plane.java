@@ -62,7 +62,8 @@ public class Plane extends Shape {
         if(d.dot(vector)<0.0001){
             return -1;
         }
-        return ((point.sub(lookFrom)).dot(vector))/d.dot(vector);
+        double t =((point.sub(lookFrom)).dot(vector))/d.dot(vector);
+        return t;
     }
     
     /**
