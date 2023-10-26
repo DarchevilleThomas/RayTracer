@@ -10,7 +10,7 @@ public class BasicStrategy implements ColorStrategy{
      * @return Color
      */
     @Override
-    public Color colorCalculation(Sphere sphere, Point p, ArrayList<Light> lights, Scene scene) throws Exception {
+    public Color colorCalculation(Shape shape, Point p, ArrayList<Light> lights, Scene scene, Vector d) throws Exception {
         Color res;
         if( scene.getAmbient()==null) res = new Color(0,0,0);
         else res = scene.getAmbient();
