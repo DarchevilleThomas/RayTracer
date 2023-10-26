@@ -43,9 +43,8 @@ class PointLight extends Light {
      *
      * @param p a point
      * @return the point light vector
-     * @throws Exception Cannot subtract a null point
      */
-    public Vector getPointLightVector(Point p) throws Exception {
+    public Vector getPointLightVector(Point p) {
         return position.sub(p).normalize();
     }
 }
