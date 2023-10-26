@@ -123,4 +123,9 @@ public class Triplet {
             Double.compare(triplet.y, y) == 0 &&
             Double.compare(triplet.z, z) == 0;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

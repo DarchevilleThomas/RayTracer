@@ -102,15 +102,6 @@ public class Vector {
     }
 
     /**
-     * Method for set the triple.
-     * @param triplet a Triplet
-     */
-    private void setTriplet(Triplet triplet) {
-
-        this.triplet = triplet;
-    }
-
-    /**
      * Returns a string representation of this Vector.
      * 
      * @return A string representation of this Vector.
