@@ -59,9 +59,6 @@ public class Plane extends Shape {
      */
     @Override
     public double distance(Point lookFrom, Vector d) throws Exception {
-        if(d.dot(vector)<0.0001){
-            return -1;
-        }
         double t =((point.sub(lookFrom)).dot(vector))/d.dot(vector);
         return t;
     }

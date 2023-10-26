@@ -10,8 +10,9 @@ public class Main {
             SceneParser sceneParser = new SceneParser();
             Scene scene = sceneParser.parseScene(filename);
             String output = sceneParser.getOutput();
+            ColorStrategy strategy = null;
             Ray ray = new Ray();
-            ray.ray(scene,output);
+            ray.ray(scene,output,strategy);
         }
 
     }

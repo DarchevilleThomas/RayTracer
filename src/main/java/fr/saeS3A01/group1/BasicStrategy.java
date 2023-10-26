@@ -5,15 +5,14 @@ import java.util.ArrayList;
 
 public class BasicStrategy implements ColorStrategy{
 
-    /**
-     Method for calculating the color of a point using the basic method
-     * @return Color
-     */
+
     @Override
-    public Color colorCalculation(Shape shape, Point p, ArrayList<Light> lights, Scene scene, Vector d) throws Exception {
+    public Color colorCalculation(Vector d, Shape shape, Scene scene,double mint) throws Exception {
+
         Color res;
-        if( scene.getAmbient()==null) res = new Color(0,0,0);
+        if(scene.getAmbient()==null) res = new Color(0,0,0);
         else res = scene.getAmbient();
         return res.multiply(255);
     }
+
 }
