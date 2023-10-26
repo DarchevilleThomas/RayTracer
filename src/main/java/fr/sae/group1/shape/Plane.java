@@ -1,4 +1,8 @@
-package fr.sae.group1;
+package fr.sae.group1.shape;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
 
 public class Plane extends Shape {
     private Point point;

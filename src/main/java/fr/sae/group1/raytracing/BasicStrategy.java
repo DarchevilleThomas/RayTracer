@@ -1,4 +1,9 @@
-package fr.sae.group1;
+package fr.sae.group1.raytracing;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Vector;
+import fr.sae.group1.scene.Scene;
+import fr.sae.group1.shape.Shape;
 
 public class BasicStrategy implements ColorStrategy{
 
@@ -12,7 +17,7 @@ public class BasicStrategy implements ColorStrategy{
      * @return Color
      */
     @Override
-    public Color colorCalculation(Vector d, Shape shape, Scene scene,double mint){
+    public Color colorCalculation(Vector d, Shape shape, Scene scene, double mint){
         Color res;
         if(scene.getAmbient()==null) res = new Color(0,0,0);
         else res = scene.getAmbient();

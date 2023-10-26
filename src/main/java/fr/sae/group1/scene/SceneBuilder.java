@@ -1,8 +1,14 @@
-package fr.sae.group1;
+package fr.sae.group1.scene;
+
+import fr.sae.group1.light.Light;
+import fr.sae.group1.builder.Builder;
+import fr.sae.group1.builder.Camera;
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.shape.Shape;
 
 import java.util.ArrayList;
 
-public class SceneBuilder implements Builder{
+public class SceneBuilder implements Builder {
 
     private Camera camera;
     private int width;

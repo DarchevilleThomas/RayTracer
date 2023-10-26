@@ -1,4 +1,9 @@
-package fr.sae.group1;
+package fr.sae.group1.scene;
+
+import fr.sae.group1.light.Light;
+import fr.sae.group1.builder.Camera;
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.shape.Shape;
 
 import java.util.List;
 

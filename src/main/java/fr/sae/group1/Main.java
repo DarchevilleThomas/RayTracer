@@ -1,5 +1,9 @@
 package fr.sae.group1;
 
+import fr.sae.group1.raytracing.Ray;
+import fr.sae.group1.scene.Scene;
+import fr.sae.group1.scene.SceneParser;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

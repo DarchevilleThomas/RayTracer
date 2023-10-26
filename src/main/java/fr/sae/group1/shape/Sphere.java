@@ -1,4 +1,8 @@
-package fr.sae.group1;
+package fr.sae.group1.shape;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
 
 public class Sphere extends Shape {
 
@@ -13,7 +17,7 @@ public class Sphere extends Shape {
      * @param p a point
      * @param radius a double
      */
-    public Sphere(Color diffuse, Color specular, int shininess,Point p,double radius) {
+    public Sphere(Color diffuse, Color specular, int shininess, Point p, double radius) {
         super(diffuse, specular, shininess);
         this.p = p;
 
@@ -45,7 +49,7 @@ public class Sphere extends Shape {
      * @return double
      */
     @Override
-    public double distance(Point lookFrom,Vector d){
+    public double distance(Point lookFrom, Vector d){
         double a = 1;
         double b = ((lookFrom.sub(p)).mul(2)).dot(d);
         double c = ((lookFrom.sub(p)).dot(lookFrom.sub(p))) - radius*radius;

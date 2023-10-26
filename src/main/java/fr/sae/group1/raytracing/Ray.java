@@ -1,4 +1,10 @@
-package fr.sae.group1;
+package fr.sae.group1.raytracing;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
+import fr.sae.group1.scene.Scene;
+import fr.sae.group1.shape.Shape;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

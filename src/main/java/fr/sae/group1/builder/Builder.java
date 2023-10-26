@@ -1,4 +1,7 @@
-package fr.sae.group1;
+package fr.sae.group1.builder;
+
+import fr.sae.group1.light.Light;
+import fr.sae.group1.shape.Shape;
 
 /**
  * Builder interface defines all possible ways to configure a product.

@@ -1,4 +1,4 @@
-package fr.sae.group1;
+package fr.sae.group1.builder;
 
 /**
  * This class represents a 3-dimensional tuple (point, vector, color).

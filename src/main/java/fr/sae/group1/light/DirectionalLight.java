@@ -1,10 +1,13 @@
-package fr.sae.group1;
+package fr.sae.group1.light;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Vector;
 
 /**
  * This class represents a directional light source.
  * It extends the Light class and adds a specific direction.
  */
-class DirectionalLight extends Light {
+public class DirectionalLight extends Light {
     /**
      * The direction of the light source.
      */

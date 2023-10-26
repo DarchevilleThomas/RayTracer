@@ -1,4 +1,4 @@
-package fr.sae.group1;
+package fr.sae.group1.builder;
 
 public class Vector {
 

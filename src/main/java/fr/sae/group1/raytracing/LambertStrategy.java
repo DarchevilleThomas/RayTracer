@@ -1,4 +1,13 @@
-package fr.sae.group1;
+package fr.sae.group1.raytracing;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
+import fr.sae.group1.light.DirectionalLight;
+import fr.sae.group1.light.Light;
+import fr.sae.group1.light.PointLight;
+import fr.sae.group1.scene.Scene;
+import fr.sae.group1.shape.Shape;
 
 import static java.lang.Math.max;
 
@@ -13,7 +22,7 @@ public class LambertStrategy implements ColorStrategy{
      * @return Color
      */
     @Override
-    public Color colorCalculation(Vector d, Shape shape, Scene scene,double mint) {
+    public Color colorCalculation(Vector d, Shape shape, Scene scene, double mint) {
         Color res;
         Vector n;
         Point p = new Point((d.mul(mint).add(scene.getCamera().getPosition()).getTriplet()));

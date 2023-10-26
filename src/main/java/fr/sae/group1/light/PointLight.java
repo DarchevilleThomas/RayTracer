@@ -1,9 +1,13 @@
-package fr.sae.group1;
+package fr.sae.group1.light;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
 
 /**
  * This class represents a PointLight which is a type of Light.
  */
-class PointLight extends Light {
+public class PointLight extends Light {
     /**
      * The position of the light source.
      */
@@ -15,7 +19,7 @@ class PointLight extends Light {
      * @param color The color of the light.
      * @param position The position of the light.
      */
-    PointLight(Point position, Color color) {
+    public PointLight(Point position, Color color) {
         super(color);
         this.position = position;
     }

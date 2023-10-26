@@ -1,4 +1,14 @@
-package fr.sae.group1;
+package fr.sae.group1.scene;
+
+import fr.sae.group1.builder.Camera;
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
+import fr.sae.group1.light.DirectionalLight;
+import fr.sae.group1.light.PointLight;
+import fr.sae.group1.shape.Plane;
+import fr.sae.group1.shape.Sphere;
+import fr.sae.group1.shape.Triangle;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

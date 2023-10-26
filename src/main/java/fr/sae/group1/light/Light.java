@@ -1,4 +1,6 @@
-package fr.sae.group1;
+package fr.sae.group1.light;
+
+import fr.sae.group1.builder.Color;
 
 /**
  * This abstract class represents a light source.
