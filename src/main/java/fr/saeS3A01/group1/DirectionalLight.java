@@ -24,24 +24,6 @@ class DirectionalLight extends Light {
     }
 
     /**
-     * Returns the direction of this light source.
-     *
-     * @return The direction of this light source.
-     */
-    public Vector getDirection() {
-        return this.direction;
-    }
-
-    /**
-     * Sets the direction of this light source to the given direction.
-     *
-     * @param direction The new direction of this light source.
-     */
-    public void setDirection(Vector direction) {
-        this.direction = direction;
-    }
-
-    /**
      * Method to get the direction of the light.
      * @return a Vector
      */
