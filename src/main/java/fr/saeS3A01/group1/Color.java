@@ -18,24 +18,6 @@ public class Color {
     }
 
     /**
-     * Sets the RGB triplet of this Color to the RGB triplet of another Color.
-     * 
-     * @param color The other Color whose RGB triplet is to be copied.
-     */
-    public void setTriplet(Color color) {
-        this.triplet = color.getTriplet();
-    }
-
-    /**
-     * Sets the RGB triplet of this Color.
-     * 
-     * @param triplet The new RGB triplet for this Color.
-     */
-    public void setTriplet(Triplet triplet) {
-        this.triplet = triplet;
-    }
-
-    /**
      * Sets the RGB triplet of this Color using individual red, green, and blue
      * values.
      * 
