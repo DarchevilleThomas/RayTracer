@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: fr.saeS3A01.group1.Main
+Main-Class: fr.sae.group1.Main
 

@@ -1,4 +1,8 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.shape;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
 
 public class Triangle extends Shape{
 
@@ -80,35 +84,33 @@ public class Triangle extends Shape{
 
     /**
      * Method to calculate the distance of triangle
-     * @param lookFrom
-     * @param d
-     * @return
-     * @throws Exception
+     * @param lookFrom a Point
+     * @param d a Vector
+     * @return double
      */
     @Override
-    public double distance(Point lookFrom, Vector d) throws Exception {
+    public double distance(Point lookFrom, Vector d) {
         Vector n = (point2.sub(point1)).cross((point3.sub(point1))).normalize();
         Plane plane = new Plane(this.getDiffuse(),this.getSpecular(),this.getShininess(),this.point1,n);
         double t = plane.distance(lookFrom,d);
         Point p = (d.mul(t)).add(lookFrom);
-        if(point2.sub(point1).cross((p.sub(point1))).dot(n)>=0){
-            if(point3.sub(point2).cross((p.sub(point2))).dot(n)>=0){
-                if( point1.sub(point3).cross((p.sub(point3))).dot(n) >=0){
+        if(point2.sub(point1).cross((p.sub(point1))).dot(n)>=0
+                && (point3.sub(point2).cross((p.sub(point2))).dot(n)>=0
+                && ( point1.sub(point3).cross((p.sub(point3))).dot(n) >=0))){
                     return t;
-                }
-            }
+
+
         }
         return -1;
     }
 
     /**
      * Method to get the normale of a triangle
-     * @param p
+     * @param p a Point
      * @return a vector
-     * @throws Exception
      */
     @Override
-    public Vector getN(Point p) throws Exception {
+    public Vector getN(Point p)  {
 
         return ((point2.sub(point1)).cross((point3).sub(point1))).normalize();
     }

@@ -1,10 +1,13 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.light;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Vector;
 
 /**
  * This class represents a directional light source.
  * It extends the Light class and adds a specific direction.
  */
-class DirectionalLight extends Light {
+public class DirectionalLight extends Light {
     /**
      * The direction of the light source.
      */
@@ -20,24 +23,6 @@ class DirectionalLight extends Light {
      */
     public DirectionalLight(Vector direction, Color color) {
         super(color);
-        this.direction = direction;
-    }
-
-    /**
-     * Returns the direction of this light source.
-     *
-     * @return The direction of this light source.
-     */
-    public Vector getDirection() {
-        return this.direction;
-    }
-
-    /**
-     * Sets the direction of this light source to the given direction.
-     *
-     * @param direction The new direction of this light source.
-     */
-    public void setDirection(Vector direction) {
         this.direction = direction;
     }
 

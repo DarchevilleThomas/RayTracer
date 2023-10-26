@@ -1,4 +1,4 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.builder;
 
 /**
  * This class represents a 3-dimensional tuple (point, vector, color).
@@ -122,5 +122,10 @@ public class Triplet {
         return Double.compare(triplet.x, x) == 0 &&
             Double.compare(triplet.y, y) == 0 &&
             Double.compare(triplet.z, z) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

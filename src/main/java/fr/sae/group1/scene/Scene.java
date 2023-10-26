@@ -1,57 +1,31 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.scene;
 
-import java.util.ArrayList;
+import fr.sae.group1.light.Light;
+import fr.sae.group1.builder.Camera;
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.shape.Shape;
+
+import java.util.List;
+
 
 public class Scene {
     private Camera camera;
     private int width;
     private int height;
-    private ArrayList<Light> lights;
-    private ArrayList<Shape> shapes;
+    private List<Light> lights;
+    private List<Shape> shapes;
     private Color ambient;
 
     /**
-     * Constructor for Scene class
-     * @param camera a Camera
-     * @param width a int
-     * @param height a int
-     */
-    public Scene(Camera camera, int width, int height) {
-        this.camera = camera;
-        this.width = width;
-        this.height = height;
-        this.lights = new ArrayList<Light>();
-        this.shapes = new ArrayList<Shape>();
-        this.ambient = new Color(255,255,255);
-    }
-
-    /**
-     * Constructor for a scene with lights and shapes.
-     * @param camera
-     * @param width
-     * @param height
-     * @param lights
-     * @param shapes
-     */
-    public Scene(Camera camera, int width, int height,ArrayList<Light> lights,ArrayList<Shape> shapes) {
-        this.camera = camera;
-        this.width = width;
-        this.height = height;
-        this.lights = lights;
-        this.shapes = shapes;
-        this.ambient = new Color(255,255,255);
-    }
-
-    /**
      * Constructor for a scene with lights, shapes and ambient color.
-     * @param camera
-     * @param width
-     * @param height
-     * @param lights
-     * @param shapes
-     * @param ambient
+     * @param camera a Camera
+     * @param width int
+     * @param height int
+     * @param lights List of Light
+     * @param shapes List of Shape
+     * @param ambient a Color
      */
-    public Scene(Camera camera, int width, int height, ArrayList<Light> lights, ArrayList<Shape> shapes, Color ambient) {
+    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient) {
         this.camera = camera;
         this.width = width;
         this.height = height;
@@ -70,7 +44,7 @@ public class Scene {
 
     /**
      *  Setter for ambient color
-     * @param ambient
+     * @param ambient a Color
      */
     public void setAmbient(Color ambient) {
         this.ambient = ambient;
@@ -128,7 +102,7 @@ public class Scene {
      *  Getter for lights
      * @return ArrayList of Light
      */
-    public ArrayList<Light> getLights() {
+    public List<Light> getLights() {
         return lights;
     }
 
@@ -136,7 +110,7 @@ public class Scene {
      *  Setter for lights
      * @param lights ArrayList of Light
      */
-    public void setLights(ArrayList<Light> lights) {
+    public void setLights(List<Light> lights) {
         this.lights = lights;
     }
 
@@ -144,7 +118,7 @@ public class Scene {
      *  Getter for shapes
      * @return ArrayList of Shape
      */
-    public ArrayList<Shape> getShapes() {
+    public List<Shape> getShapes() {
         return shapes;
     }
 
@@ -152,7 +126,7 @@ public class Scene {
      * Setter for shapes
      * @param shapes ArrayList of Shape
      */
-    public void setShapes(ArrayList<Shape> shapes) {
+    public void setShapes(List<Shape> shapes) {
         this.shapes = shapes;
     }
 

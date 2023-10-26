@@ -1,4 +1,4 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.builder;
 
 public class Vector {
 
@@ -99,15 +99,6 @@ public class Vector {
     public Triplet getTriplet() {
 
         return triplet;
-    }
-
-    /**
-     * Method for set the triple.
-     * @param triplet a Triplet
-     */
-    private void setTriplet(Triplet triplet) {
-
-        this.triplet = triplet;
     }
 
     /**

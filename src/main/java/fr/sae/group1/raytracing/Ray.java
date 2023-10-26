@@ -1,21 +1,32 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.raytracing;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
+import fr.sae.group1.scene.Scene;
+import fr.sae.group1.shape.Shape;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static java.lang.Math.*;
 
 public class Ray {
     /**
      * Method for casting rays with intersection detection
+     */
+    public void ray() {
+        ray(null, null, null);
+    }
+
+    /**
+     * Method for casting rays with intersection detection
      * @param scene a Scene
      * @param outputName a String
-     * @throws Exception Exception for the saving image
      */
-    public void ray(Scene scene,String outputName,ColorStrategy strategy) throws Exception {
+    public void ray(Scene scene, String outputName, ColorStrategy strategy) {
         Color black = new Color(0,0,0);
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
@@ -34,7 +45,9 @@ public class Ray {
         Vector u = (up.cross(w)).normalize();
         Vector v = (w.cross(u)).normalize();
         Color ambiantColor = scene.getAmbient();
-        if(ambiantColor==null) ambiantColor = black;
+        if(ambiantColor==null) {
+            ambiantColor = black;
+        }
         for (int i = 0; i < imgwidth; i++) {
             for (int j = 0; j < imgheight; j++) {
 
@@ -42,7 +55,7 @@ public class Ray {
                 double b = bStart - (j + 0.5) * pixelheight;
                 Vector d = (u.mul(a).add(v.mul(b)).sub(w)).normalize();
                 double mint = -1;
-                double t = -1;
+                double t;
                 Shape lastShape = null;
 
                 for (Shape shape : scene.getShapes()) {
@@ -54,15 +67,13 @@ public class Ray {
                         lastShape = shape;
                     }
                 }
-                if (0 <= mint) {
-                    if (lastShape.getDiffuse().getTriplet().equals(black.getTriplet())) {
-                        strategy = new BasicStrategy();
-                        image.setRGB(i, j,strategy.colorCalculation(d,lastShape,scene,mint).getRGB());
+                if (lastShape != null) {
+                    if ( black.getTriplet().equals(lastShape.getDiffuse().getTriplet())) {
+                        image.setRGB(i, j,(new BasicStrategy()).colorCalculation(d,lastShape,scene,mint).getRGB());
 
                     } else {
-                        strategy = new LambertStrategy();
                         BasicStrategy strategy2 = new BasicStrategy();
-                        int rgb = strategy2.colorCalculation(d,lastShape,scene,mint).add(strategy.colorCalculation(d,lastShape,scene,mint).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB();
+                        int rgb = strategy2.colorCalculation(d,lastShape,scene,mint).add((new LambertStrategy()).colorCalculation(d,lastShape,scene,mint).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB();
                         image.setRGB(i, j,rgb) ;
 
                     }

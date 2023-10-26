@@ -1,19 +1,25 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.scene;
+
+import fr.sae.group1.light.Light;
+import fr.sae.group1.builder.Builder;
+import fr.sae.group1.builder.Camera;
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.shape.Shape;
 
 import java.util.ArrayList;
 
-public class SceneBuilder implements Builder{
+public class SceneBuilder implements Builder {
 
     private Camera camera;
     private int width;
     private int height;
-    private ArrayList<Light> lights = new ArrayList<>();
-    private ArrayList<Shape> shapes = new ArrayList<>();
+    private final ArrayList<Light> lights = new ArrayList<>();
+    private final ArrayList<Shape> shapes = new ArrayList<>();
     private Color ambient;
 
     /**
      * Method to set a new camera
-     * @param camera
+     * @param camera a Camera
      */
     @Override
     public void setCamera(Camera camera) {
@@ -22,7 +28,7 @@ public class SceneBuilder implements Builder{
 
     /**
      * Method to set a new ambient color
-     * @param ambient
+     * @param ambient a Color
      */
     @Override
     public void setAmbient(Color ambient) {
@@ -31,7 +37,7 @@ public class SceneBuilder implements Builder{
 
     /**
      * Method to set a new width
-     * @param width
+     * @param width int
      */
     @Override
     public void setWidth(int width) {
@@ -40,7 +46,7 @@ public class SceneBuilder implements Builder{
 
     /**
      * Method to set a new height
-     * @param height
+     * @param height int
      */
     @Override
     public void setHeight(int height) {
@@ -49,7 +55,7 @@ public class SceneBuilder implements Builder{
 
     /**
      * Method to add a light in the list
-     * @param light
+     * @param light Light
      */
     @Override
     public void addLight(Light light) {
@@ -59,7 +65,7 @@ public class SceneBuilder implements Builder{
 
     /**
      * Method to add a new shape in the list of shapes
-     * @param shape
+     * @param shape a Shape
      */
     @Override
     public void addShape(Shape shape) {
