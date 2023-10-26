@@ -62,9 +62,22 @@ public class Plane extends Shape {
         if(d.dot(vector)<0.0001){
             return -1;
         }
-        return ((point.sub(lookFrom)).dot(vector))/d.dot(vector);
+        double t =((point.sub(lookFrom)).dot(vector))/d.dot(vector);
+        return t;
     }
-    
+
+    /**
+     * Method to get the normale of a plane.
+     * @param p
+     * @return a vector
+     * @throws Exception
+     */
+    @Override
+    public Vector getN(Point p) throws Exception {
+
+        return this.vector;
+    }
+
     /**
      * Returns a string representation of this Plane.
      * The string representation is "Plane {point=POINT, vector=VECTOR}", where POINT
