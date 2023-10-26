@@ -1,14 +1,18 @@
 package fr.saeS3A01.group1;
 
-
-import java.util.ArrayList;
-
 public class BasicStrategy implements ColorStrategy{
 
-
+    /**
+     *
+     Color Calculation Method with Basic Strategy
+     * @param d a Vector
+     * @param shape a Shape
+     * @param scene a Scene
+     * @param mint  a double
+     * @return Color
+     */
     @Override
-    public Color colorCalculation(Vector d, Shape shape, Scene scene,double mint) throws Exception {
-
+    public Color colorCalculation(Vector d, Shape shape, Scene scene,double mint){
         Color res;
         if(scene.getAmbient()==null) res = new Color(0,0,0);
         else res = scene.getAmbient();
