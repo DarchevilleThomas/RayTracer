@@ -2,6 +2,13 @@
 
 ## Groupe 1 : Cuisset Matteo / Broulin Gregory / Darcheville Thomas / Hemery Noah
 
+### Répartition des tâches avant le commencement du projet : 
+
+Avant le commencement du projet, il fallait mettre en place notre méthode de travail.
+Premièrement Thomas a créé le projet sur Gitlab ainsi que le squelette du projet pour pouvoir tous commencer sur la même base.
+Suite à la création du Gitlab, Gregory et Noah ont décortiqué le sujet pour en extraire les tâches à réaliser pour ensuite créer les tickets.
+En parallèle, Matteo s'est occupé de créer le README et de décrire les règles .
+
 
 ### Manipulation de triplets numériques : 
 
