@@ -61,61 +61,38 @@ public class SceneParser {
                             // No use
                             break;
                         case "vertex":
-                            if (words.length - 1 == 3) {
-                                verts.add(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])));
-                            } else {
-                                argumentError("vertex", 3, numLine, line);
-                            }
+                            if (words.length - 1 == 3) verts.add(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])));
+                            else argumentError("vertex", 3, numLine, line);
                             break;
                         case "size":
                             if (words.length - 1 == 2) {
                                 scenebBuilder.setWidth(Integer.parseInt(words[1]));
                                 scenebBuilder.setHeight(Integer.parseInt(words[2]));
-                            } else {
-                                argumentError("size", 2, numLine, line);
-                            }
+                            } else argumentError("size", 2, numLine, line);
                             break;
                         case "output":
-                            if (words.length - 1 == 1) {
-                                this.output = words[1];
-                            } else {
-                                argumentError("output", 1, numLine, line);
-                            }
+                            if (words.length - 1 == 1) this.output = words[1];
+                            else argumentError("output", 1, numLine, line);
                             break;
                         case "camera":
-                            if (words.length - 1 == 10) {
-                                cameras.add(new Camera(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Vector(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])), Double.parseDouble(words[10])));
-                            } else {
-                                argumentError("camera", 9, numLine, line);
-                            }
+                            if (words.length - 1 == 10) cameras.add(new Camera(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Vector(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9])), Double.parseDouble(words[10])));
+                            else argumentError("camera", 9, numLine, line);
                             break;
                         case "ambient":
-                            if (words.length - 1 == 3) {
-                                scenebBuilder.setAmbient(new Color(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])));
-                            } else {
-                                argumentError("ambient", 3, numLine, line);
-                            }
+                            if (words.length - 1 == 3) scenebBuilder.setAmbient(new Color(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])));
+                            else argumentError("ambient", 3, numLine, line);
                             break;
                         case "diffuse":
-                            if (words.length - 1 == 3) {
-                                lastDiffuse.setTriplet(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3]));
-                            } else {
-                                argumentError("diffuse", 3, numLine, line);
-                            }
+                            if (words.length - 1 == 3) lastDiffuse.setTriplet(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3]));
+                            else argumentError("diffuse", 3, numLine, line);
                             break;
                         case "specular":
-                            if (words.length - 1 == 3) {
-                                lastSpecular.setTriplet(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3]));
-                            } else {
-                                argumentError("specular", 3, numLine, line);
-                            }
+                            if (words.length - 1 == 3) lastSpecular.setTriplet(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3]));
+                            else argumentError("specular", 3, numLine, line);
                             break;
                         case "shininess":
-                            if (words.length - 1 == 1) {
-                                lastShininess = Integer.parseInt(words[1]);
-                            } else {
-                                argumentError("shininess", 1, numLine, line);
-                            }
+                            if (words.length - 1 == 1) lastShininess = Integer.parseInt(words[1]);
+                            else argumentError("shininess", 1, numLine, line);
                             break;
                         case "tri":
                             switch (words.length - 1) {
@@ -123,9 +100,7 @@ public class SceneParser {
                                     scenebBuilder.addShape(new Triangle(new Color(lastDiffuse), new Color(lastSpecular), lastShininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Point(Double.parseDouble(words[4]), Double.parseDouble(words[5]), Double.parseDouble(words[6])), new Point(Double.parseDouble(words[7]), Double.parseDouble(words[8]), Double.parseDouble(words[9]))));
                                     break;
                                 case 3:
-                                    if (declaredVertex("tri", numLine, line, new int[]{1, 2, 3}, verts)) {
-                                        scenebBuilder.addShape(new Triangle(new Color(lastDiffuse), new Color(lastSpecular), lastShininess, verts.get(Integer.parseInt(words[1])), verts.get(Integer.parseInt(words[2])), verts.get(Integer.parseInt(words[3]))));
-                                    }
+                                    if (declaredVertex("tri", numLine, line, new int[]{1, 2, 3}, verts)) scenebBuilder.addShape(new Triangle(new Color(lastDiffuse), new Color(lastSpecular), lastShininess, verts.get(Integer.parseInt(words[1])), verts.get(Integer.parseInt(words[2])), verts.get(Integer.parseInt(words[3]))));
                                     break;
                                 default:
                                     argumentError("tri", 9, numLine, line);
@@ -137,9 +112,7 @@ public class SceneParser {
                                     scenebBuilder.addShape(new Sphere(new Color(lastDiffuse), new Color(lastSpecular), lastShininess, new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), Double.parseDouble(words[4])));
                                     break;
                                 case 2:
-                                    if (declaredVertex(sphere, numLine, line, new int[]{1}, verts)) {
-                                        scenebBuilder.addShape(new Sphere(new Color(lastDiffuse), new Color(lastSpecular), lastShininess, verts.get(Integer.parseInt(words[1])), Double.parseDouble(words[2])));
-                                    }
+                                    if (declaredVertex(sphere, numLine, line, new int[]{1}, verts)) scenebBuilder.addShape(new Sphere(new Color(lastDiffuse), new Color(lastSpecular), lastShininess, verts.get(Integer.parseInt(words[1])), Double.parseDouble(words[2])));
                                     break;
                                 default:
                                     argumentError(sphere, 4, numLine, line);
@@ -160,18 +133,16 @@ public class SceneParser {
                             }
                             break;
                         case "directional":
-                            if (words.length - 1 == 6) {
-                                scenebBuilder.addLight(new DirectionalLight(new Vector(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]) * 255, Double.parseDouble(words[5]) * 255, Double.parseDouble(words[6]) * 255)));
-                            } else {
-                                argumentError("directionnal", 6, numLine, line);
-                            }
+                            if (words.length - 1 == 6) scenebBuilder.addLight(new DirectionalLight(new Vector(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]) * 255, Double.parseDouble(words[5]) * 255, Double.parseDouble(words[6]) * 255)));
+                            else argumentError("directionnal", 6, numLine, line);
                             break;
                         case "point":
-                            if (words.length - 1 == 6) {
-                                scenebBuilder.addLight(new PointLight(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]) * 255, Double.parseDouble(words[5]) * 255, Double.parseDouble(words[6]) * 255)));
-                            } else {
-                                argumentError("point", 6, numLine, line);
-                            }
+                            if (words.length - 1 == 6) scenebBuilder.addLight(new PointLight(new Point(Double.parseDouble(words[1]), Double.parseDouble(words[2]), Double.parseDouble(words[3])), new Color(Double.parseDouble(words[4]) * 255, Double.parseDouble(words[5]) * 255, Double.parseDouble(words[6]) * 255)));
+                            else argumentError("point", 6, numLine, line);
+                            break;
+                        case "shadow":
+                            if (words.length - 1 == 1) scenebBuilder.setShadow(Boolean.parseBoolean(words[1]));
+                            else argumentError("shadow", 1, numLine, line);
                             break;
                         default:
                             throw new IllegalArgumentException("Invalid line " + numLine + ": " + line);
