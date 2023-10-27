@@ -68,15 +68,9 @@ public class Ray {
                     }
                 }
                 if (lastShape != null) {
-                    if ( black.getTriplet().equals(lastShape.getDiffuse().getTriplet())) {
-                        image.setRGB(i, j,(new BasicStrategy()).colorCalculation(d,lastShape,scene,mint).getRGB());
+                        int rgb = strategy.colorCalculation(d,lastShape,scene,mint).getRGB();
+                        image.setRGB(i, j,rgb);
 
-                    } else {
-                        BasicStrategy strategy2 = new BasicStrategy();
-                        int rgb = strategy2.colorCalculation(d,lastShape,scene,mint).add((new LambertStrategy()).colorCalculation(d,lastShape,scene,mint).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB();
-                        image.setRGB(i, j,rgb) ;
-
-                    }
                 } else {
                     image.setRGB(i, j, 0);
 

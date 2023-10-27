@@ -1,5 +1,6 @@
 package fr.sae.group1;
 
+import fr.sae.group1.raytracing.LambertStrategy;
 import fr.sae.group1.raytracing.Ray;
 import fr.sae.group1.scene.Scene;
 import fr.sae.group1.scene.SceneParser;
@@ -19,7 +20,8 @@ public class Main {
             Scene scene = sceneParser.parseScene(filename);
             String output = sceneParser.getOutput();
             Ray ray = new Ray();
-            ray.ray(scene,output,null);
+            LambertStrategy strategy = new LambertStrategy();
+            ray.ray(scene,output, strategy);
         }
 
     }
