@@ -31,7 +31,7 @@ public class SceneParser {
         this.output = "";
     }
 
-    private static Logger logger;
+    private static Logger logger = Logger.getLogger(SceneParser.class.getName());
 
     /**
      * This method parses a scene from a file.
@@ -240,8 +240,7 @@ public class SceneParser {
             sb.append(" ".repeat(Math.max(0, good)));
             sb.append("^".repeat(Math.max(0, line.length() - good)));
         }
-        string = String.valueOf(sb);
-        logger.log(Level.WARNING, string);
+
     }
 
     /**
