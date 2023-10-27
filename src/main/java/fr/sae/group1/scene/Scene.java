@@ -150,8 +150,16 @@ public class Scene {
         this.shapes.add(shape);
     }
 
+    /**
+     * Getter for maxDepth
+     * @return int
+     */
     public int getMaxDepth() { return maxDepth; }
 
+    /**
+     * Setter for maxDepth
+     * @param maxDepth int
+     */
     public void setMaxDepth(int maxDepth) {this.maxDepth = maxDepth;}
 }
 
