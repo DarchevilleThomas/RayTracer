@@ -67,15 +67,13 @@ public class Ray {
                         lastShape = shape;
                     }
                 }
+                int rgb = 0;
                 if (lastShape != null) {
-                        int rgb = strategy.colorCalculation(d,lastShape,scene,mint).getRGB();
-                        image.setRGB(i, j,rgb);
-
-                } else {
-                    image.setRGB(i, j, 0);
-
+                        rgb = strategy.colorCalculation(d,lastShape,scene,mint).getRGB();
                 }
+                image.setRGB(i,j,rgb);
             }
+
         }
 
         try {
