@@ -3,6 +3,7 @@ package fr.sae.group1.raytracing;
 import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
+import fr.sae.group1.light.Light;
 import fr.sae.group1.scene.Scene;
 import fr.sae.group1.shadow.ShadowStrategy;
 import fr.sae.group1.shape.Shape;
@@ -11,6 +12,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Math.*;
 
@@ -64,7 +67,12 @@ public class Ray {
                         lastShape = shape;
                     }
                 }
-                if (lastShape != null) image.setRGB(i,j,strategy.colorCalculation(d,lastShape,scene,this.shadowStrategy.accessibleLights(scene, lastShape, d), mint).getRGB());
+
+                List<Light> accessibleLights = new ArrayList<>();
+                if (scene.getShadow()) accessibleLights.addAll(this.shadowStrategy.accessibleLights(scene, lastShape, d));
+                else accessibleLights.addAll(scene.getLights());
+
+                if (lastShape != null) image.setRGB(i,j,strategy.colorCalculation(d,lastShape,scene,accessibleLights, mint).getRGB());
                 else image.setRGB(i,j,0);
             }
         }

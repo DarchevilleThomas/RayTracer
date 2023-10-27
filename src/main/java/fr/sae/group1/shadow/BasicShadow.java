@@ -20,7 +20,7 @@ public class BasicShadow implements ShadowStrategy {
             for (Light light : lights) {
                 if (light instanceof PointLight) {
                     Point lightPosition = ((PointLight) light).getPosition();
-                    Vector lightDirection = lastShape.intersection(lookAt, d).sub(lightPosition);
+                    Vector lightDirection = lightPosition.sub(lastShape.intersection(lookAt, d)).normalize();
                     boolean obscured = false;
                     for (Shape shape : scene.getShapes()) {
                         if (shape == lastShape) continue; // Ignorer la forme en contact avec le rayon de la caméra
