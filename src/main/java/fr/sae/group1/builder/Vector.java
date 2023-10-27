@@ -108,6 +108,6 @@ public class Vector {
      */
     @Override
     public String toString() {
-        return "Vector {x=" + triplet.x + ", y=" + triplet.y + ", z=" + triplet.z + "}";
+        return "Vector {x=" + triplet.getX() + ", y=" + triplet.getY() + ", z=" + triplet.getZ() + "}";
     }
 }
