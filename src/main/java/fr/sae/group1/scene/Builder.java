@@ -51,4 +51,10 @@ public interface Builder {
      * @param shadow a boolean
      */
     void setShadow(boolean shadow);
+
+    /**
+     * Method to set a new height
+     * @param maxDepth a int
+     */
+    void setMaxDepth(int maxDepth);
 }

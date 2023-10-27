@@ -16,6 +16,7 @@ public class Scene {
     private List<Shape> shapes;
     private Color ambient;
     private boolean shadow;
+    private int maxDepth;
 
     /**
      * Constructor for a scene with lights, shapes and ambient color.
@@ -25,8 +26,9 @@ public class Scene {
      * @param lights List of Light
      * @param shapes List of Shape
      * @param ambient a Color
+     * @param maxDepth a int
      */
-    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient, boolean shadow) {
+    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient, int maxDepth, boolean shadow) {
         this.camera = camera;
         this.width = width;
         this.height = height;
@@ -34,6 +36,7 @@ public class Scene {
         this.shapes = shapes;
         this.ambient = ambient;
         this.shadow = shadow;
+        this.maxDepth = maxDepth;
     }
 
     /**
@@ -157,6 +160,18 @@ public class Scene {
     public void setShadow(boolean shadow) {
         this.shadow = shadow;
     }
+
+    /**
+     * Getter for maxDepth
+     * @return int the maxDepth
+     */
+    public int getMaxDepth() { return maxDepth; }
+
+    /**
+     * Setter for maxDepth
+     * @param maxDepth int
+     */
+    public void setMaxDepth(int maxDepth) {this.maxDepth = maxDepth;}
 }
 
 

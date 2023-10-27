@@ -16,6 +16,7 @@ public class SceneBuilder implements Builder {
     private final ArrayList<Shape> shapes = new ArrayList<>();
     private Color ambient;
     private boolean shadow;
+    private int maxDepth;
 
     /**
      * Method to set a new camera
@@ -82,11 +83,16 @@ public class SceneBuilder implements Builder {
     }
 
     /**
+     * @param maxDepth a int
+     */
+    @Override
+    public void setMaxDepth(int maxDepth) { this.maxDepth=maxDepth;}
+    /**
      * Method to build a scene with the parameters of the sceneBuilder
      * @return a scene
      */
     public Scene build(){
-        return new Scene(camera,width,height,lights,shapes,ambient,shadow);
+        return new Scene(camera,width,height,lights,shapes,ambient,maxDepth,shadow);
     }
 
 }
