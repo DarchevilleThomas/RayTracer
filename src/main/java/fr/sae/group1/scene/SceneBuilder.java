@@ -1,7 +1,6 @@
 package fr.sae.group1.scene;
 
 import fr.sae.group1.light.Light;
-import fr.sae.group1.builder.Builder;
 import fr.sae.group1.builder.Camera;
 import fr.sae.group1.builder.Color;
 import fr.sae.group1.shape.Shape;
@@ -16,6 +15,8 @@ public class SceneBuilder implements Builder {
     private final ArrayList<Light> lights = new ArrayList<>();
     private final ArrayList<Shape> shapes = new ArrayList<>();
     private Color ambient;
+    private boolean shadow;
+    private int maxDepth;
 
     /**
      * Method to set a new camera
@@ -73,11 +74,25 @@ public class SceneBuilder implements Builder {
     }
 
     /**
+     * Method to set a new shadow
+     * @param shadow a boolean
+     */
+    @Override
+    public void setShadow(boolean shadow) {
+        this.shadow=shadow;
+    }
+
+    /**
+     * @param maxDepth a int
+     */
+    @Override
+    public void setMaxDepth(int maxDepth) { this.maxDepth=maxDepth;}
+    /**
      * Method to build a scene with the parameters of the sceneBuilder
      * @return a scene
      */
     public Scene build(){
-        return new Scene(camera,width,height,lights,shapes,ambient);
+        return new Scene(camera,width,height,lights,shapes,ambient,maxDepth,shadow);
     }
 
 }

@@ -34,6 +34,16 @@ public class DirectionalLight extends Light {
         return this.direction.normalize();
     }
 
-
-
+    /**
+     * Returns a string representation of the DirectionalLight object.
+     *
+     * @return A string representation of the DirectionalLight object, including the RGB value of its color and its direction.
+     */
+    @Override
+    public String toString() {
+        return "DirectionalLight{" +
+            "color=" + color +
+            ", direction=" + direction +
+            '}';
+    }
 }
