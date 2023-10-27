@@ -15,6 +15,7 @@ public class Scene {
     private List<Light> lights;
     private List<Shape> shapes;
     private Color ambient;
+    private boolean shadow;
 
     /**
      * Constructor for a scene with lights, shapes and ambient color.
@@ -25,13 +26,14 @@ public class Scene {
      * @param shapes List of Shape
      * @param ambient a Color
      */
-    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient) {
+    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient, boolean shadow) {
         this.camera = camera;
         this.width = width;
         this.height = height;
         this.lights = lights;
         this.shapes = shapes;
         this.ambient = ambient;
+        this.shadow = shadow;
     }
 
     /**
@@ -147,6 +149,14 @@ public class Scene {
         this.shapes.add(shape);
     }
 
+    /**
+     * Method for shadow
+     *
+     * @param shadow a boolean
+     */
+    public void setShadow(boolean shadow) {
+        this.shadow = shadow;
+    }
 }
 
 
