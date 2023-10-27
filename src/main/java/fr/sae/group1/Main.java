@@ -22,8 +22,7 @@ public class Main {
             SceneParser sceneParser = new SceneParser();
             Scene scene = sceneParser.parseScene(filename);
             String output = sceneParser.getOutput();
-            PhongStrategy strategy = new PhongStrategy();
-            Ray.ray(scene,output, strategy);
+            Ray.ray(scene,output);
         }
 
     }

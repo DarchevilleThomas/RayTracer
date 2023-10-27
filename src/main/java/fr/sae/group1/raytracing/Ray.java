@@ -19,8 +19,9 @@ public class Ray {
      * @param scene a Scene
      * @param outputName a String
      */
-    public static void ray(Scene scene, String outputName, ColorStrategy strategy) {
+    public static void ray(Scene scene, String outputName) {
         Color black = new Color(0,0,0);
+        ColorStrategy strategy;
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
         double fovr = (scene.getCamera().getFov() * PI) / 180;
@@ -62,7 +63,18 @@ public class Ray {
                 }
                 int rgb = 0;
                 if (lastShape != null) {
-                        rgb = strategy.colorCalculation(d,lastShape,scene,scene.getLights(),mint).getRGB();
+                    if (black.getTriplet().equals(lastShape.getSpecular().getTriplet())){
+                        strategy = new LambertStrategy();
+                        rgb = strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint).getRGB();
+                    }else {
+                        strategy = new PhongStrategy();
+                        rgb = strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint).getRGB();
+                    }
+                    if (black.getTriplet().equals(lastShape.getDiffuse().getTriplet())){
+                        strategy = new BasicStrategy();
+                        rgb = strategy.colorCalculation(d,lastShape,scene,scene.getLights(), mint).getRGB();
+                    }
+
                 }
                 image.setRGB(i,j,rgb);
             }
