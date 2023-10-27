@@ -119,7 +119,7 @@ public class Color {
      * @return The RGB value of the color in the default sRGB ColorModel.
      */
     public int getRGB() {
-        return new java.awt.Color((int) this.triplet.x, (int) this.triplet.y, (int) this.triplet.z).getRGB();
+        return new java.awt.Color((int) this.triplet.getX(), (int) this.triplet.getY(), (int) this.triplet.getZ()).getRGB();
     }
 
     /**
@@ -131,6 +131,6 @@ public class Color {
      */
     @Override
     public String toString() {
-        return "Color {r=" + triplet.x + ", g=" + triplet.y + ", b=" + triplet.z + "}";
+        return "Color {r=" + triplet.getX() + ", g=" + triplet.getY() + ", b=" + triplet.getZ() + "}";
     }
 }

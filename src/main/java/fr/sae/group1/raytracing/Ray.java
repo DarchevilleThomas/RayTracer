@@ -16,17 +16,10 @@ import static java.lang.Math.*;
 public class Ray {
     /**
      * Method for casting rays with intersection detection
-     */
-    public void ray() {
-        ray(null, null, null);
-    }
-
-    /**
-     * Method for casting rays with intersection detection
      * @param scene a Scene
      * @param outputName a String
      */
-    public void ray(Scene scene, String outputName, ColorStrategy strategy) {
+    public static void ray(Scene scene, String outputName, ColorStrategy strategy) {
         Color black = new Color(0,0,0);
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
