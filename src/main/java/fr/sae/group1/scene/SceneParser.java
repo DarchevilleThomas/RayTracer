@@ -144,6 +144,10 @@ public class SceneParser {
                             if (words.length - 1 == 1) scenebBuilder.setShadow(Boolean.parseBoolean(words[1]));
                             else argumentError("shadow", 1, numLine, line);
                             break;
+                        case "maxdepth":
+                            if (words.length - 1 == 1) scenebBuilder.setMaxDepth(Integer.parseInt(words[1]));
+                            else argumentError("maxdepth", 1, numLine, line);
+                            break;
                         default:
                             throw new IllegalArgumentException("Invalid line " + numLine + ": " + line);
                     }
