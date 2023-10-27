@@ -137,6 +137,12 @@ public class Triplet {
         return z;
     }
 
+    /**
+     * Verify if this triplet and other object are the same triplet
+     *
+     * @param obj an object
+     * @return true if it's the same triple otherwise false
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
