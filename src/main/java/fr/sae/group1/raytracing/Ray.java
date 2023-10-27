@@ -4,6 +4,7 @@ import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
 import fr.sae.group1.scene.Scene;
+import fr.sae.group1.shadow.ShadowStrategy;
 import fr.sae.group1.shape.Shape;
 
 import javax.imageio.ImageIO;
@@ -14,12 +15,19 @@ import java.io.IOException;
 import static java.lang.Math.*;
 
 public class Ray {
+    private ShadowStrategy shadowStrategy;
+
+    public void setShadowStrategy(ShadowStrategy shadowStrategy) {
+        this.shadowStrategy = shadowStrategy;
+    }
+
     /**
      * Method for casting rays with intersection detection
      * @param scene a Scene
      * @param outputName a String
+     * @throws Exception
      */
-    public static void ray(Scene scene, String outputName, ColorStrategy strategy) {
+    public void ray(Scene scene, String outputName, ColorStrategy strategy) throws Exception {
         Color black = new Color(0,0,0);
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
@@ -38,9 +46,7 @@ public class Ray {
         Vector u = (up.cross(w)).normalize();
         Vector v = (w.cross(u)).normalize();
         Color ambiantColor = scene.getAmbient();
-        if(ambiantColor==null) {
-            ambiantColor = black;
-        }
+        if(ambiantColor==null) ambiantColor = black;
         for (int i = 0; i < imgwidth; i++) {
             for (int j = 0; j < imgheight; j++) {
 
@@ -52,21 +58,15 @@ public class Ray {
                 Shape lastShape = null;
 
                 for (Shape shape : scene.getShapes()) {
-
-
                     t = shape.distance(lookFrom, d);
                     if (0 <= t && (mint < 0 || t < mint)) {
                         mint = t;
                         lastShape = shape;
                     }
                 }
-                int rgb = 0;
-                if (lastShape != null) {
-                        rgb = strategy.colorCalculation(d,lastShape,scene,mint).getRGB();
-                }
-                image.setRGB(i,j,rgb);
+                if (lastShape != null) image.setRGB(i,j,strategy.colorCalculation(d,lastShape,scene,this.shadowStrategy.accessibleLights(scene, lastShape, d), mint).getRGB());
+                else image.setRGB(i,j,0);
             }
-
         }
 
         try {
