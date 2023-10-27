@@ -13,6 +13,14 @@ import static java.lang.Math.max;
 
 public class PhongStrategy implements ColorStrategy {
 
+    /**
+     * Method to calculate the color with Phong
+     * @param d
+     * @param shape
+     * @param scene
+     * @param mint
+     * @return a color
+     */
     @Override
     public Color colorCalculation(Vector d, Shape shape, Scene scene, double mint) {
         Color black = new Color(0,0,0);
