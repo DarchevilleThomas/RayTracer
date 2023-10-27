@@ -15,6 +15,7 @@ public class Scene {
     private List<Light> lights;
     private List<Shape> shapes;
     private Color ambient;
+    private boolean shadow;
     private int maxDepth;
 
     /**
@@ -27,13 +28,14 @@ public class Scene {
      * @param ambient a Color
      * @param maxDepth a int
      */
-    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient, int maxDepth) {
+    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient, int maxDepth, boolean shadow) {
         this.camera = camera;
         this.width = width;
         this.height = height;
         this.lights = lights;
         this.shapes = shapes;
         this.ambient = ambient;
+        this.shadow = shadow;
         this.maxDepth = maxDepth;
     }
 
@@ -151,8 +153,17 @@ public class Scene {
     }
 
     /**
+     * Method for shadow
+     *
+     * @param shadow a boolean
+     */
+    public void setShadow(boolean shadow) {
+        this.shadow = shadow;
+    }
+
+    /**
      * Getter for maxDepth
-     * @return int
+     * @return int the maxDepth
      */
     public int getMaxDepth() { return maxDepth; }
 

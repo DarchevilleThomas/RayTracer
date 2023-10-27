@@ -62,7 +62,12 @@ public class Ray {
                 }
                 int rgb = 0;
                 if (lastShape != null) {
-                        rgb = strategy.colorCalculation(d,lastShape,scene,mint).getRGB();
+                    if (shadow){
+                        rgb = strategy.colorCalculation(d,lastShape,scene,ShadowStrategy.accessibleLights(scene,lastShape,d),mint).getRGB();
+                    }
+                    else{
+                        rgb = strategy.colorCalculation(d,lastShape,scene,scene.getLights(),mint).getRGB();
+                    }
                 }
                 image.setRGB(i,j,rgb);
             }

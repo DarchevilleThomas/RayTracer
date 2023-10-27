@@ -45,6 +45,13 @@ public interface Builder {
      * @param shape a Shape
      */
     void addShape(Shape shape);
+
+    /**
+     * Method to set a new shadow
+     * @param shadow a boolean
+     */
+    void setShadow(boolean shadow);
+
     /**
      * Method to set a new height
      * @param maxDepth a int
