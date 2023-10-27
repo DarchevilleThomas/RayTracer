@@ -33,7 +33,7 @@ Matteo a implémenté les classes : -DirectionalLight qui prend un vecteur en at
 Ces deux objets ont également besoin d'une couleur pour être créé. C'est pourquoi Matteo a décidé de créer une classe abstraite Light dont les deux classes héritent.
 
 Pour construire progressivement la scène nous avions besoin d'implémenter un patron de conception.
-Gregory s'est donc chargé d'implémenter le patron de conception "Builder" car ce dernier permet d'associer un à un les attributs à un objet. Gregory a donc créé une interface Builder, une classe SceneBuilder et une classe Scene.
+Noah s'est donc chargé d'implémenter le patron de conception "Builder" car ce dernier permet d'associer un à un les attributs à un objet. Noah a donc créé une interface Builder, une classe SceneBuilder et une classe Scene.
 
 Pour pouvoir récupérer les informations du fichier texte de création, nous avions besoin de créer un Parser. Matteo a donc réalisé la classe SceneParser qui va lire le fichier ligne par ligne et utiliser les méthodes adéquates.
 
@@ -62,7 +62,7 @@ Premièrement Thomas a modifié la classe PointLight pour pouvoir récupérer la
 En parallèle Noah a réalisé le même travail sur la classe DirectionalLight.
 
 Nous voulions pouvoir avoir le choix pour le calcul de la couleur d'un point entre le modèle de base et le modèle de Lambert.
-Noah a donc implémenté le patron de conception "stratégie" car ce dernier permet de rendre interchangeables des algorithmes ayant des rôles similaires. Ce patron est donc le plus adapté à notre besoin.
+Gregory a donc implémenté le patron de conception "stratégie" car ce dernier permet de rendre interchangeables des algorithmes ayant des rôles similaires. Ce patron est donc le plus adapté à notre besoin.
 Matteo et Gregory ont ensuite modifié la méthode ray pour qu'elle s'adapte au modèle (soit basique soit Lambert) pour calculer la couleur du pixel.
 
 ---
