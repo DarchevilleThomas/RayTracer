@@ -5,9 +5,9 @@ package fr.sae.group1.builder;
  * The attributes x, y and z are protected to be accessible by subclasses.
  */
 public class Triplet {
-    protected double x;
-    protected double y;
-    protected double z;
+    private double x;
+    private double y;
+    private double z;
 
     /**
      * Constructs a new Triplet with the given x, y and z values.
@@ -108,6 +108,33 @@ public class Triplet {
         } else {
             return this.mul(1 / l); // Divide by the length
         }
+    }
+
+    /**
+     * Getter of the double x
+     *
+     * @return x a double
+     */
+    public double getX() {
+        return x;
+    }
+
+    /**
+     * Getter of the double y
+     *
+     * @return y a double
+     */
+    public double getY() {
+        return y;
+    }
+
+    /**
+     * Getter of the double z
+     *
+     * @return z a double
+     */
+    public double getZ() {
+        return z;
     }
 
     @Override
