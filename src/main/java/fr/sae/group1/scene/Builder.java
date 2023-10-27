@@ -1,5 +1,7 @@
-package fr.sae.group1.builder;
+package fr.sae.group1.scene;
 
+import fr.sae.group1.builder.Camera;
+import fr.sae.group1.builder.Color;
 import fr.sae.group1.light.Light;
 import fr.sae.group1.shape.Shape;
 
@@ -43,4 +45,9 @@ public interface Builder {
      * @param shape a Shape
      */
     void addShape(Shape shape);
+    /**
+     * Method to set a new height
+     * @param maxDepth a int
+     */
+    void setMaxDepth(int maxDepth);
 }
