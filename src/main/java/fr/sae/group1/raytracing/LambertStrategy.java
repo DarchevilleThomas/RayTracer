@@ -13,6 +13,7 @@ import static java.lang.Math.max;
 
 public class LambertStrategy implements ColorStrategy{
 
+
     /**
      *
      * @param d a Vector
@@ -23,21 +24,34 @@ public class LambertStrategy implements ColorStrategy{
      */
     @Override
     public Color colorCalculation(Vector d, Shape shape, Scene scene, double mint) {
-        Color res;
-        Vector n;
-        Point p = new Point((d.mul(mint).add(scene.getCamera().getPosition()).getTriplet()));
-        n = shape.getN(p);
-        if (scene.getAmbient() == null) res = new Color(0, 0, 0);
-        else res = scene.getAmbient();
-        for (Light light : scene.getLights()){
-            if (light instanceof PointLight plight) {
-                res = res.add(shape.getDiffuse().schurProduct(light.getColor().multiply(max(n.dot(plight.getPointLightVector(p)), 0))));
-            } else {
-                DirectionalLight dlight = (DirectionalLight) light;
-                res = res.add((dlight.getColor().multiply(max(n.dot(dlight.getDirectionalLightVector()), 0))));
+        Color black = new Color(0,0,0);
+        BasicStrategy basic = new BasicStrategy();
+        if ( black.getTriplet().equals(shape.getDiffuse().getTriplet())){
+            return basic.colorCalculation(d,shape,scene,mint);
+        }
+        else {
+            Color res;
+            Vector n;
+            Point p = new Point((d.mul(mint).add(scene.getCamera().getPosition()).getTriplet()));
+            n = shape.getN(p);
+            if (scene.getAmbient() == null) res = new Color(0, 0, 0);
+            else res = scene.getAmbient();
+            for (Light light : scene.getLights()){
+                if (light instanceof PointLight plight) {
+                    res = res.add(shape.getDiffuse().schurProduct(light.getColor().multiply(max(n.dot(plight.getPointLightVector(p)), 0))));
+                } else {
+                    DirectionalLight dlight = (DirectionalLight) light;
+                    res = res.add((dlight.getColor().multiply(max(n.dot(dlight.getDirectionalLightVector()), 0))));
+                }
+            }
+            if (scene.getAmbient() == null){
+                return res.add(basic.colorCalculation(d,shape,scene,mint)).schurProduct(shape.getDiffuse()).add(black);
+            }
+            else{
+                return res.add(basic.colorCalculation(d,shape,scene,mint)).schurProduct(shape.getDiffuse()).add(scene.getAmbient());
             }
         }
-        return res;
+
     }
 
 }
