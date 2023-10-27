@@ -70,6 +70,6 @@ public class Point {
      */
     @Override
     public String toString() {
-        return "Point {x=" + triplet.x + ", y=" + triplet.y + ", z=" + triplet.z + "}";
+        return "Point {x=" + triplet.getX() + ", y=" + triplet.getY() + ", z=" + triplet.getZ() + "}";
     }
 }
