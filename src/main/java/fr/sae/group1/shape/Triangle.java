@@ -124,4 +124,10 @@ public class Triangle extends Shape{
     public String toString() {
         return "Triangle {point1=" + point1 + ",point=2" + point2 + ",point3=" + point3 + "}";
     }
+
+    @Override
+    public Point intersection(Point point, Vector d) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'intersection'");
+    }
 }

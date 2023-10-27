@@ -75,6 +75,23 @@ public class Sphere extends Shape {
     }
 
     /**
+     * Calculates the point of intersection between a straight line and a sphere.
+     *
+     * @param point The origin of the line.
+     * @param d The direction vector of the line.
+     * @return The point of intersection between the line and the sphere, or null if there is no intersection.
+     * @throws Exception If an error occurs during vector operations.
+     */
+    public Point intersection(Point point, Vector d) throws Exception {
+        // Calculer le point d'intersection
+        double tmp = this.distance(point, d);
+        if (tmp >= 0) {
+            Vector td = d.mul(tmp); // Multiplier le vecteur direction par t
+            return new Point(point.getTriplet().add(td.getTriplet())); // Ajouter ce vecteur au point
+        } else return null;
+    }
+
+    /**
      * Method to get the normale of a sphere
      * @param p a Point
      * @return a vector

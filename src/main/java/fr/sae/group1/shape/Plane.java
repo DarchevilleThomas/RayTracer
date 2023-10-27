@@ -88,4 +88,10 @@ public class Plane extends Shape {
     public String toString() {
         return "Plane {point=" + point + ", vector=" + vector + "}";
     }
+
+    @Override
+    public Point intersection(Point point, Vector d) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'intersection'");
+    }
 }
