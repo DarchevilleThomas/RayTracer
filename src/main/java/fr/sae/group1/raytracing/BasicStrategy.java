@@ -1,7 +1,10 @@
 package fr.sae.group1.raytracing;
 
+import java.util.List;
+
 import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Vector;
+import fr.sae.group1.light.Light;
 import fr.sae.group1.scene.Scene;
 import fr.sae.group1.shape.Shape;
 
@@ -17,11 +20,8 @@ public class BasicStrategy implements ColorStrategy{
      * @return Color
      */
     @Override
-    public Color colorCalculation(Vector d, Shape shape, Scene scene, double mint){
-        Color res;
-        if(scene.getAmbient()==null) res = new Color(0,0,0);
-        else res = scene.getAmbient();
-        return res.multiply(255);
+    public Color colorCalculation(Vector d, Shape shape, Scene scene, List<Light> accessibleLights, double mint){
+        if(scene.getAmbient()==null) return new Color(0,0,0);
+        else return scene.getAmbient().multiply(255);
     }
-
 }
