@@ -19,7 +19,7 @@ public class Ray {
      * @param scene a Scene
      * @param outputName a String
      */
-    public void ray(Scene scene, String outputName, ColorStrategy strategy) {
+    public static void ray(Scene scene, String outputName, ColorStrategy strategy) {
         Color black = new Color(0,0,0);
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
