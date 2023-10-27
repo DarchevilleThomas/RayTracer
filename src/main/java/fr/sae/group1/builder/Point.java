@@ -64,6 +64,19 @@ public class Point {
     }
 
     /**
+     * Calculates the Euclidean distance from this point to another point.
+     *
+     * @param other the other point
+     * @return the Euclidean distance from this point to the other point
+     */
+    public double distance(Point other) {
+        double dx = other.triplet.getX() - this.triplet.getX();
+        double dy = other.triplet.getY() - this.triplet.getY();
+        double dz = other.triplet.getZ() - this.triplet.getZ();
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    }
+
+    /**
      * Returns a string representation of this Point.
      * 
      * @return A string representation of this Point.
