@@ -25,8 +25,8 @@ public class LambertStrategy implements ColorStrategy{
     @Override
     public Color colorCalculation(Vector d, Shape shape, Scene scene, double mint) {
         Color black = new Color(0,0,0);
+        BasicStrategy basic = new BasicStrategy();
         if ( black.getTriplet().equals(shape.getDiffuse().getTriplet())){
-            BasicStrategy basic = new BasicStrategy();
             return basic.colorCalculation(d,shape,scene,mint);
         }
         else {
@@ -44,7 +44,12 @@ public class LambertStrategy implements ColorStrategy{
                     res = res.add((dlight.getColor().multiply(max(n.dot(dlight.getDirectionalLightVector()), 0))));
                 }
             }
-            return res;
+            if (scene.getAmbient() == null){
+                return res.add(basic.colorCalculation(d,shape,scene,mint)).schurProduct(shape.getDiffuse()).add(black);
+            }
+            else{
+                return res.add(basic.colorCalculation(d,shape,scene,mint)).schurProduct(shape.getDiffuse()).add(scene.getAmbient());
+            }
         }
 
     }
