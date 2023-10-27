@@ -16,13 +16,6 @@ import static java.lang.Math.*;
 public class Ray {
     /**
      * Method for casting rays with intersection detection
-     */
-    public void ray() {
-        ray(null, null, null);
-    }
-
-    /**
-     * Method for casting rays with intersection detection
      * @param scene a Scene
      * @param outputName a String
      */
