@@ -19,9 +19,8 @@ public class Main {
             SceneParser sceneParser = new SceneParser();
             Scene scene = sceneParser.parseScene(filename);
             String output = sceneParser.getOutput();
-            Ray ray = new Ray();
             LambertStrategy strategy = new LambertStrategy();
-            ray.ray(scene,output, strategy);
+            Ray.ray(scene,output, strategy);
         }
 
     }
