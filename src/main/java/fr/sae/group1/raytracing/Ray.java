@@ -51,10 +51,7 @@ public class Ray {
                 double mint = -1;
                 double t;
                 Shape lastShape = null;
-
                 for (Shape shape : scene.getShapes()) {
-
-
                     t = shape.distance(lookFrom, d);
                     if (0 <= t && (mint < 0 || t < mint)) {
                         mint = t;
@@ -65,7 +62,13 @@ public class Ray {
                 if (lastShape != null) {
                     if (black.getTriplet().equals(lastShape.getSpecular().getTriplet())){
                         strategy = new LambertStrategy();
-                        rgb = strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint).getRGB();
+                        BasicStrategy basic = new BasicStrategy();
+                        if(scene.getAmbient()==null){
+                            rgb = basic.colorCalculation(d,lastShape,scene, scene.getLights(),mint).add(strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint)).add(black).getRGB();
+                        }else {
+                            rgb = basic.colorCalculation(d,lastShape,scene, scene.getLights(),mint).add(strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint)).add(scene.getAmbient()).getRGB();
+
+                        }
                     }else {
                         strategy = new PhongStrategy();
                         rgb = strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint).getRGB();

@@ -26,32 +26,25 @@ public class LambertStrategy implements ColorStrategy{
     @Override
     public Color colorCalculation(Vector d, Shape shape, Scene scene, List<Light> accessibleLights, double mint) {
         Color black = new Color(0, 0, 0);
-        BasicStrategy basic = new BasicStrategy();
-        Color res;
-        Vector n;
         Point p = new Point((d.mul(mint).add(scene.getCamera().getPosition()).getTriplet()));
-        n = shape.getN(p);
-        if (scene.getAmbient() == null)
-            res = new Color(0, 0, 0);
-        else
-            res = scene.getAmbient();
+        Vector n = shape.getN(p);
+        Color col = new Color(0,0,0);
         for (Light light : accessibleLights) {
             if (light instanceof PointLight plight) {
-                res = res.add(shape.getDiffuse().schurProduct(
-                        light.getColor().multiply(max(n.dot(plight.getPointLightVector(p)), 0))));
+                col = col.add(plight.getColor().multiply(max(n.dot(plight.getPointLightVector(p)), 0)));
             } else {
                 DirectionalLight dlight = (DirectionalLight) light;
-                res = res.add((dlight.getColor()
-                        .multiply(max(n.dot(dlight.getDirectionalLightVector()), 0))));
+                col = col.add(dlight.getColor().multiply(max(n.dot(dlight.getDirectionalLightVector()), 0)));
             }
         }
         if (scene.getAmbient() == null) {
-            return res.add(basic.colorCalculation(d, shape, scene, accessibleLights, mint))
-                    .schurProduct(shape.getDiffuse()).add(black);
+            col = col.add(black)
+                    .schurProduct(shape.getDiffuse());
         } else {
-            return res.add(basic.colorCalculation(d, shape, scene, accessibleLights, mint))
-                    .schurProduct(shape.getDiffuse()).add(scene.getAmbient());
+            col = col.add(scene.getAmbient())
+                    .schurProduct(shape.getDiffuse());
         }
+        return col;
     }
 
     }
