@@ -13,7 +13,7 @@ Gregory a créé la classe Color qui prend également un triplet en attribut et 
 Noah a finalement créé la classe Vector qui utilise un triplet en attribut pour effectuer les différentes opérations.
 Nous avons chacun ajouté les getters et setters dans nos classes respectives pour faciliter l'accès et la modifications aux attributs si besoin.
 
-Cette réaprtition des tâches nous a permis à chacun d'appliquer la compétence 1 : Réaliser un développement d’application. 
+Cette répartition des tâches nous a permis à chacun d'appliquer la compétence 1 : Réaliser un développement d’application. 
 
 ---
 
