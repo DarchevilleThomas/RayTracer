@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
-    private static Logger logger;
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
         if (args.length<1){
             logger.log(Level.WARNING,"Enter at list one parameter (the file name)");
