@@ -44,7 +44,7 @@ Pour construire progressivement la scène nous avions besoin d'implémenter un p
 Noah s'est donc chargé d'implémenter le patron de conception "Builder" car ce dernier permet d'associer un à un les attributs à un objet. Noah a donc créé une interface Builder, une classe SceneBuilder et une classe Scene.
 
 Pour pouvoir récupérer les informations du fichier texte de création, nous avions besoin de créer un Parser. Matteo a donc réalisé la classe SceneParser qui va lire le fichier ligne par ligne et utiliser les méthodes adéquates.
-En ce qui concerne le parser, SonarLint nous indique une trop grande compléxité dans le parser à cause des switch/case. Nous ne pouvons pas régler ce problème
+En ce qui concerne le parser, SonarLint nous indique une trop grande compléxité dans le parser à cause des switch/case.
 
 Gregory a ensuite écrit les méthodes des classes Scene et SceneBuilder. Tout d'abord dans la classe SceneBuilder des setters pour les différents attributs récupérés à l'aide du parser et des fonctions add qui permettent d'ajouter une lumière à la liste des lumières et une forme à la liste des formes. De plus il a ajouté la méthode build qui permet de construire une scène.
 
