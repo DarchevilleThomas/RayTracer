@@ -60,22 +60,24 @@ public class Ray {
                 }
                 int rgb = 0;
                 if (lastShape != null) {
-                    if (black.getTriplet().equals(lastShape.getSpecular().getTriplet())){
-                        strategy = new LambertStrategy();
-                        BasicStrategy basic = new BasicStrategy();
-                        if(scene.getAmbient()==null){
-                            rgb = basic.colorCalculation(d,lastShape,scene, scene.getLights(),mint).add(strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint)).add(black).getRGB();
-                        }else {
-                            rgb = basic.colorCalculation(d,lastShape,scene, scene.getLights(),mint).add(strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint)).add(scene.getAmbient()).getRGB();
-
-                        }
-                    }else {
-                        strategy = new PhongStrategy();
-                        rgb = strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint).getRGB();
-                    }
-                    if (black.getTriplet().equals(lastShape.getDiffuse().getTriplet())){
+                    if (black.getTriplet().equals(lastShape.getDiffuse().getTriplet()) && black.getTriplet().equals(lastShape.getSpecular().getTriplet())){
                         strategy = new BasicStrategy();
                         rgb = strategy.colorCalculation(d,lastShape,scene,scene.getLights(), mint).getRGB();
+                    }
+                    else {
+                        if (black.getTriplet().equals(lastShape.getSpecular().getTriplet())){
+                            strategy = new LambertStrategy();
+                            BasicStrategy basic = new BasicStrategy();
+                            if(scene.getAmbient()==null){
+                                rgb = basic.colorCalculation(d,lastShape,scene, scene.getLights(),mint).add(strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint)).add(black).getRGB();
+                            }else {
+                                rgb = basic.colorCalculation(d,lastShape,scene, scene.getLights(),mint).add(strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint)).add(scene.getAmbient()).getRGB();
+
+                            }
+                        }else {
+                            strategy = new PhongStrategy();
+                            rgb = strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint).getRGB();
+                        }
                     }
 
                 }
