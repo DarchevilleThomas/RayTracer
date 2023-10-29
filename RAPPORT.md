@@ -9,7 +9,15 @@ Premièrement Thomas a créé le projet sur Gitlab ainsi que le squelette du pro
 Suite à la création du Gitlab, Gregory et Noah ont décortiqué le sujet pour en extraire les tâches à réaliser pour ensuite créer les tickets.
 En parallèle, Matteo s'est occupé de créer le README et de décrire les conventions du projet.
 
-## Nos portfolios :
+#### Nos portfolios :
+
+Gregory : https://gitlab.univ-artois.fr/thomas_darcheville/sae-3.a.01/-/wikis/PORTFOLIO-BROULIN-Gregory
+
+Matteo : https://gitlab.univ-artois.fr/thomas_darcheville/sae-3.a.01/-/wikis/PORTFOLIO-CUISSET-Matteo
+
+Thomas : https://gitlab.univ-artois.fr/thomas_darcheville/sae-3.a.01/-/wikis/PORTFOLIO-DARCHEVILLE-Thomas
+
+Noah : https://gitlab.univ-artois.fr/thomas_darcheville/sae-3.a.01/-/wikis/PORTFOLIO-HEMERY-Noah
 
 
 
