@@ -25,7 +25,7 @@ Features that work perfectly :
 
 2. Second way : 
  - First, pull the branch main2 with the command `git pull origin main2`
- - Go to the folder 'scripts' with the command `cd ./scripts/` and run the command : `bash scriptMain2.sh [test.txt]`
+ - Go to the folder 'scripts' with the command `cd ./scripts/Main2/` and run the command : `bash scriptMain2.sh [test.txt]`
 
 This second way will carry out the tests with the Main2 branch of our project.
 In this Main2 branch there are all the features that work perfectly and the features that work but not totally.
