@@ -1,13 +1,13 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.builder;
 
 /**
  * This class represents a camera in a 3D scene, with a position, a target, an up vector and a field of view.
  */
 public class Camera {
-    private Point position; // The position of the camera
-    private Point target; // The point the camera is looking at
-    private Vector up; // The up direction of the camera
-    private double fov; // The field of view angle in degrees
+    private final Point position; // The position of the camera
+    private final Point target; // The point the camera is looking at
+    private final Vector up; // The up direction of the camera
+    private final double fov; // The field of view angle in degrees
 
     /**
      * Constructs a new Camera with the given parameters.

@@ -1,4 +1,8 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.shape;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
 
 public abstract class Shape {
 
@@ -12,7 +16,7 @@ public abstract class Shape {
      * @param specular a Color
      * @param shininess a int
      */
-    public Shape(Color diffuse, Color specular, int shininess){
+    protected Shape(Color diffuse, Color specular, int shininess){
         this.diffuse=diffuse;
         this.specular=specular;
         this.shininess=shininess;
@@ -68,19 +72,28 @@ public abstract class Shape {
 
     /**
      * Abstract method distance.
-     * @param lookFrom
-     * @param d
-     * @return
-     * @throws Exception
+     * @param lookFrom a Point
+     * @param d a Vector
+     * @return double
+     * @throws AbstractMethodError throw Exception
      */
-    public abstract double distance(Point lookFrom, Vector d) throws Exception;
+    public abstract double distance(Point lookFrom, Vector d) throws AbstractMethodError;
 
     /**
      * Method to get the normal of a shape
-     * @param p
+     * @param p a Point
      * @return a vector
-     * @throws Exception
+     * @throws AbstractMethodError throw Exception
      */
-    public abstract Vector getN(Point p) throws Exception;
+    public abstract Vector getN(Point p) throws AbstractMethodError;
 
+    /**
+     * Calculates the point of intersection between a straight line and a sphere.
+     *
+     * @param point The origin of the line.
+     * @param d The direction vector of the line.
+     * @return The point of intersection between the line and the sphere, or null if there is no intersection.
+     * @throws Exception If an error occurs during vector operations.
+     */
+    public abstract Point intersection(Point point, Vector d) throws Exception;
 }

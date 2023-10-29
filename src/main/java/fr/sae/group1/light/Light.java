@@ -1,10 +1,12 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.light;
+
+import fr.sae.group1.builder.Color;
 
 /**
  * This abstract class represents a light source.
  * It is meant to be subclassed by specific types of lights.
  */
-abstract class Light {
+public abstract class Light {
 
     /**
      * The color of the light source.
@@ -16,7 +18,7 @@ abstract class Light {
      *
      * @param color    The color of the light source.
      */
-    public Light(Color color) {
+    protected Light(Color color) {
         this.color = color;
     }
 

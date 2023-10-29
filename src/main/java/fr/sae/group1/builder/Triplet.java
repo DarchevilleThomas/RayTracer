@@ -1,13 +1,13 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.builder;
 
 /**
  * This class represents a 3-dimensional tuple (point, vector, color).
  * The attributes x, y and z are protected to be accessible by subclasses.
  */
 public class Triplet {
-    protected double x;
-    protected double y;
-    protected double z;
+    private double x;
+    private double y;
+    private double z;
 
     /**
      * Constructs a new Triplet with the given x, y and z values.
@@ -110,6 +110,39 @@ public class Triplet {
         }
     }
 
+    /**
+     * Getter of the double x
+     *
+     * @return x a double
+     */
+    public double getX() {
+        return x;
+    }
+
+    /**
+     * Getter of the double y
+     *
+     * @return y a double
+     */
+    public double getY() {
+        return y;
+    }
+
+    /**
+     * Getter of the double z
+     *
+     * @return z a double
+     */
+    public double getZ() {
+        return z;
+    }
+
+    /**
+     * Verify if this triplet and other object are the same triplet
+     *
+     * @param obj an object
+     * @return true if it's the same triple otherwise false
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -122,5 +155,10 @@ public class Triplet {
         return Double.compare(triplet.x, x) == 0 &&
             Double.compare(triplet.y, y) == 0 &&
             Double.compare(triplet.z, z) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
