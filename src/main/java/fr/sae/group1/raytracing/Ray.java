@@ -1,24 +1,27 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.raytracing;
+
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
+import fr.sae.group1.scene.Scene;
+import fr.sae.group1.shape.Shape;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import static java.lang.Math.*;
 
 public class Ray {
-    private ColorStrategy colorStrat = new LambertStrategy();
-    private ColorStrategy colorBasic = new BasicStrategy();
     /**
      * Method for casting rays with intersection detection
      * @param scene a Scene
      * @param outputName a String
-     * @throws Exception Exception for the saving image
      */
-    public void ray(Scene scene,String outputName) throws Exception {
+    public static void ray(Scene scene, String outputName) {
         Color black = new Color(0,0,0);
+        ColorStrategy strategy;
         int imgwidth = scene.getWidth();
         int imgheight = scene.getHeight();
         double fovr = (scene.getCamera().getFov() * PI) / 180;
@@ -35,10 +38,10 @@ public class Ray {
         Vector w = (lookFrom.sub(lookAt)).normalize();
         Vector u = (up.cross(w)).normalize();
         Vector v = (w.cross(u)).normalize();
-
-        ArrayList<Light> lights =scene.getLights();
         Color ambiantColor = scene.getAmbient();
-        if(ambiantColor==null) ambiantColor = black;
+        if(ambiantColor==null) {
+            ambiantColor = black;
+        }
         for (int i = 0; i < imgwidth; i++) {
             for (int j = 0; j < imgheight; j++) {
 
@@ -46,9 +49,8 @@ public class Ray {
                 double b = bStart - (j + 0.5) * pixelheight;
                 Vector d = (u.mul(a).add(v.mul(b)).sub(w)).normalize();
                 double mint = -1;
-                double t = -1;
+                double t;
                 Shape lastShape = null;
-
                 for (Shape shape : scene.getShapes()) {
                     t = shape.distance(lookFrom, d);
                     if (0 <= t && (mint < 0 || t < mint)) {
@@ -56,18 +58,32 @@ public class Ray {
                         lastShape = shape;
                     }
                 }
-
-                if (0 <= mint) {
-                    Point p = new Point((d.mul(mint)).add(lookFrom).getTriplet());
-                    if (lastShape.getDiffuse().getTriplet().equals(black.getTriplet())) {
-                        image.setRGB(i, j, colorBasic.colorCalculation(lastShape, p, lights, scene,d).getRGB());
-                    } else {
-                        image.setRGB(i, j, colorBasic.colorCalculation(lastShape, p, lights, scene,d).add(colorStrat.colorCalculation(lastShape, p, lights, scene,d).schurProduct(lastShape.getDiffuse()).add(ambiantColor)).getRGB());
+                int rgb = 0;
+                if (lastShape != null) {
+                    if (black.getTriplet().equals(lastShape.getDiffuse().getTriplet()) && black.getTriplet().equals(lastShape.getSpecular().getTriplet())){
+                        strategy = new BasicStrategy();
+                        rgb = strategy.colorCalculation(d,lastShape,scene,scene.getLights(), mint).getRGB();
                     }
-                } else {
-                    image.setRGB(i, j, 0);
+                    else {
+                        if (black.getTriplet().equals(lastShape.getSpecular().getTriplet())){
+                            strategy = new LambertStrategy();
+                            BasicStrategy basic = new BasicStrategy();
+                            if(scene.getAmbient()==null){
+                                rgb = basic.colorCalculation(d,lastShape,scene, scene.getLights(),mint).add(strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint)).add(black).getRGB();
+                            }else {
+                                rgb = basic.colorCalculation(d,lastShape,scene, scene.getLights(),mint).add(strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint)).add(scene.getAmbient()).getRGB();
+
+                            }
+                        }else {
+                            strategy = new PhongStrategy();
+                            rgb = strategy.colorCalculation(d,lastShape,scene, scene.getLights(),mint).getRGB();
+                        }
+                    }
+
                 }
+                image.setRGB(i,j,rgb);
             }
+
         }
 
         try {

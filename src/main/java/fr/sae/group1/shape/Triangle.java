@@ -1,4 +1,9 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.shape;
+
+import fr.sae.group1.builder.Checker;
+import fr.sae.group1.builder.Color;
+import fr.sae.group1.builder.Point;
+import fr.sae.group1.builder.Vector;
 
 public class Triangle extends Shape{
 
@@ -16,8 +21,8 @@ public class Triangle extends Shape{
      * @param point2 a Point
      * @param point3 a Point
      */
-    public Triangle(Color diffuse, Color specular, int shininess, Point point1, Point point2, Point point3) {
-        super(diffuse, specular, shininess);
+    public Triangle(Color diffuse, Color specular, int shininess, Point point1, Point point2, Point point3, Checker checker) {
+        super(diffuse, specular, shininess, checker);
         this.point1=point1;
         this.point2=point2;
         this.point3=point3;
@@ -79,49 +84,50 @@ public class Triangle extends Shape{
     }
 
     /**
-     * Method to calculate the distance for a triangle
-     * @param lookFrom
-     * @param d
-     * @return a double
-     * @throws Exception
+     * Method to calculate the distance of triangle
+     * @param lookFrom a Point
+     * @param d a Vector
+     * @return double
      */
     @Override
-    public double distance(Point lookFrom, Vector d) throws Exception {
+    public double distance(Point lookFrom, Vector d) {
         Vector n = (point2.sub(point1)).cross((point3.sub(point1))).normalize();
-        if(n.dot(n)<0.0001){
-            return -1;
-        }
-        Plane plane = new Plane(this.getDiffuse(),this.getSpecular(),this.getShininess(),this.point1,n);
+        Plane plane = new Plane(this.getDiffuse(),this.getSpecular(),this.getShininess(),this.point1,n,this.getChecker());
         double t = plane.distance(lookFrom,d);
         Point p = (d.mul(t)).add(lookFrom);
-        if((n.dot((point2.sub(point1)).cross((p.sub(point1)))))>=0){
-            if((n.dot((point3.sub(point2)).cross((p.sub(point2)))))>=0){
-                if((n.dot((point1.sub(point3)).cross((p.sub(point3)))))>=0){
-                    return t;
-                }else return -1;
-            }else return -1;
-        }else return -1;
+        if(point2.sub(point1).cross((p.sub(point1))).dot(n)>=0
+                && (point3.sub(point2).cross((p.sub(point2))).dot(n)>=0
+                && ( point1.sub(point3).cross((p.sub(point3))).dot(n) >=0))){
+            return t;
+
+
+        }
+        return -1;
     }
 
     /**
      * Method to get the normale of a triangle
-     * @param p
+     * @param p a Point
      * @return a vector
-     * @throws Exception
      */
     @Override
-    public Vector getN(Point p) throws Exception {
+    public Vector getN(Point p)  {
 
         return ((point2.sub(point1)).cross((point3).sub(point1))).normalize();
     }
 
     /**
      * Returns a string representation of this Triangle.
-     * 
+     *
      * @return A string representation of this Triangle.
      */
     @Override
     public String toString() {
-        return "Plane {point1=" + point1 + ",point=2" + point2 + ",point3=" + point3 + "}";
+        return "Triangle {point1=" + point1 + ",point=2" + point2 + ",point3=" + point3 + "}";
+    }
+
+    @Override
+    public Point intersection(Point point, Vector d) throws Exception {
+        throw new UnsupportedOperationException("Unimplemented method 'intersection'");
     }
 }

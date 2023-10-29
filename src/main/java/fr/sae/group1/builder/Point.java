@@ -1,4 +1,4 @@
-package fr.saeS3A01.group1;
+package fr.sae.group1.builder;
 
 public class Point {
     private Triplet triplet;
@@ -28,10 +28,9 @@ public class Point {
      *
      * @param p (Point)
      * @return Vector
-     * @throws Exception If the parameter p is null or the triplet is null, the method throws an exception
      */
-    public Vector sub(Point p) throws Exception {
-        if (p==null || this.triplet==null) throw new Exception("Cannot subtract an empty triple");
+    public Vector sub(Point p) {
+        if (p==null || this.triplet==null) throw new IllegalArgumentException("Cannot subtract an empty triple");
         return new Vector(this.triplet.sub(p.getTriplet()));
     }
 
@@ -40,10 +39,9 @@ public class Point {
      *
      * @param d a double
      * @return a point
-     * @throws Exception If the triplet is null, the method throws an exception
      */
-    public Point mul(double d) throws Exception {
-        if (this.triplet==null) throw new Exception("Cannot multiply a null triple by a scalar product");
+    public Point mul(double d) {
+        if (this.triplet==null) throw new IllegalArgumentException("Cannot multiply a null triple by a scalar product");
         return new Point(this.triplet.mul(d));
     }
 
@@ -66,12 +64,25 @@ public class Point {
     }
 
     /**
+     * Calculates the Euclidean distance from this point to another point.
+     *
+     * @param other the other point
+     * @return the Euclidean distance from this point to the other point
+     */
+    public double distance(Point other) {
+        double dx = other.triplet.getX() - this.triplet.getX();
+        double dy = other.triplet.getY() - this.triplet.getY();
+        double dz = other.triplet.getZ() - this.triplet.getZ();
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    }
+
+    /**
      * Returns a string representation of this Point.
      * 
      * @return A string representation of this Point.
      */
     @Override
     public String toString() {
-        return "Point {x=" + triplet.x + ", y=" + triplet.y + ", z=" + triplet.z + "}";
+        return "Point {x=" + triplet.getX() + ", y=" + triplet.getY() + ", z=" + triplet.getZ() + "}";
     }
 }
