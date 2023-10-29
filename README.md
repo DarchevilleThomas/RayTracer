@@ -51,6 +51,5 @@ Features with bugs are :
 
 ## Project conventions
 1. **Branch name:** *The branches must have the name of the corresponding task.*
-2. **Task closure:** *#<the task name> in the final commit to close the task related to the branch*
-3. **Comments, variable and function naming:** *IN ENGLISH!*
-4. **Absolute rule:** *never push on the main branch !*
+2. **Comments, variable and function naming:** *IN ENGLISH!*
+3. **Absolute rule:** *never push on the main branch !*
