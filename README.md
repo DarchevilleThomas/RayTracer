@@ -8,7 +8,7 @@ You can test the project in 2 different ways :
 
 1. First way : 
  - In a terminal clone the project from gitlab `git clone https://gitlab.univ-artois.fr/thomas_darcheville/sae-3.a.01.git`. 
- - Go to the folder 'scripts' with the commande `cd scripts` and run the command : `bash scriptMain.sh [test.txt]`
+ - Go to the folder 'scripts' with the command `cd ./scripts/` and run the command : `bash scriptMain.sh [test.txt]`
 
 This first way will carry out the tests with the Main branch of our project. 
 In this main branch there are all the features that work perfectly.
@@ -24,9 +24,8 @@ Features that work perfectly :
 
 
 2. Second way : 
- - Get the bash script 'scriptMain2.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain2.jar'.
- - Put them in the same folder, in a terminal go to this folder and run the command : ```bash scriptMain2.sh [test.txt]```
-
+ - First, pull the branch main2 with the command `git pull origin main2`
+ - Go to the folder 'scripts' with the command `cd ./scripts/` and run the command : `bash scriptMain2.sh [test.txt]`
 
 This second way will carry out the tests with the Main2 branch of our project.
 In this Main2 branch there are all the features that work perfectly and the features that work but not totally.
