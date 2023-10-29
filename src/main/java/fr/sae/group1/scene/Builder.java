@@ -1,6 +1,7 @@
 package fr.sae.group1.scene;
 
 import fr.sae.group1.builder.Camera;
+import fr.sae.group1.builder.Checker;
 import fr.sae.group1.builder.Color;
 import fr.sae.group1.light.Light;
 import fr.sae.group1.shape.Shape;
@@ -57,4 +58,11 @@ public interface Builder {
      * @param maxDepth a int
      */
     void setMaxDepth(int maxDepth);
+
+    /**
+     * Method to set a new checker
+     *
+     * @param checker a checker
+     */
+    void setChecker(Checker checker);
 }
