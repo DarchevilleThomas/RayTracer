@@ -18,14 +18,18 @@ Features that work perfectly :
 
 -Blinn-Phong algorithm on every shapes.
 
+
 -Second way, get the bash script 'scriptMain2.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain2.jar'.
 Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
 This second way will carry out the tests with the Main2 branch of our project.
 In this Main2 branch there are all the features that work perfectly and the features that work but not totally.
 
 Features with bugs are :
+
 -the shadows, they create bugs on the triangles.
+
 -The reflection, when it takes place, the lights on the reflections are missing.
+
 -The checkerboard is present but there is a place where the checkerboard is not done.
 
 
