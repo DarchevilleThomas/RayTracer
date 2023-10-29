@@ -23,7 +23,7 @@ Features that work perfectly :
 
 2. Second way : 
  - Get the bash script 'scriptMain2.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain2.jar'.
- - Put them in the same folder, in a terminal go to this file and run the command : ```bash scriptMain2.sh [test.txt]```
+ - Put them in the same folder, in a terminal go to this folder and run the command : ```bash scriptMain2.sh [test.txt]```
 
 
 This second way will carry out the tests with the Main2 branch of our project.
