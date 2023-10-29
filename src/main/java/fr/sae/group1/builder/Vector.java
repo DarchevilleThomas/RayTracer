@@ -1,5 +1,8 @@
 package fr.sae.group1.builder;
 
+/**
+ * Class Vector to create a vector using a triplet
+ */
 public class Vector {
 
     private Triplet triplet; //We declare a private Triplet attribute triplet.

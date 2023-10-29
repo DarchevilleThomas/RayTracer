@@ -13,6 +13,9 @@ import java.io.IOException;
 
 import static java.lang.Math.*;
 
+/**
+ * Ray class to create the finale png files with the scene created before where the color strategy is used.
+ */
 public class Ray {
 
     private Ray(){

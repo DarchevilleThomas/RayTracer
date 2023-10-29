@@ -8,6 +8,9 @@ import fr.sae.group1.shape.Shape;
 
 import java.util.ArrayList;
 
+/**
+ * Class SceneBuilder implements Builder interface to create a Scene.
+ */
 public class SceneBuilder implements Builder {
 
     private Camera camera;

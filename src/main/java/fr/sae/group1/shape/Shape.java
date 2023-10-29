@@ -5,6 +5,9 @@ import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
 
+/**
+ * Abstract class to create a Shape.
+ */
 public abstract class Shape {
 
     private Color diffuse;
@@ -16,7 +19,8 @@ public abstract class Shape {
      *  Constructor of the Figure class
      * @param diffuse a Color
      * @param specular a Color
-     * @param shininess a int
+     * @param shininess an int
+     * @param checker a checker
      */
     protected Shape(Color diffuse, Color specular, int shininess, Checker checker){
         this.diffuse=diffuse;

@@ -13,6 +13,9 @@ import static java.lang.Math.max;
 
 import java.util.List;
 
+/**
+ * Class LambertStrategy to color a pixel with the lambert strategy.
+ */
 public class LambertStrategy implements ColorStrategy{
 
     /**

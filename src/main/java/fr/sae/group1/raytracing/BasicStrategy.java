@@ -8,6 +8,9 @@ import fr.sae.group1.light.Light;
 import fr.sae.group1.scene.Scene;
 import fr.sae.group1.shape.Shape;
 
+/**
+ * Class BasicStrategy to color a pixel with the basic strategy.
+ */
 public class BasicStrategy implements ColorStrategy{
 
     /**

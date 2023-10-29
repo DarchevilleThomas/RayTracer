@@ -8,7 +8,9 @@ import fr.sae.group1.shape.Shape;
 
 import java.util.List;
 
-
+/**
+ * Scene class to create a scene to position elements
+ */
 public class Scene {
     private Camera camera;
     private int width;
@@ -43,6 +45,7 @@ public class Scene {
     /**
      *  Getter for ambient color
      *
+     * @return a color
      */
     public Color getAmbient() {
         return this.ambient;

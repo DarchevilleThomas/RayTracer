@@ -5,6 +5,9 @@ import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
 
+/**
+ * Class Plane to create a plane (extends Shape interface)
+ */
 public class Plane extends Shape {
     private Point point;
     private Vector vector;
@@ -16,6 +19,7 @@ public class Plane extends Shape {
      * @param shininess int
      * @param point a Point
      * @param vector  a Vector
+     * @param checker a checker
      */
     public Plane(Color diffuse, Color specular, int shininess, Point point, Vector vector, Checker checker) {
         super(diffuse, specular, shininess, checker);

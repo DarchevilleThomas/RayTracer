@@ -1,5 +1,8 @@
 package fr.sae.group1.builder;
 
+/**
+ * Class Point to create a point using a triplet
+ */
 public class Point {
     private Triplet triplet;
 

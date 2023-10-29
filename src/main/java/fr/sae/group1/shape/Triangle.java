@@ -5,10 +5,22 @@ import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
 
+/**
+ * Triangle class to create a triangle (extends Shape interface)
+ */
 public class Triangle extends Shape{
 
+    /**
+     * first point of a triangle
+     */
     protected Point point1;
+    /**
+     * second point of a triangle
+     */
     protected Point point2;
+    /**
+     * third point of a triangle
+     */
     protected Point point3;
 
     /**
@@ -20,6 +32,7 @@ public class Triangle extends Shape{
      * @param point1 a Point
      * @param point2 a Point
      * @param point3 a Point
+     * @param checker a checker
      */
     public Triangle(Color diffuse, Color specular, int shininess, Point point1, Point point2, Point point3, Checker checker) {
         super(diffuse, specular, shininess, checker);

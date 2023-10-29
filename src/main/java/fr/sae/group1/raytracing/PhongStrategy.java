@@ -13,14 +13,18 @@ import java.util.List;
 
 import static java.lang.Math.max;
 
+/**
+ * Class PhongStrategy to color a pixel with the Blinn-Phong strategy.
+ */
 public class PhongStrategy implements ColorStrategy {
 
     /**
      * Method to calculate the color with Phong
-     * @param d
-     * @param shape
-     * @param scene
-     * @param mint
+     * @param d a vector
+     * @param shape a shape
+     * @param scene a scene
+     * @param accessibleLights a list of lights
+     * @param mint a double
      * @return a color
      */
     @Override

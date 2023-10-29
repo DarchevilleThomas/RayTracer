@@ -5,6 +5,9 @@ import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
 
+/**
+ * Sphere class to create a sphere (extends Shape interface)
+ */
 public class Sphere extends Shape {
 
     private double radius;
@@ -17,6 +20,7 @@ public class Sphere extends Shape {
      * @param shininess a int
      * @param p a point
      * @param radius a double
+     * @param checker a checker
      */
     public Sphere(Color diffuse, Color specular, int shininess, Point p, double radius, Checker checker) {
         super(diffuse, specular, shininess,checker);
@@ -101,7 +105,6 @@ public class Sphere extends Shape {
      * @param point The origin of the line.
      * @param d The direction vector of the line.
      * @return The point of intersection between the line and the sphere, or null if there is no intersection.
-     * @throws Exception If an error occurs during vector operations.
      */
     public Point intersection(Point point, Vector d){
         // Calculer le point d'intersection

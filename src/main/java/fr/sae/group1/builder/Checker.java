@@ -1,5 +1,8 @@
 package fr.sae.group1.builder;
 
+/**
+ * Class Checker to create a checker
+ */
 public class Checker {
     private Color color1;
     private Color color2;
