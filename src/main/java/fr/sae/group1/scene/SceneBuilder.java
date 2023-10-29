@@ -108,7 +108,10 @@ public class SceneBuilder implements Builder {
      * @return a scene
      */
     public Scene build(){
-        return new Scene(camera,width,height,lights,shapes,ambient,maxDepth,shadow,checker);
+        Scene scene = new Scene(camera,width,height,lights,shapes,ambient,maxDepth);
+        scene.setShadow(shadow);
+        scene.setChecker(checker);
+        return scene;
     }
 
 }

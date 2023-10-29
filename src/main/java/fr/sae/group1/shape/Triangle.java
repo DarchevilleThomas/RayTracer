@@ -127,7 +127,7 @@ public class Triangle extends Shape{
     }
 
     @Override
-    public Point intersection(Point point, Vector d) throws Exception {
+    public Point intersection(Point point, Vector d) throws UnsupportedOperationException {
         throw new UnsupportedOperationException("Unimplemented method 'intersection'");
     }
 }

@@ -30,16 +30,14 @@ public class Scene {
      * @param ambient a Color
      * @param maxDepth a int
      */
-    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient, int maxDepth, boolean shadow, Checker checker) {
+    public Scene(Camera camera, int width, int height, List<Light> lights, List<Shape> shapes, Color ambient, int maxDepth) {
         this.camera = camera;
         this.width = width;
         this.height = height;
         this.lights = lights;
         this.shapes = shapes;
         this.ambient = ambient;
-        this.shadow = shadow;
         this.maxDepth = maxDepth;
-        this.checker = checker;
     }
 
     /**
@@ -162,6 +160,15 @@ public class Scene {
      */
     public void setShadow(boolean shadow) {
         this.shadow = shadow;
+    }
+
+    /**
+     * Method to know is there is a shadow or not
+     *
+     * @return a boolean
+     */
+    public boolean isShadow() {
+        return shadow;
     }
 
     /**

@@ -114,7 +114,6 @@ public abstract class Shape {
      * @param point The origin of the line.
      * @param d The direction vector of the line.
      * @return The point of intersection between the line and the sphere, or null if there is no intersection.
-     * @throws Exception If an error occurs during vector operations.
      */
-    public abstract Point intersection(Point point, Vector d) throws Exception;
+    public abstract Point intersection(Point point, Vector d);
 }

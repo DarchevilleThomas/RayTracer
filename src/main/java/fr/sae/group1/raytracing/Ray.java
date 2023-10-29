@@ -14,6 +14,11 @@ import java.io.IOException;
 import static java.lang.Math.*;
 
 public class Ray {
+
+    private Ray(){
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * Method for casting rays with intersection detection
      * @param scene a Scene
@@ -38,10 +43,6 @@ public class Ray {
         Vector w = (lookFrom.sub(lookAt)).normalize();
         Vector u = (up.cross(w)).normalize();
         Vector v = (w.cross(u)).normalize();
-        Color ambiantColor = scene.getAmbient();
-        if(ambiantColor==null) {
-            ambiantColor = black;
-        }
         for (int i = 0; i < imgwidth; i++) {
             for (int j = 0; j < imgheight; j++) {
 
