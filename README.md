@@ -2,6 +2,8 @@
 
 ## Test the project
 
+The project version is java 20.
+
 You can test the project in 2 different ways :
 
 1. First way : 
