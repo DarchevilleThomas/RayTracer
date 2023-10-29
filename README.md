@@ -4,9 +4,10 @@
 
 You can test the project in 2 different ways :
 
-1. First way, get the bash script 'scriptMain.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain.jar'. 
+1. First way : 
+ - get the bash script 'scriptMain.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain.jar'. 
+ - Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
 
-Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
 This first way will carry out the tests with the Main branch of our project. 
 In this main branch there are all the features that work perfectly.
 
