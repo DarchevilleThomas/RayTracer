@@ -1,5 +1,6 @@
 package fr.sae.group1.shape;
 
+import fr.sae.group1.builder.Checker;
 import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
@@ -17,27 +18,47 @@ public class Sphere extends Shape {
      * @param p a point
      * @param radius a double
      */
-    public Sphere(Color diffuse, Color specular, int shininess, Point p, double radius) {
-        super(diffuse, specular, shininess);
+    public Sphere(Color diffuse, Color specular, int shininess, Point p, double radius, Checker checker) {
+        super(diffuse, specular, shininess,checker);
         this.p = p;
 
         this.radius = radius;
     }
 
+    /**
+     * Return the radius of a square
+     *
+     * @return the radius of a sphere
+     */
     public double getRadius() {
 
         return radius;
     }
 
+    /**
+     * Set the radius of a sphere
+     *
+     * @param radius a double
+     */
     public void setRadius(double radius) {
 
         this.radius = radius;
     }
 
+    /**
+     * Return the point of a sphere
+     *
+     * @return a point
+     */
     public Point getP() {
         return p;
     }
 
+    /**
+     * Set the point of a sphere
+     *
+     * @param p a Point
+     */
     public void setP(Point p) {
         this.p = p;
     }
@@ -104,7 +125,7 @@ public class Sphere extends Shape {
 
     /**
      * Returns a string representation of this Sphere.
-     * 
+     *
      * @return A string representation of this Sphere.
      */
     @Override
