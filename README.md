@@ -5,8 +5,8 @@
 You can test the project in 2 different ways :
 
 1. First way : 
- - get the bash script 'scriptMain.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain.jar'. 
- - Put them in the same folder; in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
+ - Get the bash script 'scriptMain.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain.jar'. 
+ - Put them in the same folder; in a terminal go to this folder and run the command : ```bash scriptMain.sh [test.txt]```
 
 This first way will carry out the tests with the Main branch of our project. 
 In this main branch there are all the features that work perfectly.
@@ -21,18 +21,19 @@ Features that work perfectly :
 
 
 
--Second way, get the bash script 'scriptMain2.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain2.jar'.
-Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
+2. Second way : 
+ - Get the bash script 'scriptMain2.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain2.jar'.
+ - Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
+
+
 This second way will carry out the tests with the Main2 branch of our project.
 In this Main2 branch there are all the features that work perfectly and the features that work but not totally.
 
 Features with bugs are :
 
--the shadows, they create bugs on the triangles.
-
--The reflection, when it takes place, the lights on the reflections are missing.
-
--The checkerboard is present but there is a place where the checkerboard is not done.
+ - the shadows, they create bugs on the triangles.
+ - The reflection, when it takes place, the lights on the reflections are missing.
+ - The checkerboard is present but there is a place where the checkerboard is not done.
 
 
 ## Task evaluation
