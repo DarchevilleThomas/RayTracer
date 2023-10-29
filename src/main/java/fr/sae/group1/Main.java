@@ -1,9 +1,5 @@
 package fr.sae.group1;
 
-import fr.sae.group1.raytracing.BasicStrategy;
-import fr.sae.group1.raytracing.ColorStrategy;
-import fr.sae.group1.raytracing.LambertStrategy;
-import fr.sae.group1.raytracing.PhongStrategy;
 import fr.sae.group1.raytracing.Ray;
 import fr.sae.group1.scene.Scene;
 import fr.sae.group1.scene.SceneParser;

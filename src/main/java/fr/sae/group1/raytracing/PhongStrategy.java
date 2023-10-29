@@ -25,7 +25,6 @@ public class PhongStrategy implements ColorStrategy {
      */
     @Override
     public Color colorCalculation(Vector d, Shape shape, Scene scene, List<Light> accessibleLights, double mint) {
-        Color black = new Color(0,0,0);
         LambertStrategy strategy = new LambertStrategy();
         BasicStrategy basic = new BasicStrategy();
         Point p = new Point((d.mul(mint).add(scene.getCamera().getPosition()).getTriplet()));
@@ -36,8 +35,8 @@ public class PhongStrategy implements ColorStrategy {
         Vector eyeDir = new Vector(d.getTriplet().getX()*-1,d.getTriplet().getY()*-1,d.getTriplet().getZ()*-1);
         Color col = new Color(0,0,0);
         for (Light light : scene.getLights()){
-            if (light instanceof PointLight plight){
-                Vector lightDir = ((PointLight) light).getPointLightVector(p);
+            if (light instanceof PointLight pointLight){
+                Vector lightDir = pointLight.getPointLightVector(p);
                 Vector h = lightDir.add(eyeDir).normalize();
                 col = strategy.colorCalculation(d,shape,scene,accessibleLights,mint).add(light.getColor().multiply(Math.pow(Math.max(n.dot(h),0),shape.getShininess())).schurProduct(shape.getSpecular()));
             }else {

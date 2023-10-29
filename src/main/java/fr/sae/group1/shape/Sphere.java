@@ -103,7 +103,7 @@ public class Sphere extends Shape {
      * @return The point of intersection between the line and the sphere, or null if there is no intersection.
      * @throws Exception If an error occurs during vector operations.
      */
-    public Point intersection(Point point, Vector d) throws Exception {
+    public Point intersection(Point point, Vector d){
         // Calculer le point d'intersection
         double tmp = this.distance(point, d);
         if (tmp >= 0) {
