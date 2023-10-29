@@ -7,8 +7,8 @@ The project version is java 20.
 You can test the project in 2 different ways :
 
 1. First way : 
- - In a terminal clone the project from gitlab `git clone `. 
- - Put them in the same folder; in a terminal go to this folder and run the command : ```bash scriptMain.sh [test.txt]```
+ - In a terminal clone the project from gitlab `git clone https://gitlab.univ-artois.fr/thomas_darcheville/sae-3.a.01.git`. 
+ - Go to the folder 'scripts' with the commande `cd scripts` and run the command : `bash scriptMain.sh [test.txt]`
 
 This first way will carry out the tests with the Main branch of our project. 
 In this main branch there are all the features that work perfectly.
