@@ -1,5 +1,29 @@
 # SAE 3.A.01
 
+## Test the project
+
+You can test the project in 2 different ways :
+
+-First way, get the bash script '[name]' as well as the jar file '[name]'. 
+Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
+This first way will carry out the tests with the Main branch of our project. 
+In this main branch there are all the features that work perfectly.
+Features that work perfectly :
+-Showing all shapes.
+-Basic shape without any lights.
+-Lambert algorithm on every shapes.
+-Blinn-Phong algorithm on every shapes.
+
+-Second way, get the bash script '[name]' as well as the jar file '[name]'.
+Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
+This second way will carry out the tests with the Main2 branch of our project.
+In this Main2 branch there are all the features that work perfectly and the features that work but not totally.
+Features with bugs are :
+-the shadows, they create bugs on the triangles.
+-The reflection, when it takes place, the lights on the reflections are missing.
+-The checkerboard is present but there is a place where the checkerboard is not done.
+
+
 ## Task evaluation
 1. Breakdown of the specifications into main tasks of development project:
     - **Task 1**: Manipulation of numerical triplets (points, vectors, colors).
