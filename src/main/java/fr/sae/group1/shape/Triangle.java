@@ -1,5 +1,6 @@
 package fr.sae.group1.shape;
 
+import fr.sae.group1.builder.Checker;
 import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
@@ -20,8 +21,8 @@ public class Triangle extends Shape{
      * @param point2 a Point
      * @param point3 a Point
      */
-    public Triangle(Color diffuse, Color specular, int shininess, Point point1, Point point2, Point point3) {
-        super(diffuse, specular, shininess);
+    public Triangle(Color diffuse, Color specular, int shininess, Point point1, Point point2, Point point3, Checker checker) {
+        super(diffuse, specular, shininess, checker);
         this.point1=point1;
         this.point2=point2;
         this.point3=point3;
@@ -91,13 +92,13 @@ public class Triangle extends Shape{
     @Override
     public double distance(Point lookFrom, Vector d) {
         Vector n = (point2.sub(point1)).cross((point3.sub(point1))).normalize();
-        Plane plane = new Plane(this.getDiffuse(),this.getSpecular(),this.getShininess(),this.point1,n);
+        Plane plane = new Plane(this.getDiffuse(),this.getSpecular(),this.getShininess(),this.point1,n,this.getChecker());
         double t = plane.distance(lookFrom,d);
         Point p = (d.mul(t)).add(lookFrom);
         if(point2.sub(point1).cross((p.sub(point1))).dot(n)>=0
                 && (point3.sub(point2).cross((p.sub(point2))).dot(n)>=0
                 && ( point1.sub(point3).cross((p.sub(point3))).dot(n) >=0))){
-                    return t;
+            return t;
 
 
         }
@@ -117,7 +118,7 @@ public class Triangle extends Shape{
 
     /**
      * Returns a string representation of this Triangle.
-     * 
+     *
      * @return A string representation of this Triangle.
      */
     @Override
@@ -127,7 +128,6 @@ public class Triangle extends Shape{
 
     @Override
     public Point intersection(Point point, Vector d) throws Exception {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'intersection'");
     }
 }

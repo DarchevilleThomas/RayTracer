@@ -1,5 +1,6 @@
 package fr.sae.group1.shape;
 
+import fr.sae.group1.builder.Checker;
 import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
@@ -16,8 +17,8 @@ public class Plane extends Shape {
      * @param point a Point
      * @param vector  a Vector
      */
-    public Plane(Color diffuse, Color specular, int shininess, Point point, Vector vector) {
-        super(diffuse, specular, shininess);
+    public Plane(Color diffuse, Color specular, int shininess, Point point, Vector vector, Checker checker) {
+        super(diffuse, specular, shininess, checker);
         this.point = point;
         this.vector = vector;
     }
@@ -59,7 +60,6 @@ public class Plane extends Shape {
      * @param lookFrom a Point
      * @param d a Vector
      * @return a double
-     * @throws Exception throw Exception
      */
     @Override
     public double distance(Point lookFrom, Vector d)  {
@@ -81,7 +81,7 @@ public class Plane extends Shape {
      * Returns a string representation of this Plane.
      * The string representation is "Plane {point=POINT, vector=VECTOR}", where POINT
      * and VECTOR are the point and vector of this Plane.
-     * 
+     *
      * @return A string representation of this Plane.
      */
     @Override
@@ -91,7 +91,6 @@ public class Plane extends Shape {
 
     @Override
     public Point intersection(Point point, Vector d) throws Exception {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'intersection'");
     }
 }
