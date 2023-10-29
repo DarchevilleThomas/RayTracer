@@ -10,9 +10,12 @@ This first way will carry out the tests with the Main branch of our project.
 In this main branch there are all the features that work perfectly.
 
 Features that work perfectly :
--Showing all shapes.
--Basic shape without any lights.
--Lambert algorithm on every shapes.
+-Showing all shapes.  
+
+-Basic shape without any lights.  
+
+-Lambert algorithm on every shapes.  
+
 -Blinn-Phong algorithm on every shapes.
 
 -Second way, get the bash script 'scriptMain2.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain2.jar'.
