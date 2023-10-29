@@ -1,5 +1,6 @@
 package fr.sae.group1.shape;
 
+import fr.sae.group1.builder.Checker;
 import fr.sae.group1.builder.Color;
 import fr.sae.group1.builder.Point;
 import fr.sae.group1.builder.Vector;
@@ -9,6 +10,7 @@ public abstract class Shape {
     private Color diffuse;
     private Color specular;
     private int shininess;
+    private Checker checker;
 
     /**
      *  Constructor of the Figure class
@@ -16,10 +18,29 @@ public abstract class Shape {
      * @param specular a Color
      * @param shininess a int
      */
-    protected Shape(Color diffuse, Color specular, int shininess){
+    protected Shape(Color diffuse, Color specular, int shininess, Checker checker){
         this.diffuse=diffuse;
         this.specular=specular;
         this.shininess=shininess;
+        this.checker=checker;
+    }
+
+    /**
+     * Return the checker of a shape (useless when the shape is not a plane)
+     *
+     * @return checker
+     */
+    public Checker getChecker() {
+        return checker;
+    }
+
+    /**
+     * Set the checker of a shape (useless when the shape is not a plane)
+     *
+     * @param checker a checker
+     */
+    public void setChecker(Checker checker) {
+        this.checker = checker;
     }
 
     /**
