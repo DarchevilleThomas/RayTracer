@@ -89,7 +89,17 @@ Matteo a également modifié le parser pour corriger des problèmes.
 
 ### Des ombres et des réflexions :
 
+Pour cette partie, nous avons réparti les tâches de cette manière :
 
+Noah a ajouté au patron de conception (Strategy) l'algorithme de Blinn-Phong.
+En parallèle Matteo a implémenté les ombres et il a modifié le parser, cependant les ombres ne sont pas parfaitement fonctionnelles, il y a des problèmes avec les triangles.
+Gregory et Thomas se sont occupé des réflexions. Les réflexions fonctionnent mais les lumières n'apparaissent pas sur ces dernières.
+
+---
+
+### Texture procédurale : le damier : 
+
+Noah a implémenté le damier mais ce dernier n'est pas parfait, il y a un endroit du plan où il y a deux lignes de carrés de la même couleur. 
 
 
 
