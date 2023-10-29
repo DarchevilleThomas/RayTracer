@@ -1,5 +1,6 @@
 package fr.sae.group1.scene;
 
+import fr.sae.group1.builder.Checker;
 import fr.sae.group1.light.Light;
 import fr.sae.group1.builder.Camera;
 import fr.sae.group1.builder.Color;
@@ -17,6 +18,8 @@ public class SceneBuilder implements Builder {
     private Color ambient;
     private boolean shadow;
     private int maxDepth;
+    private Checker checker;
+
 
     /**
      * Method to set a new camera
@@ -83,16 +86,29 @@ public class SceneBuilder implements Builder {
     }
 
     /**
-     * @param maxDepth a int
+     * Setter for a maxDepth
+     *
+     * @param maxDepth an int
      */
     @Override
     public void setMaxDepth(int maxDepth) { this.maxDepth=maxDepth;}
+
+    /**
+     * Method to set a checker
+     *
+     * @param checker a checker
+     */
+    @Override
+    public void setChecker(Checker checker) {
+        this.checker=checker;
+    }
+
     /**
      * Method to build a scene with the parameters of the sceneBuilder
      * @return a scene
      */
     public Scene build(){
-        return new Scene(camera,width,height,lights,shapes,ambient,maxDepth,shadow);
+        return new Scene(camera,width,height,lights,shapes,ambient,maxDepth,shadow,checker);
     }
 
 }
