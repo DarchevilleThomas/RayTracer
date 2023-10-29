@@ -4,7 +4,7 @@
 
 You can test the project in 2 different ways :
 
--First way, get the bash script '[name]' as well as the jar file '[name]'. 
+-First way, get the bash script 'scriptMain.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain.jar'. 
 Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
 This first way will carry out the tests with the Main branch of our project. 
 In this main branch there are all the features that work perfectly.
@@ -14,7 +14,7 @@ Features that work perfectly :
 -Lambert algorithm on every shapes.
 -Blinn-Phong algorithm on every shapes.
 
--Second way, get the bash script '[name]' as well as the jar file '[name]'.
+-Second way, get the bash script 'scriptMain2.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain2.jar'.
 Put them in the same folder, in a terminal go to this file and run the command : ```bash [nameScript] [test.txt]```
 This second way will carry out the tests with the Main2 branch of our project.
 In this Main2 branch there are all the features that work perfectly and the features that work but not totally.
