@@ -7,7 +7,7 @@ The project version is java 20.
 You can test the project in 2 different ways :
 
 1. First way : 
- - Get the bash script 'scriptMain.sh' in the scripts folder at the root of the project as well as the jar file 'saeMain.jar'. 
+ - In a terminal clone the project from gitlab `git clone `. 
  - Put them in the same folder; in a terminal go to this folder and run the command : ```bash scriptMain.sh [test.txt]```
 
 This first way will carry out the tests with the Main branch of our project. 
