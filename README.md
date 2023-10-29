@@ -37,6 +37,9 @@ Features with bugs are :
  - The reflection, when it takes place, the lights on the reflections are missing.
  - The checkerboard is present but there is a place where the checkerboard is not done.
 
+## The report
+
+https://gitlab.univ-artois.fr/thomas_darcheville/sae-3.a.01/-/blob/main/RAPPORT.md?ref_type=heads
 
 ## Task evaluation
 1. Breakdown of the specifications into main tasks of development project:
