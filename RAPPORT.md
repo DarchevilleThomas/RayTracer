@@ -60,7 +60,7 @@ En ce qui concerne le parser, SonarLint nous indique une trop grande compléxit�
 
 Gregory a ensuite écrit les méthodes des classes Scene et SceneBuilder. Tout d'abord dans la classe SceneBuilder des setters pour les différents attributs récupérés à l'aide du parser et des fonctions add qui permettent d'ajouter une lumière à la liste des lumières et une forme à la liste des formes. De plus il a ajouté la méthode build qui permet de construire une scène.
 
-Enfin Thomas a écrit la classe Main qui sera utilisée dans un scirpt bash lorsque l'on voudra effectuer un rendu depuis la console d'une image à partir d'un fichier texte.
+Enfin Thomas a écrit la classe Main qui sera utilisée dans un script bash lorsque l'on voudra effectuer un rendu depuis la console d'une image à partir d'un fichier texte.
 
 ---
 
