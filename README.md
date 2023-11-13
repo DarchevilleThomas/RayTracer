@@ -25,8 +25,8 @@ Pour tester le lanceur de rayon : <br>
 -Utilisation des commits atomiques 
 
 ## Screenshots ##
-![tp31.png](scripts%2Ftp31.png)
-![img.png](img.png)
-![tp45.png](scripts%2Ftp45.png)
-![tp55-noshadow.png](scripts%2Ftp55-noshadow.png)
-![tp62-1.png](scripts%2Ftp62-1.png)
+![tp31](https://github.com/DarchevilleThomas/RayTracer/assets/122434335/69accde4-af91-4fbf-8e93-109dbf8accb5)
+![img](https://github.com/DarchevilleThomas/RayTracer/assets/122434335/b493e352-56d0-444c-8de7-f1b884b41260)
+![tp45](https://github.com/DarchevilleThomas/RayTracer/assets/122434335/ad420d9e-5686-4736-8d5d-58044200f385)
+![tp55-noshadow](https://github.com/DarchevilleThomas/RayTracer/assets/122434335/7a97e599-f553-453f-a47a-0f28b8cf939b)
+![tp62-1](https://github.com/DarchevilleThomas/RayTracer/assets/122434335/009310e9-f503-41d8-9bc6-294de48b38a0)
